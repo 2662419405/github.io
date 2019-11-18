@@ -10,7 +10,7 @@
     
     
     
-    <title>Hello World | Hexo</title>
+    <title>search | Hexo</title>
     <link href="http://yoursite.com" rel="prefetch" />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -138,64 +138,215 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
-    <div class="breadcrumb">
-        <i class="fa fa-home"></i>
-        <a href="http://yoursite.com">Hexo</a>
-        >
-        <span>Hello World</span>
-    </div>
-    <!-- 大型设备详细文章 -->
-    <div class="hidden-xs">
-        <div class="title-article">
-            <h1>
-                <a href="/2019/11/13/hello-world/">Hello World</a>
-            </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2019-11-13
-            </span>
-            
-        </div>
-    </div>
-    <!-- 小型设备详细文章 -->
-    <div class="visible-xs">
-        <center>
-            <div class="title-article">
-                <h4>
-                    <a href="/2019/11/13/hello-world/">Hello World</a>
-                </h4>
-            </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2019-11-13
-            </p>
-            <p>
-                
-                
-            </p>
-        </center>
-    </div>
-    <div class="content-article">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<!-- search自定义页面 -->
+<script type="text/javascript">
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+	var htmlEntityMap = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		'\'': '&#39;',
+		'/': '&#x2F;'
+	};
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+	// 参照hexo过滤html的方法(事实上感觉静态也没什么可以过滤的)
+	function escapeKey(str) {
+		if (typeof str !== 'string') throw new TypeError('str must be a string!');
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		// http://stackoverflow.com/a/12034334
+		return str.replace(/[&<>"'\/]/g, function(a) {
+			return htmlEntityMap[a];
+		});
+	}
 
-    </div>
-</article>
+	var query = decodeURIComponent(window.location.search).substring(1).split('&')
+    // 获取搜索关键词
+    var s = escapeKey(query[0].split('=')[1])
+    // 获取当前页数
+    var p = query.length > 1 ? query[1].split('=')[1] : 1
+    // 获取每页的页码数
+    var pageSize = '10'
+    var useLeancloud = ''
+    var useComment = ('false' === 'true')
+    $.getJSON('/content.json', function (json) {
+      $('#search-breadcrumb').append(`搜索'${s}'的结果`)
+      var result = getArticles(s, 'posts', json).concat(getArticles(s, 'pages', json))
+      if (result.length === 0 || result.length <= (p - 1) * pageSize) {
+      	// TODO 显示404页面
+      } else {
+        displaySearchResult(result.slice((p - 1) * pageSize, p * pageSize))
+        displayPagination(result)
+      }
+    })
 
+    function getArticles(val, type, json) {
+      return json[type].filter((e) => {
+        return e.title.indexOf(val) !== -1 || e.text.indexOf(val) !== -1
+      })
+    }
+
+    function displaySearchResult(result) {
+      var resultList = $('#article-list')
+      result.forEach(function (article) {
+      	var [month, day] = article.date.split('-')
+        ''
+        ''
+        var defaultPreview = '/imgs/preview/preview3.jpg'
+        var preview = article.preview ? article.preview : defaultPreview
+        var path = '/' + article.path
+        resultList.append(`<div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
+                                <div class="data-article hidden-xs">
+                                    <span class="month">${month}月</span>
+                                    <span class="day">${day}</span>
+                                </div>
+                                <section class="hidden-xs">
+                                    <div class="title-article">
+                                        <h1>
+                                            <a href="${path}">
+                                                <span>${article.title}</span>
+                                            </a>
+                                        </h1>
+                                    </div>
+                                    <div class="tag-article">
+                                    ${ article.tags.length > 0 ? `<span class="label label-gal"><i class="fa fa-tags"></i>${
+                                    	article.tags.map(function (tag) {
+						                 return `<a href=${ tag.permalink }>${ tag.name }</a>`
+                                    	}).join(', ') }</span>` : '' }
+                                    ${ useLeancloud ? '<span class="label label-gal"><i class="fa fa-eye"></i></span>' : ''}
+                                    </div>
+                                    <div class="alert alert-gal article-body content-article">
+                                         <div class="item">
+                                            <a href="${path}">
+                                                <div class="img">
+                                                    <img src="${preview}" alt="${article.title}">
+                                                </div>
+                                                <div class="info">
+                                                    <p>${article.excerpt}</p>
+                                                </div>
+                                            </a>
+                                         </div>
+					                </div>
+					            </section>
+                           </div>`)
+      })
+      if (useLeancloud) {
+        var Counter = AV.Object.extend('Counter')
+        showPostsTime(Counter)
+      }
+      if (useComment) {
+      	showCommentCount()
+      }
+    }
+
+    function displayPagination(result) {
+      var pgContainer = $('#gal-pagination')
+      var pg = $(pgContainer.find('.pagination-gal')[0])
+      if(result.length > 0) {
+        pgContainer.css('display', 'block')
+      }
+      var num = Math.ceil(result.length / pageSize)
+      var root = '/search'
+      var link = root + `/index.html?s=${s}`
+      if(p > 1) {
+      	pg.append(`<li class="prev"><a href="${link}&page=${p-1}">«</a></li>`)
+      }
+      if(p > 7) {
+      	pg.append(`<li><a href="${link}">1</a></li>
+                   <li><span>...</span></li>`)
+        for(var i = p - 3; i < p; i++) {
+          pg.append(`<li><a href="${link}&page=${i}">${i}</a></li>`)
+        }
+      } else {
+      	for(var j = 1; j < p; j++) {
+          pg.append(`<li><a href="${link}${j === 1 ? '' : `&page=${j}`}">${j}</a></li>`)
+        }
+      }
+      pg.append(`<li class="current"><span>${p}</span></li>`)
+      if(p + 7 < num) {
+      	for(var i = p + 1; i <= p + 3; i++) {
+          pg.append(`<li><a href="${link}&page=${i}">${i}</a></li>`)
+        }
+        pg.append(`<li><span>...</span></li>`)
+      } else {
+      	for(var j = p + 1; j <= num; j++) {
+          pg.append(`<li><a href="${link}&page=${j}">${j}</a></li>`)
+        }
+      }
+      if(p < num) {
+      	pg.append(`<li class="next"><a href="${link}&page=${p+1}">»</a></li>`)
+      }
+    }
+
+    function showPostsTime(Counter) {
+      var entries = []
+      var excerpts = $('.article-excerpt')
+      excerpts.each(function () {
+        entries.push($(this).find('.title-article').first().find('a').attr('href').trim())
+      })
+      var query = new AV.Query(Counter)
+      query.containedIn('url', entries)
+      query.find().then(function (result) {
+        excerpts.each(function () {
+          var href = $(this).find('.title-article').first().find('a').attr('href').trim()
+          var r = result.filter(function (e) {
+            return e.get('url') === href
+          })
+          if(r.length > 0) {
+            $(this).find('i.fa-eye').each(function () {
+              $(this).after(' ' + r[0].get('time') + ' ℃')
+            })
+          } else {
+            $(this).find('i.fa-eye').each(function () {
+              $(this).after(' 0 ℃')
+            })
+          }
+        })
+      }).then(function (error) {
+        console.log('Error:' + error.code + ' ' + error.message)
+      })
+    }
+
+    function showCommentCount() {
+      const excerpts = $('.article-excerpt')
+      const owner = window.commentConfig.owner
+      const repo = window.commentConfig.repo
+      $.ajax({
+        url: "https://api.github.com/repos/" + owner + '/' + repo + '/issues',
+        data: {
+          creator: owner
+        }
+      }).done(function(issues) {
+        excerpts.each(function () {
+          const that = $(this)
+          that.find('h1 > a > span').each(function () {
+            const title = $(this).text()
+            const tags = that.find('div.tag-article')
+            const issue = issues.filter(function (issue) {
+              return issue.title === title
+            })
+            const comments = issue.length > 0 ? issue[0].comments : 0
+            tags.each(function () {
+              $(this).append('<span class="label label-gal"><i class="fa fa-comments"></i><a> ' + comments + '</a></span>')
+            })
+          })
+        })
+      }).fail(function (error) {
+        console.log(error)
+      });
+    }
+
+</script>
+<div class="breadcrumb breadcrumb-gal" id="search-breadcrumb">
+    <i class="fa fa-home"></i>
+</div>
+<div id="article-list"></div>
+<div id="gal-pagination" class="clearfix" style="display: none;">
+    <ul class="pagination pagination-gal pull-right"></ul>
+</div>
+<!-- 404页面 -->
 
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
@@ -302,17 +453,17 @@
 
                 
                 <li>
-                    <a href="/2019/11/13/hello-world/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/search/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/11/13/hello-world/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/search/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/11/13/hello-world/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/search/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
