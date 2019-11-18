@@ -1,372 +1,445 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  
-  <title>Archive：2019 - 残梦技能树</title>
-  <meta charset="UTF-8">
-  <meta name="description" content="前端工程师,残梦,IT">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-    <!-- Site Verification -->
-    <meta name="google-site-verification" content="残梦技能树" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Sun Hang">
+    
+    <meta name="description" content="前端工程师,残梦,IT">
+    
+    
+    
+    
+    
+    
+    <title>archive_a | 残梦</title>
+    <link href="http://yoursite.com" rel="prefetch" />
 
-
-    <!-- Site Verification -->
-    <meta name="baidu-site-verification" content="残梦技能树" />
-
-  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
-  <meta name="description" content="前端工程师,残梦,IT">
-<meta name="keywords" content="前端工程师,残梦,IT">
-<meta property="og:type" content="website">
-<meta property="og:title" content="残梦技能树">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;index.html">
-<meta property="og:site_name" content="残梦技能树">
-<meta property="og:description" content="前端工程师,残梦,IT">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
-   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
-  
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1574065127802">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
 </head>
-
-<body class="mdui-drawer-body-left">
-  
-  <div id="nexmoe-background">
-    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
-    <div class="mdui-appbar mdui-shadow-0">
-      <div class="mdui-toolbar">
-        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
-        <div class="mdui-toolbar-spacer"></div>
-        <!--<a href="javascript:;" target="_blank" rel="noopener" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
-        <a href="/" title="Sun Hang" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.jpg"></a>
-       </div>
-    </div>
-  </div>
-  <div id="nexmoe-header">
-      <div class="nexmoe-drawer mdui-drawer" id="drawer">
-    <div class="nexmoe-avatar mdui-ripple">
-        <a href="/" title="Sun Hang">
-            <img src="/images/avatar.jpg" alt="Sun Hang">
-        </a>
-    </div>
-    <div class="nexmoe-count">
-        <div><span>文章</span>2</div>
-        <div><span>标签</span>3</div>
-        <div><span>分类</span>0</div>
-    </div>
-    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
-            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
-            <div class="mdui-list-item-content">
-                回到首页
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/#" title="关于博客">
-            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-            <div class="mdui-list-item-content">
-                关于博客
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/#" title="我的朋友">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                我的朋友
-            </div>
-        </a>
-        
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
     </ul>
-    <aside id="nexmoe-sidebar">
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">社交方式</h3>
-    <div class="nexmoe-widget nexmoe-social">
-        <a class="mdui-ripple" href="https://github.com/2662419405/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-github"></i>
-        </a><a class="mdui-ripple" href="https://www.zhihu.com/people/can-meng-35-53-44/activities" target="_blank" mdui-tooltip="{content: '知乎'}" style="color: rgb(25, 23, 23);background-color: rgba(30,136,229,.1);">
-            <i class="nexmoefont icon-zhihu"></i>
-        </a><a class="mdui-ripple" href="https://weibo.com/p/1005057325079903/home?from=page_100505&mod=TAB#place" target="_blank" mdui-tooltip="{content: '微博'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-weibo"></i>
-        </a><a class="mdui-ripple" href="https://user.qzone.qq.com/2662419405" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-QQ"></i>
-        </a><a class="mdui-ripple" href="https://www.cnblogs.com/sunhang32/" target="_blank" mdui-tooltip="{content: '博客园'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-battlenet"></i>
-        </a><a class="mdui-ripple" href="https://blog.csdn.net/qq_43268396" target="_blank" mdui-tooltip="{content: 'CSDN'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-areachart"></i>
-        </a><a class="mdui-ripple" href="https://www.jianshu.com/u/3c7ad314336f" target="_blank" mdui-tooltip="{content: '简书'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-ellipsis"></i>
-        </a>
-    </div>
-</div>
-  
-  
-
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">标签</h3>
-    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
-      <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" style="font-size: 10px;">学习之旅</a> <a href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">我的项目</a>
-    </div>
-    
-  </div>
-
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">最新文章</h3>
-    <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-    <div class="nexmoe-copyright">
-        &copy; 2019 Sun Hang
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
-    </div>
-</div><!-- .nexmoe-drawer -->
-  </div>
-  <div id="nexmoe-content">
-    <div class="nexmoe-primary">
-        <section class="nexmoe-posts" id="brand-waterfall">
-    
-    <div class="nexmoe-post">
-        <a href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAReact%E9%A1%B9%E7%9B%AE/">
-            <div class="nexmoe-post-cover mdui-ripple"> 
-                
-                    <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg" alt="我的第一个React项目">
-                
-                <h1>我的第一个React项目</h1>
-            </div>
-        </a>
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年11月18日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.2k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
-            
-            
-                <a class="nexmoefont icon-tag-fill -link" href="/tags/React/" rel="tag">React</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/" rel="tag">我的项目</a>
-            
-        </div>
-        <article>
-            
-            <h1 id="简招-React-Node-MongoDB"><a href="#简招-React-Node-MongoDB" class="headerlink" title="简招 (React+Node+MongoDB)"></a>简招 (React+Node+MongoDB)</h1><blockquote>
-<p>开始制作的时间是从 2019-10-10 起至今</p>
-</blockquote>
-<p><img src="http://studyit.club/Study/sh.jpg" alt="sh"></p>
-<p>自己也发布过几个小型的demo,虽然没人看(๑•ૅૄ•๑), 但还是喜欢与大家共同学习进步</p>
-<p>测试网址 ———&gt;  <a href="http://shtodream.cn:9093" target="_blank" rel="noopener">网址</a></p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>校园招聘<code>APP</code>,是一款手机端的求职网站,招聘者可以注册为BOSS,求职者可以注册为牛人,牛人和BOSS可以聊天,并且可以互相查看到对方的基本信息和简介薪资等方面</p>
-<p>计划制作:</p>
-<ul>
-<li>使用React的<code>Antd-mobile</code>支持手机端端制作</li>
-<li><code>ReactNative</code>独立开发<code>App</code>端和<code>IOS</code></li>
-<li>有人肯定会很好奇,PC和手机为何要制作两次,主要是本人很萌新,想要学习更多的框架</li>
-</ul>
-<blockquote>
-<p>只有学习更多的框架,并且锻炼更好的自学能力,才能更上一层楼</p>
-</blockquote>
-<h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><p>我是一个<strong>热门计算机</strong>并且<strong>对计算机充满兴趣</strong>的程序员</p>
-<p>学过<code>Java</code>,<code>.net</code>,<code>PHP</code>,曾经一度认为<code>PHP</code>是最牛逼的语言</p>
-<p>后来正式的接触前端,学习过</p>
-<ul>
-<li><code>ES6</code></li>
-<li><code>Node</code></li>
-<li><code>React</code></li>
-<li><code>Vue</code></li>
-<li><code>ReactNative</code></li>
-<li><code>Angular</code></li>
-<li>微信一系列开发</li>
-<li><code>jq</code>,<code>bootstarp</code>等一些简单库</li>
-</ul>
-<p>发现前端很神奇,比后台和数据方面更加的有意思,想要称为一名前端工程师</p>
-<h3 id="项目简述"><a href="#项目简述" class="headerlink" title="项目简述"></a>项目简述</h3><blockquote>
-<p>这是一个React项目,你的电脑要具备Node(8.0)以上</p>
-</blockquote>
-<h4 id="所使用的node包技术阐述"><a href="#所使用的node包技术阐述" class="headerlink" title="所使用的node包技术阐述"></a>所使用的node包技术阐述</h4><p><img src="http://studyit.club/Study/Snipaste_2019-10-24_11-25-04.png" alt="sh"></p>
-<blockquote>
-<p>前端主要采用了React全家桶，没什么多说的，脚手架构建项目，react-router控制路由，axios进行前后端交互。后端是基于node搭的服务，用的是express。我为什么不用koa呢，纯粹是图方便，因为koa不熟（捂脸）。聊天最重要的当然是通信，项目用<a href="https://www.w3cschool.cn/socket/socket-1olq2egc.html" target="_blank" rel="noopener">socket.io</a>来进行前后端通信。</p>
-</blockquote>
-<p><em>=============分割线  下面是每个包的详细解释===============</em></p>
-<ul>
-<li><p><strong>(按需加载问题)</strong> 使用<code>babel-plugin-import</code>包</p>
-</li>
-<li><p><strong>(由于跨域问题)</strong> 在<code>package.json</code>中使用<code>proxy</code>配置</p>
-<ul>
-<li><p>需要详细说明一下,安装完这个包,需要在<code>package.json</code>文件中配置</p>
-</li>
-<li><pre><code class="js"><span class="string">"proxy"</span>: <span class="string">"http://localhost:9093"</span>
-&lt;!--￼<span class="number">0</span>--&gt;</code></pre>
-</li>
-</ul>
-</li>
-<li><p><strong>(配置服务端渲染)</strong> 使用<code>babel-cli</code>包</p>
-<ul>
-<li><p>安装</p>
-</li>
-<li><pre><code class="js">npm install babel-cli --save 
-&lt;!--￼<span class="number">1</span>--&gt;
-
-
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>目录结构</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 项目结构</span></span><br><span class="line">├─build</span><br><span class="line">├─config</span><br><span class="line">├─data</span><br><span class="line">│  ├─MongoDB            				  <span class="comment">// 数据库解释    </span></span><br><span class="line">├─server  								  <span class="comment">// 后台</span></span><br><span class="line">│  ├─model          					  <span class="comment">// 数据库原型     </span></span><br><span class="line">│  ├─main          				  		  <span class="comment">// 后台文件入口  </span></span><br><span class="line">│  ├─user          				 		  <span class="comment">// 后台接口api    </span></span><br><span class="line">├─src</span><br><span class="line">│  ├─components                           <span class="comment">// 全局组件</span></span><br><span class="line">│  │  ├─autoRouter</span><br><span class="line">│  │  ├─avatar-select</span><br><span class="line">│  │  ├─boss</span><br><span class="line">│  │  ├─chat</span><br><span class="line">│  │  ├─Dashboard</span><br><span class="line">│  │  ├─genius</span><br><span class="line">│  │  ├─img</span><br><span class="line">│  │  ├─logo</span><br><span class="line">│  │  ├─msg</span><br><span class="line">│  │  ├─navlink</span><br><span class="line">│  │  ├─shForm</span><br><span class="line">│  │  ├─user</span><br><span class="line">│  │  └─chatCard</span><br><span class="line">│  ├─router                                <span class="comment">// 路由</span></span><br><span class="line">│  ├─index                                 <span class="comment">// 入口	</span></span><br><span class="line">│  ├─util                                  <span class="comment">// 方法</span></span><br><span class="line">│  ├─config                                <span class="comment">// 请求拦截</span></span><br><span class="line">│  └─container</span><br><span class="line">│      ├─bossinfo   					   <span class="comment">// boss</span></span><br><span class="line">│      ├─login          				   <span class="comment">// 登录</span></span><br><span class="line">│      ├─register                          <span class="comment">// 注册</span></span><br><span class="line">│      └─genuisinfo                        <span class="comment">// 牛人</span></span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>注册时, 进行密码MD5加密</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// md5加密</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5pwd</span>(<span class="params">pwd</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> salt = <span class="string">'qwe123~~-!@#$%^&amp;&amp;*()sunhang'</span></span><br><span class="line">    <span class="keyword">return</span> utility.md5(utility.md5(salt+pwd))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>进行登录以及cookie的存储</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//进行注册</span></span><br><span class="line">Router.post(<span class="string">'/register'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; user,pwd,type &#125; = req.body</span><br><span class="line">    User.findOne(&#123;user&#125;,(err,doc)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(doc)&#123;</span><br><span class="line">            <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">1</span>,<span class="attr">msg</span>:<span class="string">'用户名存在'</span>&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> userModel = <span class="keyword">new</span> User(&#123;user,type,<span class="attr">pwd</span>:md5pwd(pwd)&#125;)</span><br><span class="line">        userModel.save(<span class="function"><span class="keyword">function</span>(<span class="params">e,d</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">2</span>,<span class="attr">msg</span>:<span class="string">'后端出错了'</span>&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> &#123;user,type,_id&#125; = d</span><br><span class="line">            res.cookie(<span class="string">'userid'</span>,_id)</span><br><span class="line">            <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">3</span>,<span class="attr">msg</span>:<span class="string">'注册成功'</span>,<span class="attr">data</span>:&#123;user,type,_id&#125;&#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>axios拦截器的制作</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Toast &#125; <span class="keyword">from</span> <span class="string">'antd-mobile'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//拦截请求</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="keyword">function</span>(<span class="params">config</span>)</span>&#123;</span><br><span class="line">    Toast.loading(<span class="string">'加载中'</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//拦截响应</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="keyword">function</span>(<span class="params">config</span>)</span>&#123;</span><br><span class="line">    Toast.hide();</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>登录和注册效果展示</li>
-</ul>
-<p><img src="http://studyit.club/Study/register.gif" alt="sh"></p>
-<ul>
-<li>双方聊天展示</li>
-</ul>
-<p><img src="http://studyit.club/Study/chat.gif" alt="sh"></p>
-<ul>
-<li>消息的更新和排序</li>
-</ul>
-<p><img src="http://studyit.club/Study/clear.gif" alt="sh"></p>
-<ul>
-<li>手机端表情包展示</li>
-</ul>
-<p><img src="http://studyit.club/Study/Screenshot_2019-10-24-14-14-39-53_cb819d8fa60af39.jpg" alt="sh"></p>
-<blockquote>
-<p>手机端的表情包就是可以用的,现在的表情包都可以直接使用了,不同代码了,很神奇</p>
-</blockquote>
-<h3 id="后台方向"><a href="#后台方向" class="headerlink" title="后台方向"></a>后台方向</h3><ul>
-<li><p>由于本人主要是面向前端,数据库就是<code>MongoDB</code></p>
-</li>
-<li><p>数据库的使用请参照<code>data</code>目录下面的<code>mongodb.md</code></p>
-</li>
-<li><p>数据库方面使用 <strong>(mongoose)</strong></p>
-</li>
-<li><p>后台主要使用<code>node</code>的<code>express</code></p>
-</li>
-<li><p>后台文件在<code>server</code></p>
-</li>
-</ul>
-<h1 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h1><ul>
-<li><p>需要电脑有 mongo 和 react 还有node环境</p>
-</li>
-<li><p>首先:下载本项目</p>
-</li>
-<li><pre><code class="js"><span class="comment">// 第一种方式</span>
-npm install <span class="comment">//安装包依赖</span>
-npm run build <span class="comment">//打包项目</span>
-npm run server <span class="comment">//启动  打开浏览器输入localhost:9093</span>
-
-&lt;!--￼<span class="number">6</span>--&gt;
-</code></pre>
-</li>
-</ul>
-<p>如果还有bug和建议,欢迎告诉我  (͏ ˉ ꈊ ˉ)✧˖°</p>
-<p><img src="http://studyit.club/Study/qq.jpg" alt="sh"></p>
-<blockquote>
-<p>一开始还是遇到了很多的坑,第一次使用antd-mobile这个库,最主要的坑,还是对于项目的上线运行,毕竟个人不太擅长服务器的使用,在配置Nginx的时候卡了很久,为了性能优化,SSR渲染也是花了很大的心血,感觉里面的坑太多了,总的来说收获还是很大的,后期我还会画时间进行界面上的美化</p>
-</blockquote>
-
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2019/11/18/%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91/">
-            <div class="nexmoe-post-cover mdui-ripple"> 
-                
-                    <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg" alt="个人技能树">
-                
-                <h1>个人技能树</h1>
-            </div>
-        </a>
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年11月18日</a>
-            <a><i class="nexmoefont icon-areachart"></i>13 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-            
-            
-                <a class="nexmoefont icon-tag-fill -link" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="tag">学习之旅</a>
-            
-        </div>
-        <article>
-            
-            <h1 id="一个程序员的诉苦和学习旅程"><a href="#一个程序员的诉苦和学习旅程" class="headerlink" title="一个程序员的诉苦和学习旅程"></a>一个程序员的诉苦和学习旅程</h1>
-            
-        </article>
-    </div>
-    
 </section>
-
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="http://yoursite.com">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">残梦</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="current">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/categories">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/">学习之旅</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/React/">React</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/">我的项目</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
- 
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    <article class="article well article-body" id="article-archive">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://yoursite.com">残梦</a>
+        >
+        <span>归档</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/archives">归档</a>
+            </h1>
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/archives">归档</a>
+                </h4>
+            </div>
+        </center>
+    </div>
+    <div class="content-article" style="margin-top: 30px;">
+        
+        
+            <h1 style="font-size: 24px; margin-top: 40px;">2019年</h1>
+            
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+             
+             
+                        <a href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAReact%E9%A1%B9%E7%9B%AE/">我的第一个React项目</a>
+                        <br>
+            
+             
+                        <a href="/2019/11/18/%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91/">个人技能树</a>
+                        <br>
+            
+                    </div>
+        
+    </div>
+</article>
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Sun Hang
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>前端工程师,残梦,IT</p>
+</p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAReact%E9%A1%B9%E7%9B%AE/">我的第一个React项目</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/11/18/%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91/">个人技能树</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/11/18/%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91/">个人技能树</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAReact%E9%A1%B9%E7%9B%AE/">我的第一个React项目</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
 
+                
+                <li>
+                    <a href="/archives/2019/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/archives/2019/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/archives/2019/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" style="font-size: 12.269306895754202px;" class="tag-cloud-link">学习之旅</a>
+    
+    <a href="/tags/React/" style="font-size: 11.380836020882573px;" class="tag-cloud-link">React</a>
+    
+    <a href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/" style="font-size: 8.11410455126882px;" class="tag-cloud-link">我的项目</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 Sun Hang Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
 
- 
-    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
-
-
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-<script src="/js/app.js?v=1574065127805"></script>
-<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
-
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
-
-
-
-  
-
-
-
-
-
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
 </body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
 
 </html>
