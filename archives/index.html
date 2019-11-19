@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="孙航">
+    <meta name="author" content="残梦">
     
     <meta name="description" content="前端工程师,残梦,IT">
     
@@ -13,7 +13,7 @@
     
     
     <title>archive_a | 残梦</title>
-    <link href="http://yoursite.com" rel="prefetch" />
+    <link href="http://2662419405.github.io" rel="prefetch" />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/aos.css">
@@ -33,11 +33,19 @@
         }
     </style>
     
+    <script src="//cdn1.lncld.net/static/js/3.4.2/av-min.js"></script>
+    <script>
+      AV.init({
+        appId: 'LdC0GtLKTgaSzMz9LyLFse4x-gzGzoHsz',
+        appKey: '19GQm8mkv42v62AU9MYEjSRn'
+      })
+    </script>
+    
     <!--<script type="text/javascript">
       if (document.images) {
         var avatar = new Image();
         avatar.src = '/imgs/avatar.jpg'
-        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg'.split(',')
         var previewsPreLoad = []
         for(var i = 0; i < length; i++) {
           previewsPreLoad.push(new Image())
@@ -63,7 +71,7 @@
     <div class="gal-menu gal-dropdown">
     <div class="circle" id="gal">
         <div class="ring">
-            <a href="http://yoursite.com" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            <a href="http://2662419405.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
             
             <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
             
@@ -87,7 +95,7 @@
                     aria-expanded="false">
                 <span class="fa fa-lg fa-reorder"></span>
             </button>
-            <a href="http://yoursite.com">
+            <a href="http://2662419405.github.io">
                 
                 <style>
                     #gal-header .navbar-brand {
@@ -125,10 +133,30 @@
                 
                 
                 
-                <li class="">
-                    <a href="/categories">
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
                         <i class="fa fa-list"></i>分类
                     </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/React/">React</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/React/Node/">Node</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/React/Node/MongoDB/">MongoDB</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
                 </li>
                 
                 
@@ -145,15 +173,11 @@
                         
                         
                         <li>
-                            <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/">学习之旅</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/React/">React</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/">我的项目</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/">学习之旅</a>
                         </li>
                         
                         
@@ -182,7 +206,7 @@
                     <article class="article well article-body" id="article-archive">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
-        <a href="http://yoursite.com">残梦</a>
+        <a href="http://2662419405.github.io">残梦</a>
         >
         <span>归档</span>
     </div>
@@ -242,7 +266,7 @@
     <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
         <div class="panel-heading" style="text-align: center">
             <i class="fa fa-quote-left"></i>
-            孙航
+            残梦
             <i class="fa fa-quote-right"></i>
         </div>
         <div class="author-panel text-center">
@@ -267,6 +291,18 @@
 </aside>
     
     <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    <aside id="sidebar-hot_posts">
+    <div class="panel panel-gal hot hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-fire"></i>
+            最热文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
     
     
     <aside id="sidebar-recent_posts">
@@ -309,13 +345,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/18/%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91/">个人技能树</a>
+                    <a href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAReact%E9%A1%B9%E7%9B%AE/">我的第一个React项目</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAReact%E9%A1%B9%E7%9B%AE/">我的第一个React项目</a>
+                    <a href="/2019/11/18/%E4%B8%AA%E4%BA%BA%E6%8A%80%E8%83%BD%E6%A0%91/">个人技能树</a>
                 </span>
             </li>
             
@@ -348,11 +384,9 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" style="font-size: 8.900476450848604px;" class="tag-cloud-link">学习之旅</a>
+    <a href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/" style="font-size: 18.25693134093209px;" class="tag-cloud-link">我的项目</a>
     
-    <a href="/tags/React/" style="font-size: 16.01011073032752px;" class="tag-cloud-link">React</a>
-    
-    <a href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/" style="font-size: 11.813112335130256px;" class="tag-cloud-link">我的项目</a>
+    <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" style="font-size: 19.092185842370306px;" class="tag-cloud-link">学习之旅</a>
     
 </div>
                 
@@ -404,7 +438,7 @@
     </div>
     <footer id="gal-footer">
     <div class="container">
-        Copyright © 2018 孙航 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+        Copyright © 2018 残梦 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
     </div>
 </footer>
 
@@ -456,7 +490,7 @@
 <script>
     window.slideConfig = {
       prefix: '/imgs/slide/background',
-      ext: 'jpg',
+      ext: 'webp',
       maxCount: '6'
     }
 </script>
@@ -465,6 +499,12 @@
 
 <script src="/js/oni.js"></script>
 
+
+<script>
+    window.hot_posts_count = '10'
+    // window.use_leancloud = 'true'
+</script>
+<script src="/js/comment/leancloud.js"></script>
 
 
 </html>
