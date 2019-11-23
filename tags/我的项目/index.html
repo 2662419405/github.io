@@ -47,6 +47,7 @@
 </head>
 
 <body>
+  <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
   
   
   <div class="cover-wrapper">
@@ -122,9 +123,9 @@
 
       
     </cover>
-    <header class="l_header pure">
+    <header class="l_header material">
   <div id="loading-bar-wrapper">
-    <div id="loading-bar" class="pure"></div>
+    <div id="loading-bar" class="material"></div>
   </div>
 
 	<div class='wrapper'>
@@ -582,12 +583,12 @@
             
               <section class='widget list'>
   
-<header class='pure'>
+<header class='material'>
   <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;强烈推荐</div>
   
 </header>
 
-  <div class='content pure'>
+  <div class='content material'>
     <ul class="entry">
       
         <li><a class="flat-box" title="https://leancloud.cn" href="https://leancloud.cn"
@@ -636,12 +637,12 @@
             
               <section class='widget grid'>
   
-<header class='pure'>
+<header class='material'>
   <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
   
 </header>
 
-  <div class='content pure'>
+  <div class='content material'>
     <ul class="grid navgation">
       
         <li><a class="flat-box" title="/" href="/"
@@ -746,7 +747,7 @@
               
   <section class='widget category'>
     
-<header class='pure'>
+<header class='material'>
   <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
   
     <a class="rightBtn"
@@ -760,7 +761,7 @@
   
 </header>
 
-    <div class='content pure'>
+    <div class='content material'>
       <ul class="entry">
         
           <li><a class="flat-box" title="/categories/PHP/" href="/categories/PHP/"><div class='name'>PHP</div><div class='badge'>(1)</div></a></li>
@@ -812,7 +813,7 @@
               
   <section class='widget tagcloud'>
     
-<header class='pure'>
+<header class='material'>
   <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
   
     <a class="rightBtn"
@@ -826,7 +827,7 @@
   
 </header>
 
-    <div class='content pure'>
+    <div class='content material'>
       <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" style="font-size: 14px; color: #999">学习之旅</a> <a href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/" style="font-size: 14px; color: #999">我的项目</a>
     </div>
   </section>
@@ -920,7 +921,7 @@
     var AZURE_SERVICE_NAME = "";
     var AZURE_INDEX_NAME = "";
     var AZURE_QUERY_KEY = "";
-    var BAIDU_API_ID = "";
+    var BAIDU_API_ID = "残梦技术博客";
     var SEARCH_SERVICE = "hexo" || "hexo";
     var ROOT = "/"||"/";
     if(!ROOT.endsWith('/'))ROOT += '/';
@@ -1112,5 +1113,10 @@
 
 
   <script>setLoadingBarProgress(100);</script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script> 
+  <!-- 爆炸 -->
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+  <script type="text/javascript" src="/js/fireworks.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300,"opacity":0.7},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
