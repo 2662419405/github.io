@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://2662419405.github.io/"/>
-  <updated>2019-11-20T00:24:56.420Z</updated>
+  <updated>2019-11-24T05:43:19.448Z</updated>
   <id>http://2662419405.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://2662419405.github.io/2019/11/20/%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%8E%A5%E8%A7%A6%E7%9A%84%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/"/>
     <id>http://2662419405.github.io/2019/11/20/%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%8E%A5%E8%A7%A6%E7%9A%84%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/</id>
     <published>2019-11-20T00:16:04.000Z</published>
-    <updated>2019-11-20T00:24:56.420Z</updated>
+    <updated>2019-11-24T05:43:19.448Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Study-IT-club"><a href="#Study-IT-club" class="headerlink" title="Study IT .club"></a>Study IT .club</h1><h3 id="萌新报道"><a href="#萌新报道" class="headerlink" title="萌新报道"></a>萌新报道</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello Everybody</span><br></pre></td></tr></table></figure><p>​    第一次尝试分享一个自己写的非常简单的自己社团的官网 </p><p>​    有兴趣的小伙伴可以去开一下 ——-&gt; <a href="http://studyit.club" target="_blank" rel="noopener">网站地址</a></p><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://studyit.club/Study/index.png" alt="首页"></p><p><img src="http://studyit.club/Study/main.png" alt="首页"></p><h3 id="语言和框架"><a href="#语言和框架" class="headerlink" title="语言和框架"></a>语言和框架</h3><ul><li>数据库方面使用<code>Mysql</code> 数据库 没有事务处理 存储引擎为<code>MyISAM</code></li><li>后台语言为<code>PHP</code></li><li>讨论专区的框架为<code>BootStrap</code></li><li>首页框架为 <code>jQuery</code></li><li>谈论专区发帖的模块使用了 富文本编辑器<code>UEditor</code></li><li>在个人空间主要<code>AJAX</code>滚动局部刷新</li><li>个人空间方面用了<code>QQ</code>表情包</li><li>个人设置用了美图秀秀的PC插件<code>crossdomain.xml</code></li><li>个人空间使用 <code>Highslide.js</code>图片预览插件和多图片上传插件</li></ul><hr><h3 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h3><ul><li><p>需要挂载在本地的<code>PHP</code>服务器之上</p></li><li><p>推荐使用<code>PHPstudy</code>或者warm等集成开发环境</p></li><li><p>数据库方面配置在<code>connect/config.php</code>中,端口和数据库配置在这里面</p></li><li><p>所有的数据库模型都在主目录的 <code>数据库.txt</code>目录下面</p></li><li><p>美图秀秀插件配置:把主目录的 <code>crossdomain.xml</code>放在服务器的根目录</p></li></ul><p><a href="https://github.com/2662419405/Studyit-club" target="_blank" rel="noopener">项目源码</a>—-&gt;地址</p>]]></content>
     
@@ -37,9 +37,9 @@
     
       <category term="PHP" scheme="http://2662419405.github.io/categories/PHP/"/>
     
-      <category term="Mysql" scheme="http://2662419405.github.io/categories/PHP/Mysql/"/>
+      <category term="Mysql" scheme="http://2662419405.github.io/categories/Mysql/"/>
     
-      <category term="jQuery" scheme="http://2662419405.github.io/categories/PHP/Mysql/jQuery/"/>
+      <category term="jQuery" scheme="http://2662419405.github.io/categories/jQuery/"/>
     
     
       <category term="我的项目" scheme="http://2662419405.github.io/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/"/>
