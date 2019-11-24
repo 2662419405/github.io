@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>残梦</title>
+  <title>SH&#39;S BLOG</title>
   
-  <subtitle>残梦技能树</subtitle>
+  <subtitle>残梦学习路</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://2662419405.github.io/"/>
@@ -10,7 +10,7 @@
   <id>http://2662419405.github.io/</id>
   
   <author>
-    <name>残梦</name>
+    <name>SH&#39;S BLOG</name>
     
   </author>
   
