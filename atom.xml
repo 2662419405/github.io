@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://2662419405.github.io/"/>
-  <updated>2019-11-24T10:21:56.661Z</updated>
+  <updated>2019-11-25T14:18:09.202Z</updated>
   <id>http://2662419405.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>npm简单使用</title>
+    <link href="http://2662419405.github.io/2019/11/25/npm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>http://2662419405.github.io/2019/11/25/npm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</id>
+    <published>2019-11-25T14:15:42.000Z</published>
+    <updated>2019-11-25T14:18:09.202Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>简单概括npm常用命令</p></blockquote><a id="more"></a><h2 id="npm包管理工具"><a href="#npm包管理工具" class="headerlink" title="npm包管理工具"></a><code>npm</code>包管理工具</h2><ul><li>npm可以理解为前端的maven,一个包的管理工具</li></ul><h3 id="1-查看npm和node版本"><a href="#1-查看npm和node版本" class="headerlink" title="1. 查看npm和node版本"></a>1. 查看npm和node版本</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v </span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure><h3 id="2-初始化项目"><a href="#2-初始化项目" class="headerlink" title="2. 初始化项目"></a>2. 初始化项目</h3><p><code>npm init</code></p><ul><li>默认配置初始化项目</li></ul><p><code>npm init -y</code></p><h3 id="3-安装"><a href="#3-安装" class="headerlink" title="3. 安装"></a>3. 安装</h3><h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><p><code>npm install &lt;Module Name&gt;@版本号</code></p><h4 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h4><p><code>npm install &lt;Module Name&gt;@版本号 -g</code></p><h4 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h4><ul><li>^ 插入号 + 指定版本号：比如 ^3.5.2 ，安装<code>3.x.x</code>的最新版本（不低于 3.5.2），但是不安装 <code>4.x.x</code><strong>提升版本,不提升大版本</strong></li><li>指定版本号：比如 3.5.2 ，只安装指定版本</li><li>~ 波浪号 + 指定版本号：比如 ~3.5.2 ，安装 <code>3.5.x</code> 的最新版本（不低于 3.5.2），但是不安装 <code>3.6.x</code><strong>提升版本,不提升小版本</strong></li></ul><h4 id="全局安装-1"><a href="#全局安装-1" class="headerlink" title="全局安装"></a>全局安装</h4><ul><li>如果你不知道<code>npm</code>的全局目录在哪,可以运行下面的命令</li></ul><p><code>npm root -g</code></p><ul><li>修改默认全局目录</li></ul><p><code>npm config set prefix &quot;D:/npm&quot;</code></p><ul><li>全局安装<code>vue</code>模板</li></ul><p><code>npm install vue -g</code></p><ul><li>查看全局安装的模板</li></ul><p><code>npm list -g</code></p><h4 id="生产环境模块开发"><a href="#生产环境模块开发" class="headerlink" title="生产环境模块开发"></a>生产环境模块开发</h4><ul><li>生产环境依赖安装  (默认)</li></ul><p><code>npm install &lt;Module Name&gt;</code>[–save|S]</p><h4 id="开发环境模块开发"><a href="#开发环境模块开发" class="headerlink" title="开发环境模块开发"></a>开发环境模块开发</h4><ul><li>开发模块依赖安装</li></ul><p><code>npm install &lt;Module Name&gt;[--save-dev|D]</code></p><h4 id="批量安装"><a href="#批量安装" class="headerlink" title="批量安装"></a>批量安装</h4><p><code>npm install</code></p><p>or</p><p><code>npm i</code></p><h3 id="4-模板"><a href="#4-模板" class="headerlink" title="4. 模板"></a>4. 模板</h3><h4 id="本地模板"><a href="#本地模板" class="headerlink" title="本地模板"></a>本地模板</h4><ul><li>查看所有模板</li></ul><p><code>npm list</code></p><ul><li>查看全局所有模板</li></ul><p><code>npm list -g</code></p><ul><li>查看指定模板</li></ul><p><code>npm list &lt;Module Name&gt;</code></p><h4 id="远程模板"><a href="#远程模板" class="headerlink" title="远程模板"></a>远程模板</h4><ul><li>查看<code>jquery</code>的最新版本</li></ul><p><code>npm view jquery version</code></p><ul><li>查看<code>jquery</code>的全部版本</li></ul><p><code>npm view jquery versions</code></p><h4 id="卸载模块"><a href="#卸载模块" class="headerlink" title="卸载模块"></a>卸载模块</h4><ul><li>布局卸载</li></ul><p><code>npm install &lt;Module Name&gt;</code></p><ul><li>全局卸载</li></ul><p><code>npm install -g &lt;Module Name&gt;</code></p><h3 id="5-修改淘宝镜像"><a href="#5-修改淘宝镜像" class="headerlink" title="5.修改淘宝镜像"></a>5.修改淘宝镜像</h3><ul><li>查看当前镜像地址</li></ul><p><code>npm get registory</code></p><ul><li>配置淘宝镜像</li></ul><p><code>npm config set registry https://registry.npm.taobao.org</code></p><ul><li>安装下载模块</li></ul><p><code>npm install &lt;Module Name&gt;</code></p><ul><li>还原默认镜像地址</li></ul><p><code>npm config set registry https://registry.npmjs.org/</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;简单概括npm常用命令&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="npm" scheme="http://2662419405.github.io/tags/npm/"/>
+    
+      <category term="包管理工具" scheme="http://2662419405.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>博客园样式</title>

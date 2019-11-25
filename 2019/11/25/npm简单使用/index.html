@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>关于我 | SH&#39;S BLOG</title>
+  <title>npm简单使用 | SH&#39;S BLOG</title>
   
   <meta name="keywords" content="前端工程师,残梦,IT">
   
@@ -58,7 +58,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover page half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>SH'S BLOG</h1>
@@ -299,7 +299,7 @@
       <div class='l_main'>
   
 
-  <article id="page" class="post white-box article-type-page" itemscope itemprop="blogPost">
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
     
 
 
@@ -311,8 +311,8 @@
         
   
     <h1 class="title">
-      <a href="/about/index.html">
-        关于我
+      <a href="/2019/11/25/npm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+        npm简单使用
       </a>
     </h1>
   
@@ -343,7 +343,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-11-19</p>
+    <p>2019-11-25</p>
   </a>
 </div>
 
@@ -387,32 +387,220 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h4 id="前端路上的一个小学生-喜欢钻研技术-也渴望和大佬之间的学习和交流-欢迎骚扰"><a href="#前端路上的一个小学生-喜欢钻研技术-也渴望和大佬之间的学习和交流-欢迎骚扰" class="headerlink" title="前端路上的一个小学生,喜欢钻研技术,也渴望和大佬之间的学习和交流(欢迎骚扰)"></a>前端路上的一个小学生,喜欢钻研技术,也渴望和大佬之间的学习和交流(欢迎骚扰)</h4><h3 id="关于本人"><a href="#关于本人" class="headerlink" title="关于本人"></a>关于本人</h3><p>各位朋友好，我是孙航(博客:残梦)，来自北方之地黑龙江，也是千万前端开发工程师中的一枚小小开发仔。相信技术改变世界。</p>
-<p>自从加入前端大家庭后，深深热爱上它，迷人热情。</p>
-<p>目前的技术栈如下:</p>
-<ul>
-<li>前端技术栈: <code>HTML</code>,<code>CSS</code>,<code>JavaScript</code>,<code>Vue全家桶</code>,<code>NodeJS</code>,<code>Angular</code>,<code>Hybrid</code>,<code>TypeScript</code>,<code>HTTP</code>,<code>网络安全</code>,<code>微信小程序</code>,<code>微信小游戏</code>,<code>jQuery</code>,<code>RN</code>,<code>bootstrap</code></li>
-<li>后台浅析: <code>PHP</code>,<code>JAVA</code>,<code>JAVAWeb</code></li>
-<li>服务器浅析: <code>Linux</code>,<code>Nginx</code></li>
-<li>数据库技术栈: <code>mysql</code>,<code>mongodb</code></li>
-<li>深度学习: <code>React全家桶</code>,<code>Webpack4.0</code>,<code>git</code>,<code>ES6</code></li>
-</ul>
-<h3 id="梦想"><a href="#梦想" class="headerlink" title="梦想"></a>梦想</h3><img src="http://images.pingan8787.com/image/blog/leo_msg.jpeg">
+        <blockquote>
+<p>简单概括npm常用命令</p>
+</blockquote>
+<a id="more"></a>
 
+<h2 id="npm包管理工具"><a href="#npm包管理工具" class="headerlink" title="npm包管理工具"></a><code>npm</code>包管理工具</h2><ul>
+<li>npm可以理解为前端的maven,一个包的管理工具</li>
+</ul>
+<h3 id="1-查看npm和node版本"><a href="#1-查看npm和node版本" class="headerlink" title="1. 查看npm和node版本"></a>1. 查看npm和node版本</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v </span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-初始化项目"><a href="#2-初始化项目" class="headerlink" title="2. 初始化项目"></a>2. 初始化项目</h3><p><code>npm init</code></p>
 <ul>
-<li>对互联网充满激情和无限力量，这就是我</li>
-<li>热爱编程，热爱知识分享，标准 markdown 党，自律学习</li>
-<li>Love coding , Love life (就像我的第一个域名一样,shtodream.cn)</li>
-<li>相信一句话”技术成就一切,梦想改变未来”</li>
+<li>默认配置初始化项目</li>
 </ul>
-<h3 id="长期活跃社区"><a href="#长期活跃社区" class="headerlink" title="长期活跃社区"></a>长期活跃社区</h3><ul>
-<li><a href="https://github.com/2662419405" target="_blank" rel="noopener">github</a>(平时做一些小的开源Demo)<br /></li>
-<li><a href="https://www.cnblogs.com/sunhang32/" target="_blank" rel="noopener">博客园</a>(日常更新自己的最新技术状态)<br /></li>
-<li><a href="https://2662419405.github.io">个人技术博客</a>(技术成长幅度较大时更新)</li>
+<p><code>npm init -y</code></p>
+<h3 id="3-安装"><a href="#3-安装" class="headerlink" title="3. 安装"></a>3. 安装</h3><h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><p><code>npm install &lt;Module Name&gt;@版本号</code></p>
+<h4 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h4><p><code>npm install &lt;Module Name&gt;@版本号 -g</code></p>
+<h4 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h4><ul>
+<li>^ 插入号 + 指定版本号：比如 ^3.5.2 ，安装<code>3.x.x</code>的最新版本（不低于 3.5.2），但是不安装 <code>4.x.x</code><strong>提升版本,不提升大版本</strong></li>
+<li>指定版本号：比如 3.5.2 ，只安装指定版本</li>
+<li>~ 波浪号 + 指定版本号：比如 ~3.5.2 ，安装 <code>3.5.x</code> 的最新版本（不低于 3.5.2），但是不安装 <code>3.6.x</code><strong>提升版本,不提升小版本</strong></li>
 </ul>
+<h4 id="全局安装-1"><a href="#全局安装-1" class="headerlink" title="全局安装"></a>全局安装</h4><ul>
+<li>如果你不知道<code>npm</code>的全局目录在哪,可以运行下面的命令</li>
+</ul>
+<p><code>npm root -g</code></p>
+<ul>
+<li>修改默认全局目录</li>
+</ul>
+<p><code>npm config set prefix &quot;D:/npm&quot;</code></p>
+<ul>
+<li>全局安装<code>vue</code>模板</li>
+</ul>
+<p><code>npm install vue -g</code></p>
+<ul>
+<li>查看全局安装的模板</li>
+</ul>
+<p><code>npm list -g</code></p>
+<h4 id="生产环境模块开发"><a href="#生产环境模块开发" class="headerlink" title="生产环境模块开发"></a>生产环境模块开发</h4><ul>
+<li>生产环境依赖安装  (默认)</li>
+</ul>
+<p><code>npm install &lt;Module Name&gt;</code>[–save|S]</p>
+<h4 id="开发环境模块开发"><a href="#开发环境模块开发" class="headerlink" title="开发环境模块开发"></a>开发环境模块开发</h4><ul>
+<li>开发模块依赖安装</li>
+</ul>
+<p><code>npm install &lt;Module Name&gt;[--save-dev|D]</code></p>
+<h4 id="批量安装"><a href="#批量安装" class="headerlink" title="批量安装"></a>批量安装</h4><p><code>npm install</code></p>
+<p>or</p>
+<p><code>npm i</code></p>
+<h3 id="4-模板"><a href="#4-模板" class="headerlink" title="4. 模板"></a>4. 模板</h3><h4 id="本地模板"><a href="#本地模板" class="headerlink" title="本地模板"></a>本地模板</h4><ul>
+<li>查看所有模板</li>
+</ul>
+<p><code>npm list</code></p>
+<ul>
+<li>查看全局所有模板</li>
+</ul>
+<p><code>npm list -g</code></p>
+<ul>
+<li>查看指定模板</li>
+</ul>
+<p><code>npm list &lt;Module Name&gt;</code></p>
+<h4 id="远程模板"><a href="#远程模板" class="headerlink" title="远程模板"></a>远程模板</h4><ul>
+<li>查看<code>jquery</code>的最新版本</li>
+</ul>
+<p><code>npm view jquery version</code></p>
+<ul>
+<li>查看<code>jquery</code>的全部版本</li>
+</ul>
+<p><code>npm view jquery versions</code></p>
+<h4 id="卸载模块"><a href="#卸载模块" class="headerlink" title="卸载模块"></a>卸载模块</h4><ul>
+<li>布局卸载</li>
+</ul>
+<p><code>npm install &lt;Module Name&gt;</code></p>
+<ul>
+<li>全局卸载</li>
+</ul>
+<p><code>npm install -g &lt;Module Name&gt;</code></p>
+<h3 id="5-修改淘宝镜像"><a href="#5-修改淘宝镜像" class="headerlink" title="5.修改淘宝镜像"></a>5.修改淘宝镜像</h3><ul>
+<li>查看当前镜像地址</li>
+</ul>
+<p><code>npm get registory</code></p>
+<ul>
+<li>配置淘宝镜像</li>
+</ul>
+<p><code>npm config set registry https://registry.npm.taobao.org</code></p>
+<ul>
+<li>安装下载模块</li>
+</ul>
+<p><code>npm install &lt;Module Name&gt;</code></p>
+<ul>
+<li>还原默认镜像地址</li>
+</ul>
+<p><code>npm config set registry https://registry.npmjs.org/</code></p>
 
       </div>
       
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-25T22:18:09+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年11月25日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/npm/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>npm</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>包管理工具</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://2662419405.github.io/2019/11/25/npm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/&title=npm简单使用 | SH'S BLOG&pics=http://studyit.club/Study/sh.jpg&summary=
+简单概括npm常用命令
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://2662419405.github.io/2019/11/25/npm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/&title=npm简单使用 | SH'S BLOG&pics=http://studyit.club/Study/sh.jpg&summary=
+简单概括npm常用命令
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class='qrcode' rel="external nofollow noopener noreferrer noopener" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADOklEQVR42u3aS47bMBAFwLn/pR0guyCR/F5TRiyqtBrYMsWigWn35+cnvl6/r6NXjt49uuf8s/nrfz/l4gsbGxv7JuzX6XW+ifbd86ecH9z5nnMLNjY29q7sle0mjzm/P/8a2lB6+Do2Njb2I9nt0vmm2/XbQIuNjY2NfR60Zoc1Kw/9t7iNjY2N/fXsPNloQ1dyHMkKK0UrbGxs7L3ZbaP3m//+YH8bGxsb+yvZr/KatQquCmlJUhQpsLGxsTdiJ2WavKCTfHY2ZLNSnDoMb9jY2Ngbsds2arJ0XtBpmxCzoIiNjY29K7tNG3JAXslZaSrkoj8+hY2Njf0Adr7ESpN4VjyaFbbe1NKwsbGxb8u+aviypV7VeG5ToyjeYmNjY9+Q3RaGrkoPkqNpg1y7AjY2NvYe7LZ9O2u15iWkKJGI1yniNjY2NvYN2W1JKGkStCnNSge2bVcf1tKwsbGxt2C3qcX6oM9VYSxq7h41erGxsbEfwJ41XNugNTv0/JjqAIaNjY19E/YsDMwK9G3wS+7MD+VNRQ0bGxv7tuyVn/g5Ix+pbFOa2dFgY2Nj78ROCvorI4/5EcwOqE1m3hwENjY29g3ZKwWjthHbNgxm3170DWNjY2Nvys43OksM8gGgWVuiKHVhY2Njb8S+agQnv3M9jszCZDQTio2Njb0FO6mft4Gq/exKQzdpaWBjY2PvxE6WXgkknzuUtmP7jyQEGxsbezv2+kbbTbRN3FnoitoD2NjY2Ldl5+EqDyqzJCFJIc4B+ZgRNjY29k7s9p9+W5pvA1uy6TxxOnwdGxsbezv2+pBNAkvCz2wkqB30wcbGxt6JPQtXs0GZdjDoHF8jsbGxsTdlz8YZ2xCylDaUK0RHj42Njb0du00V2qsFJyFwNrizlCFhY2NjfzH7Ez/325bteigthnWwsbGxN2LPgkESWtrGQz5htJ4sYWNjY+/HXg9aK4d13uJNvqt2HWxsbOxd2cmmE/xs+CY/oPzosbGxsbHbdCJpMLTPnbUuoj1gY2NjP5idBKqVFCJPMPJ7Lghg2NjY2F/PXl9ovcU7G9mZNQ+wsbGxd2KvF/rX04/8ufnRY2NjYz+A/QvrL0UobKbEewAAAABJRU5ErkJggg==' target="_blank">
+        
+          <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
+        
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://2662419405.github.io/2019/11/25/npm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/&title=npm简单使用 | SH'S BLOG&pics=http://studyit.club/Study/sh.jpg&summary=
+简单概括npm常用命令
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/11/24/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E6%A0%B7%E5%BC%8F/" rel="prev" title="博客园样式">
+                                  
+                                      博客园样式
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 博客园</a> <a class="tag" href="/tags/%E6%A0%B7%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 样式自定义</a> <a class="tag" href="/tags/BLOG/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> BLOG</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
       
     </section>
   </article>
@@ -451,6 +639,13 @@
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
+
+  <script>
+    window.subData = {
+      title: 'npm简单使用',
+      tools: true
+    }
+  </script>
 
 
 </div>
@@ -618,6 +813,20 @@
           
             
               
+  <section class='widget toc-wrapper'>
+    
+<header class='material'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer noopener" href="javascript:void(0)" target="_blank"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content material'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#npm包管理工具"><span class="toc-text">npm包管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查看npm和node版本"><span class="toc-text">1. 查看npm和node版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-初始化项目"><span class="toc-text">2. 初始化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装"><span class="toc-text">3. 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#本地安装"><span class="toc-text">本地安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全局安装"><span class="toc-text">全局安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指定版本"><span class="toc-text">指定版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全局安装-1"><span class="toc-text">全局安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产环境模块开发"><span class="toc-text">生产环境模块开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开发环境模块开发"><span class="toc-text">开发环境模块开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量安装"><span class="toc-text">批量安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-模板"><span class="toc-text">4. 模板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#本地模板"><span class="toc-text">本地模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#远程模板"><span class="toc-text">远程模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#卸载模块"><span class="toc-text">卸载模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-修改淘宝镜像"><span class="toc-text">5.修改淘宝镜像</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
             
           
@@ -987,6 +1196,18 @@
           
             
               
+  <section class='widget related_posts'>
+    
+<header class='material'>
+  <div><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;相关文章</div>
+  
+</header>
+
+    <div class="content material">
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\24\博客园样式\" title="博客园样式" rel="bookmark">博客园样式</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\20\第一个接触的前端项目\" title="第一个接触的前端项目" rel="bookmark">第一个接触的前端项目</a></h3></div></li></ul>
+    </div>
+  </section>
+
 
             
           
@@ -1334,7 +1555,7 @@
     
     appId: "",
     appKey: "",
-    placeholder: "有什么想对我说的呢？",
+    placeholder: "快来评论吧~",
     pageSize:'10',
     avatar:'mp',
     lang:'zh-cn',
