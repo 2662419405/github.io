@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>留言板 | SH&#39;S BLOG</title>
+  <title>jQuery简单学习 | SH&#39;S BLOG</title>
   
   <meta name="keywords" content="前端工程师,残梦,IT">
   
@@ -59,7 +59,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover page half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>SH'S BLOG</h1>
@@ -300,7 +300,7 @@
       <div class='l_main'>
   
 
-  <article id="page" class="post white-box article-type-page" itemscope itemprop="blogPost">
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
     
 
 
@@ -312,8 +312,8 @@
         
   
     <h1 class="title">
-      <a href="/message/index.html">
-        留言板
+      <a href="/2019/11/26/jQuery%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">
+        jQuery简单学习
       </a>
     </h1>
   
@@ -344,7 +344,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-11-19</p>
+    <p>2019-11-26</p>
   </a>
 </div>
 
@@ -352,6 +352,14 @@
         
           
             
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>jQuery&nbsp;/&nbsp;前端</p>
+    </a>
+  </div>
+
 
           
         
@@ -388,10 +396,333 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>有什么问题或想说的可以在这里讲哦~</p>
+        <h2 id="一-jQuery的基本使用"><a href="#一-jQuery的基本使用" class="headerlink" title="一.jQuery的基本使用"></a>一.jQuery的基本使用</h2><ul>
+<li>1.0  2.0  3.0   分别支持ie8  部分支持ie8  全部不支持ie8  开发的时候最常用的是1.几版本</li>
+<li>分为开发版本和压缩版本  带有min的是压缩版本，一般情况下使用的是开发版本</li>
+<li>window.onload=function(){}    &lt;=&gt;    $(function(){})   绑定文档加载完成的监听</li>
+<li>分为两种使用     使用jQuery核心函数或者jQuery核心对象    核心函数$/jQuery   核心对象 执行$()返回的对象</li>
+</ul>
+<h2 id="二-jQuert的两把利器"><a href="#二-jQuert的两把利器" class="headerlink" title="二.jQuert的两把利器"></a>二.jQuert的两把利器</h2><ul>
+<li>jQuery的核心函数,直接可用</li>
+<li>jQuery的核心对象,执行jQuery函数调用他</li>
+</ul>
+<h2 id="三-jQuery函数的使用"><a href="#三-jQuery函数的使用" class="headerlink" title="三.jQuery函数的使用"></a>三.jQuery函数的使用</h2><p>  I.作为一般函数使用:$(param)<br>    1).  参数为函数  :  当DOM加载完成后，执行此回调函数<br>    2).  参数为DOM对象  : 将DOM对象封装成jQuery对象<br>    3).  参数为选择器字符串 : 查找所有匹配的标签，并将他们分装成jQuery对象<br>    4).  参数为html标签字符串  : (用的少)创建标签对象并分装成jQuery对象</p>
+<p>  II.作为对象使用:$.xxx()<br>    1).  $.each() :  隐使遍历数组     回调函数中第一个为key，第二个为value<br>    2).  $.trim() :  去除两端空格     </p>
+<p>  III. 事件回调函数中   this指向的是 #btn  DOM对象元素</p>
+<h2 id="四-jQuery对象的使用"><a href="#四-jQuery对象的使用" class="headerlink" title="四.jQuery对象的使用"></a>四.jQuery对象的使用</h2><pre><code>I. 理解
 
+1).即执行jQuery核心函数返回的对象
+2).jQuery对象内部包含的是dom元素对象的伪数组
+3).jQuery对象拥有很多有用的方法和属性
+
+II. 基本行为
+
+1).size()/length : 包含的DOM元素
+2).[index]/get(index)  :  得到DOM元素对应的下标
+3).each()  :  遍历DOM元素
+4).index()  :  得到DOM元素的下标
+
+III. 伪数组
+
+1).伪数组是一个对象
+2).伪数组必须有length属性
+3).如果这个对象的length不为0，那么必须要有按照下标存储的数据
+4).没有数组特别的方法 forEach() push() pop() splice()</code></pre><h2 id="五-jQuery基本选择器"><a href="#五-jQuery基本选择器" class="headerlink" title="五.jQuery基本选择器"></a>五.jQuery基本选择器</h2><pre><code>1).class   &quot;.b&quot;代表所有的class属性为b的元素
+2).id      &quot;#div&quot;  代表id元素
+3).标签               &quot;div&quot;   代表标签元素
+4).子集               &quot;div.box&quot; 代表class属性为btn中的div元素
+5).并集               &quot;#b,#c&quot;  代表id为c和id为b的元素</code></pre><h2 id="六-jQuery层次选择器"><a href="#六-jQuery层次选择器" class="headerlink" title="六.jQuery层次选择器"></a>六.jQuery层次选择器</h2><pre><code>I.查找子元素，后代元素，兄弟元素的选择器
+
+1).  &gt;   是指当前这一代的下一代，不包括下下代
+2).  +   是指当前元素的下一个元素，只包括一个
+3).  ~   是指当前元素的后面所有兄弟姐妹元素(就是不能包括上一级的元素)</code></pre><h2 id="七-jQuery过滤选择器"><a href="#七-jQuery过滤选择器" class="headerlink" title="七.jQuery过滤选择器"></a>七.jQuery过滤选择器</h2><pre><code>I. 选择器
+
+1).  :first  正序
+2).  :last   倒叙
+3).  :not(.box)   选择不包含clss为box的元素
+4).  :lt(3):gt(0)  小于第三个大于第零个
+5).  :contains(&quot;name&quot;)  选择所有标签的innerHTML内容是name的标签
+6).  :hidden()  选择隐藏的标签
+7).  [title]  选择所有带有title属性的标签体
+8).  [title=hello]  选择title属性为hello的标签
+
+II.  多个选择器不是同时执行，而是以此执行</code></pre><h2 id="八-jQuery隔行换色"><a href="#八-jQuery隔行换色" class="headerlink" title="八.jQuery隔行换色"></a>八.jQuery隔行换色</h2><pre><code>1).   odd:偶数       even:奇数    nth-child(2n)偶数</code></pre><h2 id="九-jQuery表单选择器"><a href="#九-jQuery表单选择器" class="headerlink" title="九.jQuery表单选择器"></a>九.jQuery表单选择器</h2><pre><code>I.表单的常用选择器
+
+1).  text[disabled]  :选择text文本的不可用输入框
+2).  checkbox:checked  :选择被选中的复选框按钮  
+
+II. :等价于[]   在选择器中等价存在</code></pre><h2 id="十-jQuery-工具方法"><a href="#十-jQuery-工具方法" class="headerlink" title="十.jQuery_$工具方法"></a>十.jQuery_$工具方法</h2><pre><code>I.工具方法
+
+1).  $.each()  :  遍历数组对象中的数据
+2).  $.trim()  :  去除字符串两遍的空格
+3).  $.type(obj) : 得到数据类型
+4).  $.isArray(obj) : 判断是否是数组
+5).  $.isFunction(obj) : 判断是否是函数
+6).  $.parseJSON(json) : 解析json字符串转换为js对象
+
+II. JSON
+
+1).  &apos;{&quot;name&quot;:&quot;Tom&quot; , &quot;Age&quot;:12 }&apos;  这是一个json 
+2).  &apos;[{&quot;name&quot;:&quot;Tom&quot;,&quot;Age&quot;:12},{&quot;name&quot;:&quot;Allen&quot;,&quot;Age&quot;:24}]&apos;   这是一个json数组
+3).   JSON.parse(jsonString)  json字符串----&gt;js对象/数组
+4).   JSON.stringify(jsObj/jsArr)  js对象/数组----&gt;json字符串</code></pre><h2 id="十一-jQuery多tab点击切换"><a href="#十一-jQuery多tab点击切换" class="headerlink" title="十一.jQuery多tab点击切换"></a>十一.jQuery多tab点击切换</h2><pre><code>I.  设计思路    获取全部的DOM元素，然后通过this获取到这个index()，最后通过操作jQuery对象的下标的方式操作
+
+II.  先获取全部的DOM元素，然后定义一个当前显示的元素的下标，先让这个元素隐藏，在显示当前点击的元素，最后更新下标（效率上更高）</code></pre><h2 id="十二-jQuery属性"><a href="#十二-jQuery属性" class="headerlink" title="十二.jQuery属性"></a>十二.jQuery属性</h2><pre><code>I.属性
+
+1).attr()  一个参数代表查看，两个参数代表第二个参数覆盖    但是不能操作布尔值
+2).removeAttr()  移除
+3).addClass()  添加class 
+4).html()   标签   有字符串代表-&gt;这是标签体
+5).prop()   专门操作属性值为boolean的属性值</code></pre><h2 id="十三-jQuery的CSS操作"><a href="#十三-jQuery的CSS操作" class="headerlink" title="十三.jQuery的CSS操作"></a>十三.jQuery的CSS操作</h2><pre><code>I.CSS操作
+
+1).css()   一个参数代表查看，两个参数代表第二个参数覆盖  
+2).css({&apos;color&apos;:&apos;#ff0011&apos;})可以这是多个值</code></pre><h2 id="十四-jQuery位置操作"><a href="#十四-jQuery位置操作" class="headerlink" title="十四.jQuery位置操作"></a>十四.jQuery位置操作</h2><pre><code>I.offset 和   position
+
+1).offset().left 和  offset().top  两个可以获取相对于页面的位置
+2).position()  和上面是一样，这个获取的是父元素的位置</code></pre><h2 id="十五-jQuery中的位置滚动"><a href="#十五-jQuery中的位置滚动" class="headerlink" title="十五.jQuery中的位置滚动"></a>十五.jQuery中的位置滚动</h2><pre><code>I.常用方法
+
+1).scrollTop()  可以得到元素的滚动高度
+2).scrollLeft()   可以得到x轴滚动距离
+3).上面的两个方法(number)  既可设置滚动的距离
+
+II.如何获取窗体滚动       获取页面的html+body两个滚动条的滚动总量</code></pre><h2 id="十六-练习-jQuery回滚到顶部"><a href="#十六-练习-jQuery回滚到顶部" class="headerlink" title="十六.练习 jQuery回滚到顶部"></a>十六.练习 jQuery回滚到顶部</h2><pre><code>I.瞬间回到顶部   $(&apos;html,body&apos;).scrollTop(0)
+II.平滑滚动    计算总时间，时间间隔（定时器的时间）总距离 每次移动的距离（总距离除以需要的时间）  然后用定时器执行</code></pre><h2 id="十七-jQuery元素的尺寸"><a href="#十七-jQuery元素的尺寸" class="headerlink" title="十七.jQuery元素的尺寸"></a>十七.jQuery元素的尺寸</h2><pre><code>I.内容尺寸
+
+1).height() :height
+2).width()  :width
+
+II.内部尺寸
+
+1).innerHeight() :height+padding
+2).innerWidth()  :width+padding
+
+III.外部尺寸
+
+1).outerHeight(false/true)  :height+padding+border  如果是true，加上margin
+1).outerWidth(false/true)  :width+padding+border  如果是true，加上margin</code></pre><h2 id="十八-jQuery的筛选"><a href="#十八-jQuery的筛选" class="headerlink" title="十八.jQuery的筛选"></a>十八.jQuery的筛选</h2><pre><code>I.过滤
+
+1).first()  第一个
+2).last()  最后一个
+3).eq()*  指定某一个  参数为number  
+4).filter(&apos;[title=hello]&apos;)  指定title属性为hello的
+5).not(&apos;[title=hello]&apos;)   指定不是hello的(还包括没有title属性)
+6).filter(&apos;[title][title!=hello]&apos;)   交集选择器代表两个条件
+7).has(&apos;span&apos;)   指向内部标签
+
+II.查找
+
+1).children()  子标签  
+2).find()      后代标签
+3).parent()    父标签
+4).prevAll()   前面的标签
+5).siblings()  兄弟标签</code></pre><h2 id="十九-jQuery文档操作"><a href="#十九-jQuery文档操作" class="headerlink" title="十九.jQuery文档操作 *"></a>十九.jQuery文档操作 *</h2><pre><code>I.增删改
+
+1).append(ELement)   向内部最后添加元素
+2).prepend(Element)  向内部最前添加元素
+3).before(Element)   向兄弟前面添加元素
+4).after(ELement)    向兄弟后面添加元素
+5).replaceWith(Element)   替换指定的内部元素
+6).remove(DOM_Element)    移除指定的内部元素</code></pre><h2 id="二十-jQuery事件处理"><a href="#二十-jQuery事件处理" class="headerlink" title="二十.jQuery事件处理"></a>二十.jQuery事件处理</h2><pre><code>I.常用事件
+
+1).mouseenter()    鼠标移入
+2).mouseleave()    鼠标移出
+
+II.事件处理
+
+1).on(eve,fn)      第一个参数代表事件的处理方式
+2).off()           和第一个相对应，取消时间绑定
+3).点击时传入ev 
+    -&gt;ev.clientX     到客户端左上角的距离
+    -&gt;ev.pageX       到页面顶部左上角的距离
+    -&gt;ev.offsetX     到相对于事件左上角的距离
+    -&gt;ev.stopPropagation()    阻止事件的冒泡
+    -&gt;ev.preventDefault()     阻止事件的默认行为
+
+III.事件切换
+
+1).hover(fn,fn)     是mouseenter,mouseleave两个函数的回调函数
+
+IV.区别mouseover与mouseenter
+
+*mouseover:在移入子元素时也会触发,对应mouseout
+*mouseenter:只在移入当前元素时触发,对应mouseleave
+
+V.事件委托
+
+1).将多个子元素(li)的事件监听委托给父元素(ul)处理
+2).监听回调是加在了父元素上
+3).当操作任何一个子元素(li)时，事件会冒泡到父元素(ul)上
+4).父辈元素不会直接处理，而是根据event.target得到发生事件的子元素(li)，通过这个子元素调用事件回调函数
+5).委托方 ：  业主     li
+6).被委托方  :   中介    ul
+7).添加新的子元素，自动由事件响应处理
+8).减少事件监听的数量:    n==&gt;1
+9).设置事件委托API: $(parentSelector).delegate(childrenSelector,eventName,callback)
+10).取消事件的委托API:$(parentSelector).undelegate(eventName)</code></pre><h2 id="二十一-jQuery动画"><a href="#二十一-jQuery动画" class="headerlink" title="二十一.jQuery动画"></a>二十一.jQuery动画</h2><pre><code>I.内置动画
+
+1).fadeOut()   淡入   param---&gt;number  代表存在秒数    
+2).fadeIn()    淡出   参数和上面一样
+3).fadeToggle()  淡入淡出切换   可以传一个回调函数，当切换结束的时候触发
+4).不断改变元素opacity来实现
+5).slideDown()   带动画的展开
+6).sildeUp()     带动画的收缩
+7).sildeToggle()   带动画的切换展开/收缩
+8).不断改变元素height实现
+9).show()     显示
+10).hide()    隐藏
+11).toggle()  切换
+12).不断改变opacity和height和width实现
+
+II.自定义动画
+
+1).animate()    指定自定义动画  参数可以传一个json 分别指定值
+2).animate()    不需要带有单位，还可以进行字符串的加减
+3).stop()       可以阻止动画的继续进行</code></pre><h2 id="二十二-jQuery多库共存"><a href="#二十二-jQuery多库共存" class="headerlink" title="二十二.jQuery多库共存"></a>二十二.jQuery多库共存</h2><pre><code>I.当多个$库同时存在时,需要使用
+II.调用jQuery.noConflict()释放$使用权
+III.下文需要调用的$时，只能使用jQuery</code></pre><h2 id="二十三-区别onload与ready"><a href="#二十三-区别onload与ready" class="headerlink" title="二十三.区别onload与ready"></a>二十三.区别onload与ready</h2><pre><code>I.window.onload
+
+1).包括页面的图片加载完后才会调用(晚)
+2).只能有一个监听回调
+
+II.$(document).ready()
+
+1).等同于$(function(){})
+2).页面加载完就回调(早)
+3).可以有多个监听回调</code></pre><h2 id="二十四-jQuery扩展工具"><a href="#二十四-jQuery扩展工具" class="headerlink" title="二十四.jQuery扩展工具"></a>二十四.jQuery扩展工具</h2><pre><code>I.$扩展本身, 使用方式----&gt;$.min()  
+
+1).定义
+$.extend({
+    xx:function(){
+        ...
+    },
+    yy:function(){
+        ...
+    }
+})
+
+II.$添加新的方法,使用方式-----&gt;$.checkAll()
+
+1).定义 
+$.fn.extend({
+    xx:function(){
+        ...
+    },
+    yy:function(){
+        ...
+    }
+})</code></pre>
       </div>
       
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-26T13:31:53+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年11月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>学习之旅</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://2662419405.github.io/2019/11/26/jQuery%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/&title=jQuery简单学习 | SH'S BLOG&pics=http://studyit.club/Study/sh.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://2662419405.github.io/2019/11/26/jQuery%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/&title=jQuery简单学习 | SH'S BLOG&pics=http://studyit.club/Study/sh.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class='qrcode' rel="external nofollow noopener noreferrer noopener" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADIklEQVR42u3ay27bMBAF0Pz/T7tAVwWKqPfOqIFNHa4CxRZ56MVgHl9f8Xr9Xn8/+XNd//f6k7N9kzesFjY2NvaHsJMjbnjJsb77zPV7rs95fd3Y2NjY57GTLfOLyGNHzruG5RZsbGzsJ7PbVCT5/DUpD5/Y2NjY2C07T0iShCG/oDb4YWNjYz+HvSkM7UtIsxD1Q7U0bGxs7Ldnt43ed/77P/a3sbGxsd+S/SrXJpi1RaW8OFUrsLGxsQ9i5weaJSGziJp/a9ZUxsbGxj6JPSvT5yM7edGnTTzyNgA2Njb2E9jJgVpq2xhoR3byZvA/OtvY2NjYH85ux3E2xaM8wGxSkeJt2NjY2IeykwGXFjY7dDtwUw/uYGNjYz+AvWm7zmZmklDUlqVuyMOwsbGx3559V/rRjubkV5mcsEZiY2NjH8HOQ1SbWmy+1aZGw4iNjY2NfQQ7DzlJYEvY+SDOJgUqikrY2NjYx7Hb8s0s+N3bDJ4lPNjY2NjnsWfpR9um3bw5fzKcVMLGxsb+cHabBswKQ5uWwyxw1qkINjY29kex94X4fds4LwzlA0ZRoxcbGxv7CHb+oruuIG8etK2FtnSFjY2NfRK7DTk5uC0qbRrJN/w82NjY2Aex8wDQtoHzhKRNUW5rdWBjY2N/FDtPQvbt27ag36Y0xdmwsbGxj2NvSvAzcFuu2jcSsLGxsc9mz5qys0L8pjy0+ZGwsbGxn8OetQpmhaqcPRu1/Pb82NjY2Aex29JMu2XOboNQfpJv34ONjY19ELvdPj9E/q1ZG3g1moONjY19BDvZLHm+DzyzlkMbbrGxsbHPZufF93svLn8yY0cjO9jY2Ngfy04GZRJ83qDN52fyRm8e5LCxsbHPY7/KNQtp+ZXNSkX1ObGxsbEPYrfNgzapmBX6k1SkHejBxsbGPpudB63Zyo+YJyftmBE2Njb2E9htgWkz0DMb2WmTCmxsbGzstvm6CYr5RScFqaKiho2Njf1IdjtMk4SozbjPbF9sbGzs89htUakt+rStiNlFF7tjY2NjH8RuG72zhGRWAFoden8F2NjY2O/O/gVeXKWB1lzBcwAAAABJRU5ErkJggg==' target="_blank">
+        
+          <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
+        
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=http://2662419405.github.io/2019/11/26/jQuery%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/&title=jQuery简单学习 | SH'S BLOG&pics=http://studyit.club/Study/sh.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/11/25/npm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" rel="prev" title="npm简单使用">
+                                  
+                                      npm简单使用
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/npm/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> npm</a> <a class="tag" href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 包管理工具</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
       
     </section>
   </article>
@@ -430,6 +761,13 @@
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
+
+  <script>
+    window.subData = {
+      title: 'jQuery简单学习',
+      tools: true
+    }
+  </script>
 
 
 </div>
@@ -597,6 +935,20 @@
           
             
               
+  <section class='widget toc-wrapper'>
+    
+<header class='material'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer noopener" href="javascript:void(0)" target="_blank"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content material'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-jQuery的基本使用"><span class="toc-text">一.jQuery的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-jQuert的两把利器"><span class="toc-text">二.jQuert的两把利器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-jQuery函数的使用"><span class="toc-text">三.jQuery函数的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-jQuery对象的使用"><span class="toc-text">四.jQuery对象的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-jQuery基本选择器"><span class="toc-text">五.jQuery基本选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-jQuery层次选择器"><span class="toc-text">六.jQuery层次选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-jQuery过滤选择器"><span class="toc-text">七.jQuery过滤选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-jQuery隔行换色"><span class="toc-text">八.jQuery隔行换色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-jQuery表单选择器"><span class="toc-text">九.jQuery表单选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十-jQuery-工具方法"><span class="toc-text">十.jQuery_$工具方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一-jQuery多tab点击切换"><span class="toc-text">十一.jQuery多tab点击切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二-jQuery属性"><span class="toc-text">十二.jQuery属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十三-jQuery的CSS操作"><span class="toc-text">十三.jQuery的CSS操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十四-jQuery位置操作"><span class="toc-text">十四.jQuery位置操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十五-jQuery中的位置滚动"><span class="toc-text">十五.jQuery中的位置滚动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十六-练习-jQuery回滚到顶部"><span class="toc-text">十六.练习 jQuery回滚到顶部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十七-jQuery元素的尺寸"><span class="toc-text">十七.jQuery元素的尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十八-jQuery的筛选"><span class="toc-text">十八.jQuery的筛选</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十九-jQuery文档操作"><span class="toc-text">十九.jQuery文档操作 *</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十-jQuery事件处理"><span class="toc-text">二十.jQuery事件处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十一-jQuery动画"><span class="toc-text">二十一.jQuery动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十二-jQuery多库共存"><span class="toc-text">二十二.jQuery多库共存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十三-区别onload与ready"><span class="toc-text">二十三.区别onload与ready</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十四-jQuery扩展工具"><span class="toc-text">二十四.jQuery扩展工具</span></a></li></ol>
+    </div>
+  </section>
+
 
             
           
@@ -968,6 +1320,18 @@
           
             
               
+  <section class='widget related_posts'>
+    
+<header class='material'>
+  <div><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;相关文章</div>
+  
+</header>
+
+    <div class="content material">
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\18\我的第一个React项目\" title="我的第一个React项目" rel="bookmark">我的第一个React项目</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\20\第一个接触的前端项目\" title="第一个接触的前端项目" rel="bookmark">第一个接触的前端项目</a></h3></div></li></ul>
+    </div>
+  </section>
+
 
             
           
