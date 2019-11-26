@@ -26,6 +26,12 @@
             
             <tag> 学习之旅 </tag>
             
+            <tag> 箭头函数 </tag>
+            
+            <tag> ES6 </tag>
+            
+            <tag> JavaScript </tag>
+            
         </tags>
       
     </entry>
@@ -51,7 +57,11 @@
       
         <tags>
             
+            <tag> jQuery </tag>
+            
             <tag> 学习之旅 </tag>
+            
+            <tag> 前端 </tag>
             
         </tags>
       
@@ -102,6 +112,8 @@
             <tag> 样式自定义 </tag>
             
             <tag> BLOG </tag>
+            
+            <tag> jQuery </tag>
             
         </tags>
       
@@ -164,6 +176,12 @@
             <tag> 我的项目 </tag>
             
             <tag> 学习之旅 </tag>
+            
+            <tag> React </tag>
+            
+            <tag> MongoDB </tag>
+            
+            <tag> Node </tag>
             
         </tags>
       
