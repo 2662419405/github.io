@@ -1,6 +1,6 @@
 ### SH'S BLOG
 
-<p align="center">
+<p align="center" style="margin:50px 0;">
 	<img src="https://img.shields.io/badge/language-html-blue" />
     <img src="https://img.shields.io/badge/build-passing-green"  />
     <img src="https://img.shields.io/badge/version-v1.0-informational" />
