@@ -63,11 +63,11 @@
       
       <categories>
           
-          <category> jQuery </category>
-          
           <category> PHP </category>
           
           <category> Mysql </category>
+          
+          <category> jQuery </category>
           
       </categories>
       
