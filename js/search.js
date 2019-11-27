@@ -256,7 +256,6 @@ var AlgoliaSearch;
      * @param data : (array) result items
      */
     self.buildResultList = function(data) {
-      console.info(data)
       var html = "";
       $.each(data, function(index, row) {
         var url = row.permalink || row.path || "";
