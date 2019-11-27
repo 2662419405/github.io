@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>史上最详细配置HTTPS</title>
+    <url>/2019/11/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AEHTTPS/</url>
+    <content><![CDATA[<blockquote>
+<p>给自己的博客(或者自己的服务器)配置一个免费的ssl证书,通过https访问</p>
+<p>参考文档: <a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">https://support.huaweicloud.com/scm_faq/scm_01_0023.html</a></p>
+<p>当然还是有很多的坑</p>
+<p>让自己的服务器也加上锁吧!</p>
+</blockquote>
+<a id="more"></a>
+
+<blockquote>
+<p>HTTP（超文本传输协议），是一个基于请求与响应，无状态的，应用层的协议，常基于TCP/IP协议传输数据，互联网上应用最为广泛的一种网络协议，所有的WWW文件都必须遵守这个标准。设计HTTP的初衷是为了提供一种发布和接收HTML页面的方法。</p>
+</blockquote>
+<blockquote>
+<p>HTTPS（超文本传输安全协议），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。</p>
+</blockquote>
+<h3 id="预览三种网站的效果"><a href="#预览三种网站的效果" class="headerlink" title="预览三种网站的效果"></a>预览三种网站的效果</h3><ul>
+<li><p>普通的http网站 <img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-41-53.png" /></p>
+</li>
+<li><p>https的网站 <img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-43-02.png"></p>
+</li>
+<li><p>https+ssl证书的网站(也就是本网站) <img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-43-45.png"></p>
+</li>
+</ul>
+<h3 id="获得SSL证书"><a href="#获得SSL证书" class="headerlink" title="获得SSL证书"></a>获得SSL证书</h3><ul>
+<li><p>我选择的华为云的ssl证书</p>
+</li>
+<li><p>证书一般是收费的,当然现在有很多网站推出了白嫖的ssl证书,虽然没有正常的ssl证书那样有很多安全,但是可以证明网站备案等</p>
+</li>
+<li><p>在华为云头部搜索”免费证书”</p>
+</li>
+<li><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-47-52.png" />
+</li>
+<li><p>这里我们直接购买ssl证书,价格为0,购买之后,我们会收到一个qq邮箱提醒</p>
+</li>
+<li><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-51-18.png">
+</li>
+<li><p>我们点击下方的链接,用邮箱给我们的账号密码选择登录</p>
+</li>
+<li><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-52-43.png">
+</li>
+<li><p>如果是第一次访问,需要写一下东西,配置完之后如上图</p>
+</li>
+<li><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-54-16.png">
+</li>
+<li><p>我们下载之后,按照<a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">这个文档进行配置</p>
+</li>
+</ul>
+<h3 id="如果你没有遇到问题-那么你很强-就不需要继续往下看了"><a href="#如果你没有遇到问题-那么你很强-就不需要继续往下看了" class="headerlink" title="如果你没有遇到问题,那么你很强,就不需要继续往下看了"></a>如果你没有遇到问题,那么你很强,就不需要继续往下看了</h3><h3 id="开始踩坑"><a href="#开始踩坑" class="headerlink" title="开始踩坑"></a>开始踩坑</h3><blockquote>
+<p>第一个遇到的坑就是 <code>./Nginx -s reload</code> 重启Nginx的时候,会出现一个ssl模板没有找到的错误</p>
+<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line"># 进入到/usr/local/nginx-1.14.2（注：是nginx的源码包的目录），执行以下命令</span><br><span class="line">./configure --<span class="keyword">with</span>-http_ssl_module</span><br><span class="line"> </span><br><span class="line"># 注意这里只能用make 而不要用make install，因为执行make install是覆盖安装的意思</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">先备份旧的nginx</span><br><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx_bak</span><br><span class="line"></span><br><span class="line">复制新生成的文件到安装路径：</span><br><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line">./nginx -s reload  #进行重启</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>继续采坑中配置完之后发现,有了ssl证书,但是没有那个绿色的小锁头,很奇怪了</p>
+<p>主要是由于页面使用了非<code>https</code>协议的文件,比如说<code>&lt;img src=&quot;http:xxxx&quot; /&gt;</code>,就会产生这个原因,那么我们把页面的<code>http</code>全部改写为<code>https</code>就发现我们的网站恢复了</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>HTTPS</tag>
+        <tag>SSL</tag>
+        <tag>网络安全</tag>
+        <tag>CDN</tag>
+        <tag>服务器</tag>
+        <tag>域名</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ES6学习中</title>
     <url>/2019/11/26/ES6%E5%AD%A6%E4%B9%A0%E4%B8%AD/</url>
     <content><![CDATA[<blockquote>
@@ -127,9 +197,8 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>ES6</category>
-        <category>箭头函数</category>
         <category>JavaScript</category>
+        <category>ES6</category>
       </categories>
       <tags>
         <tag>学习之旅</tag>
