@@ -19,7 +19,7 @@
 >
 > 如果上面这个网站加载过慢
 >
-> github网站备份服务器: http://shtodream.cn
+> github网站备份服务器: https://shtodream.cn
 
 > 个人第一个上线项目: http://studyit.club
 
