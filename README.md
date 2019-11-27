@@ -15,11 +15,11 @@
 
 > CSDN: https://blog.csdn.net/qq_43268396
 
-> 个人学习记录网站: https://2662419405.github.io
+> 个人学习记录网站: https://shtodream.cn
 >
 > 如果上面这个网站加载过慢
 >
-> github网站备份服务器: https://shtodream.cn
+> github网站备份服务器: https://2662419405.github.io
 
 > 个人第一个上线项目: http://studyit.club
 
