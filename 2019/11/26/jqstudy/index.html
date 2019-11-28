@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>史上最详细配置HTTPS | SH&#39;S BLOG</title>
+  <title>jQuery简单学习 | SH&#39;S BLOG</title>
   
   <meta name="keywords" content="前端工程师,残梦,IT">
   
@@ -307,15 +307,15 @@
   <section class='meta'>
     
     
-      <a title='史上最详细配置HTTPS' href='/2019/11/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AEHTTPS/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/TRHX/ImageHosting/ITRHX-PIC/thumbnail/combat.png'></a>
+      <a title='jQuery简单学习' href='/2019/11/26/jqstudy/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/2662419405/img/462cec538681197a8369388fed5300f5.jpg'></a>
     
     <div class="meta" id="header-meta">
       
         
   
     <h1 class="title">
-      <a href="/2019/11/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AEHTTPS/">
-        史上最详细配置HTTPS
+      <a href="/2019/11/26/jqstudy/">
+        jQuery简单学习
       </a>
     </h1>
   
@@ -346,7 +346,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-11-27</p>
+    <p>2019-11-26</p>
   </a>
 </div>
 
@@ -356,9 +356,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/' rel="nofollow">
+    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>网络安全</p>
+      <p>jQuery&nbsp;/&nbsp;前端</p>
     </a>
   </div>
 
@@ -398,61 +398,221 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <blockquote>
-<p>给自己的博客(或者自己的服务器)配置一个免费的ssl证书,通过https访问</p>
-<p>参考文档: <a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">https://support.huaweicloud.com/scm_faq/scm_01_0023.html</a></p>
-<p>当然还是有很多的坑</p>
-<p>让自己的服务器也加上锁吧!</p>
-</blockquote>
-<a id="more"></a>
-
-<blockquote>
-<p>HTTP（超文本传输协议），是一个基于请求与响应，无状态的，应用层的协议，常基于TCP/IP协议传输数据，互联网上应用最为广泛的一种网络协议，所有的WWW文件都必须遵守这个标准。设计HTTP的初衷是为了提供一种发布和接收HTML页面的方法。</p>
-</blockquote>
-<blockquote>
-<p>HTTPS（超文本传输安全协议），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。</p>
-</blockquote>
-<h3 id="预览三种网站的效果"><a href="#预览三种网站的效果" class="headerlink" title="预览三种网站的效果"></a>预览三种网站的效果</h3><ul>
-<li><p>普通的http网站 <img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-41-53.png" /></p>
-</li>
-<li><p>https的网站 <img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-43-02.png"></p>
-</li>
-<li><p>https+ssl证书的网站(也就是本网站) <img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-43-45.png"></p>
-</li>
+        <h2 id="一-jQuery的基本使用"><a href="#一-jQuery的基本使用" class="headerlink" title="一.jQuery的基本使用"></a>一.jQuery的基本使用</h2><ul>
+<li>1.0  2.0  3.0   分别支持ie8  部分支持ie8  全部不支持ie8  开发的时候最常用的是1.几版本</li>
+<li>分为开发版本和压缩版本  带有min的是压缩版本，一般情况下使用的是开发版本</li>
+<li>window.onload=function(){}    &lt;=&gt;    $(function(){})   绑定文档加载完成的监听</li>
+<li>分为两种使用     使用jQuery核心函数或者jQuery核心对象    核心函数$/jQuery   核心对象 执行$()返回的对象</li>
 </ul>
-<h3 id="获得SSL证书"><a href="#获得SSL证书" class="headerlink" title="获得SSL证书"></a>获得SSL证书</h3><ul>
-<li><p>我选择的华为云的ssl证书</p>
-</li>
-<li><p>证书一般是收费的,当然现在有很多网站推出了白嫖的ssl证书,虽然没有正常的ssl证书那样有很多安全,但是可以证明网站备案等</p>
-</li>
-<li><p>在华为云头部搜索”免费证书”</p>
-</li>
-<li><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-47-52.png" />
-</li>
-<li><p>这里我们直接购买ssl证书,价格为0,购买之后,我们会收到一个qq邮箱提醒</p>
-</li>
-<li><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-51-18.png">
-</li>
-<li><p>我们点击下方的链接,用邮箱给我们的账号密码选择登录</p>
-</li>
-<li><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-52-43.png">
-</li>
-<li><p>如果是第一次访问,需要写一下东西,配置完之后如上图</p>
-</li>
-<li><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-54-16.png">
-</li>
-<li><p>我们下载之后,按照<a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">这个文档进行配置</p>
-</li>
+<h2 id="二-jQuert的两把利器"><a href="#二-jQuert的两把利器" class="headerlink" title="二.jQuert的两把利器"></a>二.jQuert的两把利器</h2><ul>
+<li>jQuery的核心函数,直接可用</li>
+<li>jQuery的核心对象,执行jQuery函数调用他</li>
 </ul>
-<h3 id="如果你没有遇到问题-那么你很强-就不需要继续往下看了"><a href="#如果你没有遇到问题-那么你很强-就不需要继续往下看了" class="headerlink" title="如果你没有遇到问题,那么你很强,就不需要继续往下看了"></a>如果你没有遇到问题,那么你很强,就不需要继续往下看了</h3><h3 id="开始踩坑"><a href="#开始踩坑" class="headerlink" title="开始踩坑"></a>开始踩坑</h3><blockquote>
-<p>第一个遇到的坑就是 <code>./Nginx -s reload</code> 重启Nginx的时候,会出现一个ssl模板没有找到的错误</p>
-<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 进入到/usr/local/nginx-1.14.2（注：是nginx的源码包的目录），执行以下命令</span><br><span class="line">./configure --<span class="keyword">with</span>-http_ssl_module</span><br><span class="line"> </span><br><span class="line"># 注意这里只能用make 而不要用make install，因为执行make install是覆盖安装的意思</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">先备份旧的nginx</span><br><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx_bak</span><br><span class="line"></span><br><span class="line">复制新生成的文件到安装路径：</span><br><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line">./nginx -s reload  #进行重启</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>继续采坑中配置完之后发现,有了ssl证书,但是没有那个绿色的小锁头,很奇怪了</p>
-<p>主要是由于页面使用了非<code>https</code>协议的文件,比如说<code>&lt;img src=&quot;http:xxxx&quot; /&gt;</code>,就会产生这个原因,那么我们把页面的<code>http</code>全部改写为<code>https</code>就发现我们的网站恢复了</p>
-</blockquote>
+<h2 id="三-jQuery函数的使用"><a href="#三-jQuery函数的使用" class="headerlink" title="三.jQuery函数的使用"></a>三.jQuery函数的使用</h2><p>  I.作为一般函数使用:$(param)<br>    1).  参数为函数  :  当DOM加载完成后，执行此回调函数<br>    2).  参数为DOM对象  : 将DOM对象封装成jQuery对象<br>    3).  参数为选择器字符串 : 查找所有匹配的标签，并将他们分装成jQuery对象<br>    4).  参数为html标签字符串  : (用的少)创建标签对象并分装成jQuery对象</p>
+<p>  II.作为对象使用:$.xxx()<br>    1).  $.each() :  隐使遍历数组     回调函数中第一个为key，第二个为value<br>    2).  $.trim() :  去除两端空格     </p>
+<p>  III. 事件回调函数中   this指向的是 #btn  DOM对象元素</p>
+<h2 id="四-jQuery对象的使用"><a href="#四-jQuery对象的使用" class="headerlink" title="四.jQuery对象的使用"></a>四.jQuery对象的使用</h2><pre><code>I. 理解
 
+1).即执行jQuery核心函数返回的对象
+2).jQuery对象内部包含的是dom元素对象的伪数组
+3).jQuery对象拥有很多有用的方法和属性
+
+II. 基本行为
+
+1).size()/length : 包含的DOM元素
+2).[index]/get(index)  :  得到DOM元素对应的下标
+3).each()  :  遍历DOM元素
+4).index()  :  得到DOM元素的下标
+
+III. 伪数组
+
+1).伪数组是一个对象
+2).伪数组必须有length属性
+3).如果这个对象的length不为0，那么必须要有按照下标存储的数据
+4).没有数组特别的方法 forEach() push() pop() splice()</code></pre><h2 id="五-jQuery基本选择器"><a href="#五-jQuery基本选择器" class="headerlink" title="五.jQuery基本选择器"></a>五.jQuery基本选择器</h2><pre><code>1).class   &quot;.b&quot;代表所有的class属性为b的元素
+2).id      &quot;#div&quot;  代表id元素
+3).标签               &quot;div&quot;   代表标签元素
+4).子集               &quot;div.box&quot; 代表class属性为btn中的div元素
+5).并集               &quot;#b,#c&quot;  代表id为c和id为b的元素</code></pre><h2 id="六-jQuery层次选择器"><a href="#六-jQuery层次选择器" class="headerlink" title="六.jQuery层次选择器"></a>六.jQuery层次选择器</h2><pre><code>I.查找子元素，后代元素，兄弟元素的选择器
+
+1).  &gt;   是指当前这一代的下一代，不包括下下代
+2).  +   是指当前元素的下一个元素，只包括一个
+3).  ~   是指当前元素的后面所有兄弟姐妹元素(就是不能包括上一级的元素)</code></pre><h2 id="七-jQuery过滤选择器"><a href="#七-jQuery过滤选择器" class="headerlink" title="七.jQuery过滤选择器"></a>七.jQuery过滤选择器</h2><pre><code>I. 选择器
+
+1).  :first  正序
+2).  :last   倒叙
+3).  :not(.box)   选择不包含clss为box的元素
+4).  :lt(3):gt(0)  小于第三个大于第零个
+5).  :contains(&quot;name&quot;)  选择所有标签的innerHTML内容是name的标签
+6).  :hidden()  选择隐藏的标签
+7).  [title]  选择所有带有title属性的标签体
+8).  [title=hello]  选择title属性为hello的标签
+
+II.  多个选择器不是同时执行，而是以此执行</code></pre><h2 id="八-jQuery隔行换色"><a href="#八-jQuery隔行换色" class="headerlink" title="八.jQuery隔行换色"></a>八.jQuery隔行换色</h2><pre><code>1).   odd:偶数       even:奇数    nth-child(2n)偶数</code></pre><h2 id="九-jQuery表单选择器"><a href="#九-jQuery表单选择器" class="headerlink" title="九.jQuery表单选择器"></a>九.jQuery表单选择器</h2><pre><code>I.表单的常用选择器
+
+1).  text[disabled]  :选择text文本的不可用输入框
+2).  checkbox:checked  :选择被选中的复选框按钮  
+
+II. :等价于[]   在选择器中等价存在</code></pre><h2 id="十-jQuery-工具方法"><a href="#十-jQuery-工具方法" class="headerlink" title="十.jQuery_$工具方法"></a>十.jQuery_$工具方法</h2><pre><code>I.工具方法
+
+1).  $.each()  :  遍历数组对象中的数据
+2).  $.trim()  :  去除字符串两遍的空格
+3).  $.type(obj) : 得到数据类型
+4).  $.isArray(obj) : 判断是否是数组
+5).  $.isFunction(obj) : 判断是否是函数
+6).  $.parseJSON(json) : 解析json字符串转换为js对象
+
+II. JSON
+
+1).  &apos;{&quot;name&quot;:&quot;Tom&quot; , &quot;Age&quot;:12 }&apos;  这是一个json 
+2).  &apos;[{&quot;name&quot;:&quot;Tom&quot;,&quot;Age&quot;:12},{&quot;name&quot;:&quot;Allen&quot;,&quot;Age&quot;:24}]&apos;   这是一个json数组
+3).   JSON.parse(jsonString)  json字符串----&gt;js对象/数组
+4).   JSON.stringify(jsObj/jsArr)  js对象/数组----&gt;json字符串</code></pre><h2 id="十一-jQuery多tab点击切换"><a href="#十一-jQuery多tab点击切换" class="headerlink" title="十一.jQuery多tab点击切换"></a>十一.jQuery多tab点击切换</h2><pre><code>I.  设计思路    获取全部的DOM元素，然后通过this获取到这个index()，最后通过操作jQuery对象的下标的方式操作
+
+II.  先获取全部的DOM元素，然后定义一个当前显示的元素的下标，先让这个元素隐藏，在显示当前点击的元素，最后更新下标（效率上更高）</code></pre><h2 id="十二-jQuery属性"><a href="#十二-jQuery属性" class="headerlink" title="十二.jQuery属性"></a>十二.jQuery属性</h2><pre><code>I.属性
+
+1).attr()  一个参数代表查看，两个参数代表第二个参数覆盖    但是不能操作布尔值
+2).removeAttr()  移除
+3).addClass()  添加class 
+4).html()   标签   有字符串代表-&gt;这是标签体
+5).prop()   专门操作属性值为boolean的属性值</code></pre><h2 id="十三-jQuery的CSS操作"><a href="#十三-jQuery的CSS操作" class="headerlink" title="十三.jQuery的CSS操作"></a>十三.jQuery的CSS操作</h2><pre><code>I.CSS操作
+
+1).css()   一个参数代表查看，两个参数代表第二个参数覆盖  
+2).css({&apos;color&apos;:&apos;#ff0011&apos;})可以这是多个值</code></pre><h2 id="十四-jQuery位置操作"><a href="#十四-jQuery位置操作" class="headerlink" title="十四.jQuery位置操作"></a>十四.jQuery位置操作</h2><pre><code>I.offset 和   position
+
+1).offset().left 和  offset().top  两个可以获取相对于页面的位置
+2).position()  和上面是一样，这个获取的是父元素的位置</code></pre><h2 id="十五-jQuery中的位置滚动"><a href="#十五-jQuery中的位置滚动" class="headerlink" title="十五.jQuery中的位置滚动"></a>十五.jQuery中的位置滚动</h2><pre><code>I.常用方法
+
+1).scrollTop()  可以得到元素的滚动高度
+2).scrollLeft()   可以得到x轴滚动距离
+3).上面的两个方法(number)  既可设置滚动的距离
+
+II.如何获取窗体滚动       获取页面的html+body两个滚动条的滚动总量</code></pre><h2 id="十六-练习-jQuery回滚到顶部"><a href="#十六-练习-jQuery回滚到顶部" class="headerlink" title="十六.练习 jQuery回滚到顶部"></a>十六.练习 jQuery回滚到顶部</h2><pre><code>I.瞬间回到顶部   $(&apos;html,body&apos;).scrollTop(0)
+II.平滑滚动    计算总时间，时间间隔（定时器的时间）总距离 每次移动的距离（总距离除以需要的时间）  然后用定时器执行</code></pre><h2 id="十七-jQuery元素的尺寸"><a href="#十七-jQuery元素的尺寸" class="headerlink" title="十七.jQuery元素的尺寸"></a>十七.jQuery元素的尺寸</h2><pre><code>I.内容尺寸
+
+1).height() :height
+2).width()  :width
+
+II.内部尺寸
+
+1).innerHeight() :height+padding
+2).innerWidth()  :width+padding
+
+III.外部尺寸
+
+1).outerHeight(false/true)  :height+padding+border  如果是true，加上margin
+1).outerWidth(false/true)  :width+padding+border  如果是true，加上margin</code></pre><h2 id="十八-jQuery的筛选"><a href="#十八-jQuery的筛选" class="headerlink" title="十八.jQuery的筛选"></a>十八.jQuery的筛选</h2><pre><code>I.过滤
+
+1).first()  第一个
+2).last()  最后一个
+3).eq()*  指定某一个  参数为number  
+4).filter(&apos;[title=hello]&apos;)  指定title属性为hello的
+5).not(&apos;[title=hello]&apos;)   指定不是hello的(还包括没有title属性)
+6).filter(&apos;[title][title!=hello]&apos;)   交集选择器代表两个条件
+7).has(&apos;span&apos;)   指向内部标签
+
+II.查找
+
+1).children()  子标签  
+2).find()      后代标签
+3).parent()    父标签
+4).prevAll()   前面的标签
+5).siblings()  兄弟标签</code></pre><h2 id="十九-jQuery文档操作"><a href="#十九-jQuery文档操作" class="headerlink" title="十九.jQuery文档操作 *"></a>十九.jQuery文档操作 *</h2><pre><code>I.增删改
+
+1).append(ELement)   向内部最后添加元素
+2).prepend(Element)  向内部最前添加元素
+3).before(Element)   向兄弟前面添加元素
+4).after(ELement)    向兄弟后面添加元素
+5).replaceWith(Element)   替换指定的内部元素
+6).remove(DOM_Element)    移除指定的内部元素</code></pre><h2 id="二十-jQuery事件处理"><a href="#二十-jQuery事件处理" class="headerlink" title="二十.jQuery事件处理"></a>二十.jQuery事件处理</h2><pre><code>I.常用事件
+
+1).mouseenter()    鼠标移入
+2).mouseleave()    鼠标移出
+
+II.事件处理
+
+1).on(eve,fn)      第一个参数代表事件的处理方式
+2).off()           和第一个相对应，取消时间绑定
+3).点击时传入ev 
+    -&gt;ev.clientX     到客户端左上角的距离
+    -&gt;ev.pageX       到页面顶部左上角的距离
+    -&gt;ev.offsetX     到相对于事件左上角的距离
+    -&gt;ev.stopPropagation()    阻止事件的冒泡
+    -&gt;ev.preventDefault()     阻止事件的默认行为
+
+III.事件切换
+
+1).hover(fn,fn)     是mouseenter,mouseleave两个函数的回调函数
+
+IV.区别mouseover与mouseenter
+
+*mouseover:在移入子元素时也会触发,对应mouseout
+*mouseenter:只在移入当前元素时触发,对应mouseleave
+
+V.事件委托
+
+1).将多个子元素(li)的事件监听委托给父元素(ul)处理
+2).监听回调是加在了父元素上
+3).当操作任何一个子元素(li)时，事件会冒泡到父元素(ul)上
+4).父辈元素不会直接处理，而是根据event.target得到发生事件的子元素(li)，通过这个子元素调用事件回调函数
+5).委托方 ：  业主     li
+6).被委托方  :   中介    ul
+7).添加新的子元素，自动由事件响应处理
+8).减少事件监听的数量:    n==&gt;1
+9).设置事件委托API: $(parentSelector).delegate(childrenSelector,eventName,callback)
+10).取消事件的委托API:$(parentSelector).undelegate(eventName)</code></pre><h2 id="二十一-jQuery动画"><a href="#二十一-jQuery动画" class="headerlink" title="二十一.jQuery动画"></a>二十一.jQuery动画</h2><pre><code>I.内置动画
+
+1).fadeOut()   淡入   param---&gt;number  代表存在秒数    
+2).fadeIn()    淡出   参数和上面一样
+3).fadeToggle()  淡入淡出切换   可以传一个回调函数，当切换结束的时候触发
+4).不断改变元素opacity来实现
+5).slideDown()   带动画的展开
+6).sildeUp()     带动画的收缩
+7).sildeToggle()   带动画的切换展开/收缩
+8).不断改变元素height实现
+9).show()     显示
+10).hide()    隐藏
+11).toggle()  切换
+12).不断改变opacity和height和width实现
+
+II.自定义动画
+
+1).animate()    指定自定义动画  参数可以传一个json 分别指定值
+2).animate()    不需要带有单位，还可以进行字符串的加减
+3).stop()       可以阻止动画的继续进行</code></pre><h2 id="二十二-jQuery多库共存"><a href="#二十二-jQuery多库共存" class="headerlink" title="二十二.jQuery多库共存"></a>二十二.jQuery多库共存</h2><pre><code>I.当多个$库同时存在时,需要使用
+II.调用jQuery.noConflict()释放$使用权
+III.下文需要调用的$时，只能使用jQuery</code></pre><h2 id="二十三-区别onload与ready"><a href="#二十三-区别onload与ready" class="headerlink" title="二十三.区别onload与ready"></a>二十三.区别onload与ready</h2><pre><code>I.window.onload
+
+1).包括页面的图片加载完后才会调用(晚)
+2).只能有一个监听回调
+
+II.$(document).ready()
+
+1).等同于$(function(){})
+2).页面加载完就回调(早)
+3).可以有多个监听回调</code></pre><h2 id="二十四-jQuery扩展工具"><a href="#二十四-jQuery扩展工具" class="headerlink" title="二十四.jQuery扩展工具"></a>二十四.jQuery扩展工具</h2><pre><code>I.$扩展本身, 使用方式----&gt;$.min()  
+
+1).定义
+$.extend({
+    xx:function(){
+        ...
+    },
+    yy:function(){
+        ...
+    }
+})
+
+II.$添加新的方法,使用方式-----&gt;$.checkAll()
+
+1).定义 
+$.fn.extend({
+    xx:function(){
+        ...
+    },
+    yy:function(){
+        ...
+    }
+})</code></pre>
       </div>
       
         <br>
@@ -463,10 +623,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-27T22:04:38+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-28T12:49:34+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2019年11月27日</p>
+    <p>更新于 2019年11月28日</p>
   </a>
 </div>
 
@@ -475,7 +635,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/HTTPS/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>HTTPS</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/SSL/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>SSL</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>网络安全</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CDN/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>CDN</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>服务器</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9F%9F%E5%90%8D/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>域名</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/jQuery/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>jQuery</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>学习之旅</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>前端</p></a></div>
 
 
         
@@ -488,12 +648,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://2662419405.github.io/2019/11/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AEHTTPS/&title=史上最详细配置HTTPS | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary=
-给自己的博客(或者自己的服务器)配置一个免费的ssl证书,通过https访问
-参考文档: https://support.huaweicloud.com/scm_faq/scm_01_0023.html
-当然还是有很多的坑
-让自己的服务器也加上锁吧!
-"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://2662419405.github.io/2019/11/26/jqstudy/&title=jQuery简单学习 | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary="
           
           >
           
@@ -505,12 +660,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://2662419405.github.io/2019/11/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AEHTTPS/&title=史上最详细配置HTTPS | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary=
-给自己的博客(或者自己的服务器)配置一个免费的ssl证书,通过https访问
-参考文档: https://support.huaweicloud.com/scm_faq/scm_01_0023.html
-当然还是有很多的坑
-让自己的服务器也加上锁吧!
-"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://2662419405.github.io/2019/11/26/jqstudy/&title=jQuery简单学习 | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary="
           
           >
           
@@ -520,7 +670,7 @@
       
     
       
-        <a class='qrcode' rel="external nofollow noopener noreferrer noopener" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD70lEQVR42u3dQW7jQAwEQP//08k1QGKpmxzBOZROC68tz5QWoMlpYF+v+Pr6cf185fffvnv9993y+yevJHc4duHAgQMHjnir7cauv/j6bjOa2WqTT+HAgQMHjrMc15tMyl4Ckdy5LeSboosDBw4cOP4Dx6y5ytuqvCieRceBAwcOHJ/iqL8gaAJnpTop9jhw4MCB41Mcybitbaiee08+NHxwVooDBw4cOLpKV7dz//nPj+Q7cODAgQNHOYbbNFGzIWB7h2RAWewOBw4cOHCsOc4eBSUt2azAnzqIikaWOHDgwIHjKEc+mJu9/3op+9jEgceDAwcOHDgWHO1YbRYsaA9+8sfTPvmbfeHAgQMHjjXHfpR2Xera4V1eVmexhmLNOHDgwIFjxNGWybyYtY1ZHm7LP5WX7eGvBhw4cODAEey9Las52Sxw0D6kluzmu3DgwIEDR8lx3RS1Q7r90DAf5yVNXd1e4sCBAweONce+4M0OrmYjyJY+D2TgwIEDB46nOWYRunahs8bsudEhDhw4cODYc9RFaD0K3ITh8ncW/xbaDePAgQMHjvvp3PA/lZnFBfb32YcVipQHDhw4cOAoOdoP5OWtDdLNiuKM5u1DwoEDBw4ca442fLCJwb3Kqx32bSIUOHDgwIHjLEe7iH18ob3/Pq43eyQ4cODAgaPl2Gw4OebJy1ve+D04RsSBAwcOHIdOZE4FztqCtx8Lbgo5Dhw4cOB4giMvk7NB2+b+bZwip3yLhQMHDhw41hz5lpIWK6rq5VHWLPSW7OXtnXHgwIEDx1GOsxGEtvS2KPv28ibfgQMHDhw4FhztGG5WSnP6/Bhsg1X8asCBAwcOHMFq29ZrNgqcBRHyw6T8COpmFzhw4MCBY80xa6vaKFsbkshLcstR/+7AgQMHDhwlRxsISArzqTI5C0/Myu3b3x04cODAgaPkaCMCeQHej+rao6/k0V4XbBw4cODAsefYHO0k3eFsjLgZICa4xawUBw4cOHCMJn6bYMH1VvMFzQ6rZqGKm3KOAwcOHDgWHJsQwKmCt2n8NsGIPz6FAwcOHDgOcSQxhc3wbn841AYp2vDfq/0yHDhw4MAxauHaVq0tovnS2yDFsUYOBw4cOHCUHF/ldXYpeTM2g2jXhgMHDhw49hz5tY/NtcdIbeltwxntkRUOHDhw4Mg5NgO7zZivOBA6FI+IRpw4cODAgeMQRx4+2Ddd++HgvjF7i4UDBw4cOD7K0R5ZtcPHPVARZcCBAwcOHB/lyL9sFk2YlfzNLnDgwIEDx1mOZMzXwuWNWV4I22hFvS8cOHDgwLHmyEdps0Kbk+UxiPYRtg8DBw4cOHCMOL4BgsbO4RpTTrcAAAAASUVORK5CYII=' target="_blank">
+        <a class='qrcode' rel="external nofollow noopener noreferrer noopener" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQa7bMAwFwNz/0r9At4XlR1ItGmm8CpJY8nhBkCI/n/j6+X39+Xn9zfquZK/NFwYGxtcyfpbXE+Nps6df1+uv8cm9GBgYNzCSILtGTr5fv7IoKGNgYGDE6WCe3uVgDAwMjGrArYbgXvjGwMDA6BWxeXn5UnAWA+7mWhwDA+MLGZPGwN/+/I/6GxgYGP8xY1fQnAToDU+FgYFxNCM/SsuP2JLULT+qKwxtYGBgXMbojXblAxnVsbDoRWNgYBzK6B3H99oASVDOG58YGBi3MdaLrr/vlaOTlDSqxTEwMA5iJI87b2FWhzN6LxcDA+NURpLSVdO4auKYD4093oWBgXEBIz9K6w1p7Sp6H9fEwMC4gJEUos0NNk2uvbwIDAyMoxl5K7FcGbeSwrxdgYGBcQ+jdyi23n7+0NVdMDAwzmZUx7/mB3OTJO/lLgwMjAsYk1GJhDQPrC9gDAyMQxnVpXuF7q7BjsfdMTAwjmZUm5TVQ7de46FXHmNgYJzKyDeobp8H1l6qmv2AgYFxDiMJuL3Ebj7+FQVuDAyMoxmFPwVFaV6IJulmtQzGwMA4lTEpXAvvaZBoRsklBgbG0YxqYK0OXlQBe1fGwMA4iZGXr5Pj/vyILV8fAwPjNsauQYpmB7UY9F/ODjEwMC5m5IBJk6B5PIeBgYERjHxNgnKvhG6mhhgYGF/L6I1Z5Enkes3e4MWn+l4xMDC+ltErIPc2OOdNAgwMjEMZvwDUhomHq8EH6AAAAABJRU5ErkJggg==' target="_blank">
         
           <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
         
@@ -530,12 +680,7 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://2662419405.github.io/2019/11/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AEHTTPS/&title=史上最详细配置HTTPS | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary=
-给自己的博客(或者自己的服务器)配置一个免费的ssl证书,通过https访问
-参考文档: https://support.huaweicloud.com/scm_faq/scm_01_0023.html
-当然还是有很多的坑
-让自己的服务器也加上锁吧!
-"
+          href="http://service.weibo.com/share/share.php?url=https://2662419405.github.io/2019/11/26/jqstudy/&title=jQuery简单学习 | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary="
           
           >
           
@@ -559,21 +704,40 @@
       
           <div class="prev-next">
               
-              
-                  <section class="next">
-                      <span class="art-item-right" aria-hidden="true">
-                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2019/11/26/ES6%E5%AD%A6%E4%B9%A0%E4%B8%AD/" rel="prev" title="ES6学习中">
-                                  
-                                      ES6学习中
-                                  
+                              <a href="/2019/11/26/es6study/" rel="prev" title="ES6学习中">
+                                
+                                    ES6学习中
+                                
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
                                   <a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 学习之旅</a> <a class="tag" href="/tags/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 箭头函数</a> <a class="tag" href="/tags/ES6/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> ES6</a> <a class="tag" href="/tags/JavaScript/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> JavaScript</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/11/25/npmstudy/" rel="prev" title="npm简单使用">
+                                  
+                                      npm简单使用
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/npm/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> npm</a> <a class="tag" href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 包管理工具</a>
                               </h6>
                           
                       </span>
@@ -621,7 +785,7 @@
 
   <script>
     window.subData = {
-      title: '史上最详细配置HTTPS',
+      title: 'jQuery简单学习',
       tools: true
     }
   </script>
@@ -802,7 +966,7 @@
 </header>
 
     <div class='content material'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#预览三种网站的效果"><span class="toc-text">预览三种网站的效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获得SSL证书"><span class="toc-text">获得SSL证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果你没有遇到问题-那么你很强-就不需要继续往下看了"><span class="toc-text">如果你没有遇到问题,那么你很强,就不需要继续往下看了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始踩坑"><span class="toc-text">开始踩坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方式"><span class="toc-text">解决方式</span></a>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-jQuery的基本使用"><span class="toc-text">一.jQuery的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-jQuert的两把利器"><span class="toc-text">二.jQuert的两把利器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-jQuery函数的使用"><span class="toc-text">三.jQuery函数的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-jQuery对象的使用"><span class="toc-text">四.jQuery对象的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-jQuery基本选择器"><span class="toc-text">五.jQuery基本选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-jQuery层次选择器"><span class="toc-text">六.jQuery层次选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-jQuery过滤选择器"><span class="toc-text">七.jQuery过滤选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-jQuery隔行换色"><span class="toc-text">八.jQuery隔行换色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-jQuery表单选择器"><span class="toc-text">九.jQuery表单选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十-jQuery-工具方法"><span class="toc-text">十.jQuery_$工具方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一-jQuery多tab点击切换"><span class="toc-text">十一.jQuery多tab点击切换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二-jQuery属性"><span class="toc-text">十二.jQuery属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十三-jQuery的CSS操作"><span class="toc-text">十三.jQuery的CSS操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十四-jQuery位置操作"><span class="toc-text">十四.jQuery位置操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十五-jQuery中的位置滚动"><span class="toc-text">十五.jQuery中的位置滚动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十六-练习-jQuery回滚到顶部"><span class="toc-text">十六.练习 jQuery回滚到顶部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十七-jQuery元素的尺寸"><span class="toc-text">十七.jQuery元素的尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十八-jQuery的筛选"><span class="toc-text">十八.jQuery的筛选</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十九-jQuery文档操作"><span class="toc-text">十九.jQuery文档操作 *</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十-jQuery事件处理"><span class="toc-text">二十.jQuery事件处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十一-jQuery动画"><span class="toc-text">二十一.jQuery动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十二-jQuery多库共存"><span class="toc-text">二十二.jQuery多库共存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十三-区别onload与ready"><span class="toc-text">二十三.区别onload与ready</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十四-jQuery扩展工具"><span class="toc-text">二十四.jQuery扩展工具</span></a></li></ol>
     </div>
   </section>
 
@@ -1243,7 +1407,7 @@
 </header>
 
     <div class="content material">
-      
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\24\bkyys\" title="博客园样式" rel="bookmark">博客园样式</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\20\dycjcqd\" title="第一个接触的前端项目" rel="bookmark">第一个接触的前端项目</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\18\dygReactxm\" title="我的第一个React项目" rel="bookmark">我的第一个React项目</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\26\es6study\" title="ES6学习中" rel="bookmark">ES6学习中</a></h3></div></li></ul>
     </div>
   </section>
 

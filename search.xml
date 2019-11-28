@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>史上最详细配置HTTPS</title>
-    <url>/2019/11/27/%E5%8F%B2%E4%B8%8A%E6%9C%80%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AEHTTPS/</url>
+    <url>/2019/11/27/sszxxpz/</url>
     <content><![CDATA[<blockquote>
 <p>给自己的博客(或者自己的服务器)配置一个免费的ssl证书,通过https访问</p>
 <p>参考文档: <a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">https://support.huaweicloud.com/scm_faq/scm_01_0023.html</a></p>
@@ -72,7 +72,7 @@
   </entry>
   <entry>
     <title>ES6学习中</title>
-    <url>/2019/11/26/ES6%E5%AD%A6%E4%B9%A0%E4%B8%AD/</url>
+    <url>/2019/11/26/es6study/</url>
     <content><![CDATA[<blockquote>
 <p>ES6的常见语法</p>
 </blockquote>
@@ -209,7 +209,7 @@
   </entry>
   <entry>
     <title>jQuery简单学习</title>
-    <url>/2019/11/26/jQuery%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/</url>
+    <url>/2019/11/26/jqstudy/</url>
     <content><![CDATA[<h2 id="一-jQuery的基本使用"><a href="#一-jQuery的基本使用" class="headerlink" title="一.jQuery的基本使用"></a>一.jQuery的基本使用</h2><ul>
 <li>1.0  2.0  3.0   分别支持ie8  部分支持ie8  全部不支持ie8  开发的时候最常用的是1.几版本</li>
 <li>分为开发版本和压缩版本  带有min的是压缩版本，一般情况下使用的是开发版本</li>
@@ -437,7 +437,7 @@ $.fn.extend({
   </entry>
   <entry>
     <title>npm简单使用</title>
-    <url>/2019/11/25/npm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+    <url>/2019/11/25/npmstudy/</url>
     <content><![CDATA[<blockquote>
 <p>简单概括npm常用命令</p>
 </blockquote>
@@ -541,7 +541,7 @@ $.fn.extend({
   </entry>
   <entry>
     <title>博客园样式</title>
-    <url>/2019/11/24/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E6%A0%B7%E5%BC%8F/</url>
+    <url>/2019/11/24/bkyys/</url>
     <content><![CDATA[<blockquote>
 <p>测试网址: <a href="https://www.cnblogs.com/sunhang32/" target="_blank" rel="noopener">https://www.cnblogs.com/sunhang32/</a></p>
 <p>实现目标: 学习更多的知识,了解更广的世界</p>
@@ -584,7 +584,7 @@ $.fn.extend({
   </entry>
   <entry>
     <title>第一个接触的前端项目</title>
-    <url>/2019/11/20/%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%8E%A5%E8%A7%A6%E7%9A%84%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/</url>
+    <url>/2019/11/20/dycjcqd/</url>
     <content><![CDATA[<blockquote>
 <p>测试网址: <a href="http://studyit.club" target="_blank" rel="noopener">http://studyit.club</a></p>
 <p>实现目标: 简易版社团,学习资源分享,富文本论坛,空间,美图秀秀等</p>
@@ -637,7 +637,7 @@ $.fn.extend({
   </entry>
   <entry>
     <title>我的第一个React项目</title>
-    <url>/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAReact%E9%A1%B9%E7%9B%AE/</url>
+    <url>/2019/11/18/dygReactxm/</url>
     <content><![CDATA[<blockquote>
 <p>测试网址: <a href="http://shtodream.cn:9093" target="_blank" rel="noopener">http://shtodream.cn:9093</a></p>
 <p>实现目标: 双向聊天</p>
