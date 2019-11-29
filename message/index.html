@@ -408,12 +408,10 @@
       
       
       
-      
         <section id="comments">
-          <div id="valine_container" class="valine_thread">
-            <i class="fas fa-spinner fa-spin fa-fw"></i>
-          </div>
+          <div id="gitalk-container"></div>
         </section>
+      
       
     </section>
   </article>
@@ -1328,37 +1326,24 @@
 
 
 
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-    
-      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
-    
-  
-  <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var notify = 'true' == true;
-  var verify = 'true' == true;
-  var valine = new Valine();
-  valine.init({
-    el: '#valine_container',
-    notify: notify,
-    verify: verify,
-    guest_info: guest_info,
-    
-    appId: "",
-    appKey: "",
-    placeholder: "快来评论吧~",
-    pageSize:'10',
-    avatar:'mp',
-    lang:'zh-cn',
-    highlight:'true'
-  })
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "a6b4214df64f7c36c339",
+      clientSecret: "25b90116d46fbe1c51b4ace954d91b17268b7518",
+      repo: "2662419405.github.io",
+      owner: "2662419405",
+      admin: "2662419405",
+      
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
   </script>
+
+
 
 
 
