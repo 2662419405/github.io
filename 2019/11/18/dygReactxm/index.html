@@ -1646,6 +1646,7 @@ npm run server <span class="comment">//启动  打开浏览器输入localhost:90
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
   <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
   <script type="text/javascript">
     var gitalk = new Gitalk({
       clientID: "a6b4214df64f7c36c339",
@@ -1654,7 +1655,7 @@ npm run server <span class="comment">//启动  打开浏览器输入localhost:90
       owner: "2662419405",
       admin: "2662419405",
       
-        id: location.pathname,      // Ensure uniqueness and length less than 50
+        id: md5(location.pathname),      // Ensure uniqueness and length less than 50
       
       distractionFreeMode: false  // Facebook-like distraction free mode
     });
