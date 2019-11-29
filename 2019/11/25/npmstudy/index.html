@@ -596,7 +596,7 @@
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 学习之旅</a> <a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 前端</a> <a class="tag" href="/tags/jQuery/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> jQuery</a>
+                                  <a class="tag" href="/tags/jQuery/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> jQuery</a> <a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 学习之旅</a> <a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 前端</a>
                               </h6>
                           
                       </span>
@@ -616,7 +616,7 @@
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/jQuery/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> jQuery</a> <a class="tag" href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 博客园</a> <a class="tag" href="/tags/%E6%A0%B7%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 样式自定义</a> <a class="tag" href="/tags/BLOG/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> BLOG</a>
+                                  <a class="tag" href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 博客园</a> <a class="tag" href="/tags/%E6%A0%B7%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 样式自定义</a> <a class="tag" href="/tags/BLOG/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> BLOG</a> <a class="tag" href="/tags/jQuery/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> jQuery</a>
                               </h6>
                           
                       </span>
@@ -643,6 +643,12 @@
           <div id="gitalk-container"></div>
         </section>
       
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
       
     </section>
   </article>
@@ -1280,7 +1286,7 @@
 </header>
 
     <div class="content material">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\18\dygReactxm\" title="我的第一个React项目" rel="bookmark">我的第一个React项目</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\26\es6study\" title="ES6学习中" rel="bookmark">ES6学习中</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\24\bkyys\" title="博客园样式" rel="bookmark">博客园样式</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\20\dycjcqd\" title="第一个接触的前端项目" rel="bookmark">第一个接触的前端项目</a></h3></div></li></ul>
     </div>
   </section>
 
@@ -1608,6 +1614,36 @@
   </script>
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "",
+    appKey: "",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
 
 
 
