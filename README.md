@@ -9,6 +9,8 @@
     <img src="https://img.shields.io/badge/weibo-%40SH-blueviolet"  />
 </p>
 
+<font color=red size=4>本站已经开启github+coding双线部署，实现国内外加速访问</font>
+
 欢迎各位的到来
 
 > 博客园: https://www.cnblogs.com/sunhang32/
