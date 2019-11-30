@@ -1,880 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>加速自己的hexo，使用GitHub+Coding实现国内外网站加速</title>
-    <url>/2019/11/30/github-coding/</url>
-    <content><![CDATA[<blockquote>
-<p>基于Github+Coding实现国内外网站加速，让你的用户访问飞起来</p>
-</blockquote>
-<a id="more"></a>
-
-<blockquote>
-<p>在配置好hexo之后，我们发现访问网站很慢，但又不是我们使用的主题的问题，那么就是网络环境的影响，即使我们使用了CDN加速，但还是没有我们国内的网站访问起来快速，（听说去美国的服务器要经过太平洋下面的区域,那访问起来也算是挺快了啊）,那我们就可以让我们的网站在国内和国外各备份一份,然后国内的用户访问国内的,国外的用户访问国外的网站</p>
-</blockquote>
-<h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><p>进入 <a href="https://coding.net/" target="_blank">Coding 官网</a>点击个人版登陆，没有账号就注册一个并登录，由于 Coding 已经被腾讯收购了，所以登录就会来到腾讯云开发者平台，点击创建项目<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-39-57.png" /><br></fancybox></p>
-<p>项目名称建议和你的用户名一致，这样做的好处是：到时候可以直接通过 <code>user_name.coding.me</code> 访问你的博客，如果项目名与用户名不一致，则需要通过 <code>user_name.coding.me/project_name</code> 才能访问，项目描述可以随便写<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-42-25.png" /><br></fancybox></p>
-<h2 id="2-配置公匙"><a href="#2-配置公匙" class="headerlink" title="2. 配置公匙"></a>2. 配置公匙</h2><p>配置 SSH 公钥方法与 GitHub Pages 的方式差不多，点击你的头像，依次选择【个人设置】-【SSH公钥】-【新增公钥】<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-44-44.png" /><br></fancybox></p>
-<p>PS：公钥储存位置一般在 C:\Users\用户名.ssh 目录下的 id_rsa.pub 文件里，用记事本打开复制其内容即可</p>
-<h2 id="3-配置-config-yml"><a href="#3-配置-config-yml" class="headerlink" title="3.配置 _config.yml"></a>3.配置 _config.yml</h2><p>进入你的项目，在右下角有选择连接方式，选择 SSH 方式（HTTPS 方式也可以，但是这种方式有时候可能连接不上，SSH 连接不容易出问题），一键复制，然后打开你本地博客根目录的 <code>_config.yml</code> 文件，找到 <code>deploy</code> 关键字，添加 coding 地址：coding: <code>git@git.dev.tencent.com:user_name/user_name.git</code>，也就是刚刚复制的 SSH 地址<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-46-33.png" /><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-47-51.png" /><br></fancybox></p>
-<p>添加完成后先执行命令 <code>hexo clean</code> 清理一下缓存，然后执行命令 <code>hexo g -d</code> 将博客双线部署到 Coding Pages 和 GitHub Pages，如下图所示表示部署成功：</p>
-<h2 id="4-开启-Coding-Pages"><a href="#4-开启-Coding-Pages" class="headerlink" title="4.开启 Coding Pages"></a>4.开启 Coding Pages</h2><p>进入你的项目，在代码栏下选择 Pages 服务，一键开启 Coding Pages，等待几秒后刷新网页即可看到已经开启的 Coding Pages，<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-49-56.png" /><br></fancybox></p>
-<h2 id="5-绑定域名并开启-HPPTS"><a href="#5-绑定域名并开启-HPPTS" class="headerlink" title="5.绑定域名并开启 HPPTS"></a>5.绑定域名并开启 HPPTS</h2><p>首先在你的域名 DNS 设置中添加一条 CNAME 记录指向 Coding给的地址，解析路线选择默认，将 GitHub 的解析路线改为境外，这样境外访问就会走 GitHub，境内就会走 Coding，也有人说阿里云是智能解析，自动分配路线，如果解析路线都是默认，境外访问同样会智能选择走 GitHub，境内走 Coding，我没有验证过，有兴趣的可以自己试试，我的解析如下图所示：<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-52-33.png" /><br></fancybox></p>
-<p>然后点击静态 Pages 应用右上角的设置，进入设置页面，这里要注意，如果你之前已经部署到了 GitHub Pages 并开启了 HTTPS，那么直接在设置页面绑定你自己的域名，SSL/TLS 安全证书就会显示申请错误，如下图所示，没有申请到 SSL 证书，当你访问你的网站时，浏览器就会提示不是安全连接</p>
-<p>申请错误原因是：在验证域名所有权时会定位到 Github Pages 的主机上导致 SSL 证书申请失败</p>
-<p>正确的做法是：<font color=red>先去域名 DNS 把 GitHub 的解析暂停掉，然后再重新申请 SSL 证书</font>，大约十秒左右就能申请成功，然后开启强制 HTTPS 访问<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-58-18.png" /><br></fancybox></p>
-<p><a href="https://www.itrhx.com/2019/09/16/A47-hexo-deployed-to-github-and-coding/" target="_blank" rel="noopener">参考</a></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>加速自己的hexo，使用GitHub+Coding实现国内外网站加速</title>
+      <link href="/2019/11/30/github-coding/"/>
+      <url>/2019/11/30/github-coding/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>基于Github+Coding实现国内外网站加速，让你的用户访问飞起来</p></blockquote><a id="more"></a><blockquote><p>在配置好hexo之后，我们发现访问网站很慢，但又不是我们使用的主题的问题，那么就是网络环境的影响，即使我们使用了CDN加速，但还是没有我们国内的网站访问起来快速，（听说去美国的服务器要经过太平洋下面的区域,那访问起来也算是挺快了啊）,那我们就可以让我们的网站在国内和国外各备份一份,然后国内的用户访问国内的,国外的用户访问国外的网站</p></blockquote><h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h2><p>进入 <a href="https://coding.net/" target="_blank">Coding 官网</a>点击个人版登陆，没有账号就注册一个并登录，由于 Coding 已经被腾讯收购了，所以登录就会来到腾讯云开发者平台，点击创建项目<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-39-57.png" /><br></fancybox></p><p>项目名称建议和你的用户名一致，这样做的好处是：到时候可以直接通过 <code>user_name.coding.me</code> 访问你的博客，如果项目名与用户名不一致，则需要通过 <code>user_name.coding.me/project_name</code> 才能访问，项目描述可以随便写<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-42-25.png" /><br></fancybox></p><h2 id="2-配置公匙"><a href="#2-配置公匙" class="headerlink" title="2. 配置公匙"></a>2. 配置公匙</h2><p>配置 SSH 公钥方法与 GitHub Pages 的方式差不多，点击你的头像，依次选择【个人设置】-【SSH公钥】-【新增公钥】<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-44-44.png" /><br></fancybox></p><p>PS：公钥储存位置一般在 C:\Users\用户名.ssh 目录下的 id_rsa.pub 文件里，用记事本打开复制其内容即可</p><h2 id="3-配置-config-yml"><a href="#3-配置-config-yml" class="headerlink" title="3.配置 _config.yml"></a>3.配置 _config.yml</h2><p>进入你的项目，在右下角有选择连接方式，选择 SSH 方式（HTTPS 方式也可以，但是这种方式有时候可能连接不上，SSH 连接不容易出问题），一键复制，然后打开你本地博客根目录的 <code>_config.yml</code> 文件，找到 <code>deploy</code> 关键字，添加 coding 地址：coding: <code>git@git.dev.tencent.com:user_name/user_name.git</code>，也就是刚刚复制的 SSH 地址<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-46-33.png" /><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-47-51.png" /><br></fancybox></p><p>添加完成后先执行命令 <code>hexo clean</code> 清理一下缓存，然后执行命令 <code>hexo g -d</code> 将博客双线部署到 Coding Pages 和 GitHub Pages，如下图所示表示部署成功：</p><h2 id="4-开启-Coding-Pages"><a href="#4-开启-Coding-Pages" class="headerlink" title="4.开启 Coding Pages"></a>4.开启 Coding Pages</h2><p>进入你的项目，在代码栏下选择 Pages 服务，一键开启 Coding Pages，等待几秒后刷新网页即可看到已经开启的 Coding Pages，<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-49-56.png" /><br></fancybox></p><h2 id="5-绑定域名并开启-HPPTS"><a href="#5-绑定域名并开启-HPPTS" class="headerlink" title="5.绑定域名并开启 HPPTS"></a>5.绑定域名并开启 HPPTS</h2><p>首先在你的域名 DNS 设置中添加一条 CNAME 记录指向 Coding给的地址，解析路线选择默认，将 GitHub 的解析路线改为境外，这样境外访问就会走 GitHub，境内就会走 Coding，也有人说阿里云是智能解析，自动分配路线，如果解析路线都是默认，境外访问同样会智能选择走 GitHub，境内走 Coding，我没有验证过，有兴趣的可以自己试试，我的解析如下图所示：<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-52-33.png" /><br></fancybox></p><p>然后点击静态 Pages 应用右上角的设置，进入设置页面，这里要注意，如果你之前已经部署到了 GitHub Pages 并开启了 HTTPS，那么直接在设置页面绑定你自己的域名，SSL/TLS 安全证书就会显示申请错误，如下图所示，没有申请到 SSL 证书，当你访问你的网站时，浏览器就会提示不是安全连接</p><p>申请错误原因是：在验证域名所有权时会定位到 Github Pages 的主机上导致 SSL 证书申请失败</p><p>正确的做法是：<font color=red>先去域名 DNS 把 GitHub 的解析暂停掉，然后再重新申请 SSL 证书</font>，大约十秒左右就能申请成功，然后开启强制 HTTPS 访问<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-30_13-58-18.png" /><br></fancybox></p><p><a href="https://www.itrhx.com/2019/09/16/A47-hexo-deployed-to-github-and-coding/" target="_blank" rel="noopener">参考</a></p>]]></content>
+      
+      
       <categories>
-        <category>Hexo</category>
+          
+          <category> Hexo </category>
+          
       </categories>
-      <tags>
-        <tag>BLOG</tag>
-        <tag>学习之旅</tag>
-        <tag>Hexo</tag>
-        <tag>Github</tag>
-        <tag>Coding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>史上最详细配置HTTPS</title>
-    <url>/2019/11/27/sszxxpz/</url>
-    <content><![CDATA[<blockquote>
-<p>给自己的博客(或者自己的服务器)配置一个免费的ssl证书,通过https访问</p>
-<p>参考文档: <a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">https://support.huaweicloud.com/scm_faq/scm_01_0023.html</a></p>
-<p>当然还是有很多的坑</p>
-<p>让自己的服务器也加上锁吧!</p>
-</blockquote>
-<a id="more"></a>
-
-<blockquote>
-<p>HTTP（超文本传输协议），是一个基于请求与响应，无状态的，应用层的协议，常基于TCP/IP协议传输数据，互联网上应用最为广泛的一种网络协议，所有的WWW文件都必须遵守这个标准。设计HTTP的初衷是为了提供一种发布和接收HTML页面的方法。</p>
-</blockquote>
-<blockquote>
-<p>HTTPS（超文本传输安全协议），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。</p>
-</blockquote>
-<h3 id="预览三种网站的效果"><a href="#预览三种网站的效果" class="headerlink" title="预览三种网站的效果"></a>预览三种网站的效果</h3><ul>
-<li><p>普通的http网站 <fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-41-53.png" /></fancybox></p>
-</li>
-<li><p>https的网站 <fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-43-02.png"></fancybox></p>
-</li>
-<li><p>https+ssl证书的网站(也就是本网站) <fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-43-45.png"></fancybox></p>
-</li>
-</ul>
-<h3 id="获得SSL证书"><a href="#获得SSL证书" class="headerlink" title="获得SSL证书"></a>获得SSL证书</h3><ul>
-<li><p>我选择的华为云的ssl证书</p>
-</li>
-<li><p>证书一般是收费的,当然现在有很多网站推出了白嫖的ssl证书,虽然没有正常的ssl证书那样有很多安全,但是可以证明网站备案等</p>
-</li>
-<li><p>在华为云头部搜索”免费证书”</p>
-</li>
-<li><p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-47-52.png" /></fancybox></p>
-</li>
-<li><p>这里我们直接购买ssl证书,价格为0,购买之后,我们会收到一个qq邮箱提醒</p>
-</li>
-<li><p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-51-18.png"></fancybox></p>
-</li>
-<li><p>我们点击下方的链接,用邮箱给我们的账号密码选择登录</p>
-</li>
-<li><p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-52-43.png"></fancybox></p>
-</li>
-<li><p>如果是第一次访问,需要写一下东西,配置完之后如上图</p>
-</li>
-<li><p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-54-16.png"></fancybox></p>
-</li>
-<li><p>我们下载之后,按照<a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">这个文档进行配置</p>
-</li>
-</ul>
-<h3 id="如果你没有遇到问题-那么你很强-就不需要继续往下看了"><a href="#如果你没有遇到问题-那么你很强-就不需要继续往下看了" class="headerlink" title="如果你没有遇到问题,那么你很强,就不需要继续往下看了"></a>如果你没有遇到问题,那么你很强,就不需要继续往下看了</h3><h3 id="开始踩坑"><a href="#开始踩坑" class="headerlink" title="开始踩坑"></a>开始踩坑</h3><blockquote>
-<p>第一个遇到的坑就是 <code>./Nginx -s reload</code> 重启Nginx的时候,会出现一个ssl模板没有找到的错误</p>
-<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line"># 进入到/usr/local/nginx-1.14.2（注：是nginx的源码包的目录），执行以下命令</span><br><span class="line">./configure --<span class="keyword">with</span>-http_ssl_module</span><br><span class="line"> </span><br><span class="line"># 注意这里只能用make 而不要用make install，因为执行make install是覆盖安装的意思</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">先备份旧的nginx</span><br><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx_bak</span><br><span class="line"></span><br><span class="line">复制新生成的文件到安装路径：</span><br><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line">./nginx -s reload  #进行重启</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>继续采坑中配置完之后发现,有了ssl证书,但是没有那个绿色的小锁头,很奇怪了</p>
-<p>主要是由于页面使用了非<code>https</code>协议的文件,比如说<code>&lt;img src=&quot;http:xxxx&quot; /&gt;</code>,就会产生这个原因,那么我们把页面的<code>http</code>全部改写为<code>https</code>就发现我们的网站恢复了</p>
-</blockquote>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> BLOG </tag>
+            
+            <tag> 学习之旅 </tag>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Github </tag>
+            
+            <tag> Coding </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>史上最详细配置HTTPS</title>
+      <link href="/2019/11/27/sszxxpz/"/>
+      <url>/2019/11/27/sszxxpz/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>给自己的博客(或者自己的服务器)配置一个免费的ssl证书,通过https访问</p><p>参考文档: <a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">https://support.huaweicloud.com/scm_faq/scm_01_0023.html</a></p><p>当然还是有很多的坑</p><p>让自己的服务器也加上锁吧!</p></blockquote><a id="more"></a><blockquote><p>HTTP（超文本传输协议），是一个基于请求与响应，无状态的，应用层的协议，常基于TCP/IP协议传输数据，互联网上应用最为广泛的一种网络协议，所有的WWW文件都必须遵守这个标准。设计HTTP的初衷是为了提供一种发布和接收HTML页面的方法。</p></blockquote><blockquote><p>HTTPS（超文本传输安全协议），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。</p></blockquote><h3 id="预览三种网站的效果"><a href="#预览三种网站的效果" class="headerlink" title="预览三种网站的效果"></a>预览三种网站的效果</h3><ul><li><p>普通的http网站 <fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-41-53.png" /></fancybox></p></li><li><p>https的网站 <fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-43-02.png"></fancybox></p></li><li><p>https+ssl证书的网站(也就是本网站) <fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-43-45.png"></fancybox></p></li></ul><h3 id="获得SSL证书"><a href="#获得SSL证书" class="headerlink" title="获得SSL证书"></a>获得SSL证书</h3><ul><li><p>我选择的华为云的ssl证书</p></li><li><p>证书一般是收费的,当然现在有很多网站推出了白嫖的ssl证书,虽然没有正常的ssl证书那样有很多安全,但是可以证明网站备案等</p></li><li><p>在华为云头部搜索”免费证书”</p></li><li><p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-47-52.png" /></fancybox></p></li><li><p>这里我们直接购买ssl证书,价格为0,购买之后,我们会收到一个qq邮箱提醒</p></li><li><p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-51-18.png"></fancybox></p></li><li><p>我们点击下方的链接,用邮箱给我们的账号密码选择登录</p></li><li><p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-52-43.png"></fancybox></p></li><li><p>如果是第一次访问,需要写一下东西,配置完之后如上图</p></li><li><p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/img/Snipaste_2019-11-27_21-54-16.png"></fancybox></p></li><li><p>我们下载之后,按照<a href="https://support.huaweicloud.com/scm_faq/scm_01_0023.html" target="_blank" rel="noopener">这个文档进行配置</p></li></ul><h3 id="如果你没有遇到问题-那么你很强-就不需要继续往下看了"><a href="#如果你没有遇到问题-那么你很强-就不需要继续往下看了" class="headerlink" title="如果你没有遇到问题,那么你很强,就不需要继续往下看了"></a>如果你没有遇到问题,那么你很强,就不需要继续往下看了</h3><h3 id="开始踩坑"><a href="#开始踩坑" class="headerlink" title="开始踩坑"></a>开始踩坑</h3><blockquote><p>第一个遇到的坑就是 <code>./Nginx -s reload</code> 重启Nginx的时候,会出现一个ssl模板没有找到的错误</p><h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 进入到/usr/local/nginx-1.14.2（注：是nginx的源码包的目录），执行以下命令</span><br><span class="line">./configure --<span class="keyword">with</span>-http_ssl_module</span><br><span class="line"> </span><br><span class="line"># 注意这里只能用make 而不要用make install，因为执行make install是覆盖安装的意思</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">先备份旧的nginx</span><br><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx_bak</span><br><span class="line"></span><br><span class="line">复制新生成的文件到安装路径：</span><br><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line">./nginx -s reload  #进行重启</span><br></pre></td></tr></table></figure></blockquote><blockquote><p>继续采坑中配置完之后发现,有了ssl证书,但是没有那个绿色的小锁头,很奇怪了</p><p>主要是由于页面使用了非<code>https</code>协议的文件,比如说<code>&lt;img src=&quot;http:xxxx&quot; /&gt;</code>,就会产生这个原因,那么我们把页面的<code>http</code>全部改写为<code>https</code>就发现我们的网站恢复了</p></blockquote>]]></content>
+      
+      
       <categories>
-        <category>网络安全</category>
+          
+          <category> 网络安全 </category>
+          
       </categories>
-      <tags>
-        <tag>HTTPS</tag>
-        <tag>SSL</tag>
-        <tag>网络安全</tag>
-        <tag>CDN</tag>
-        <tag>服务器</tag>
-        <tag>域名</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ES6学习中</title>
-    <url>/2019/11/26/es6study/</url>
-    <content><![CDATA[<blockquote>
-<p>ES6的常见语法</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="ES6-常用的、重点的"><a href="#ES6-常用的、重点的" class="headerlink" title="ES6(常用的、重点的)"></a>ES6(常用的、重点的)</h1><h2 id="数组API、正则API、字符串API都不讲"><a href="#数组API、正则API、字符串API都不讲" class="headerlink" title="数组API、正则API、字符串API都不讲"></a>数组API、正则API、字符串API都不讲</h2><h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><ul>
-<li>模板字符串的基本用法<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="string">`abc`</span></span><br></pre></td></tr></table></figure></li>
-<li>模板字符串的优势：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123; <span class="attr">name</span>:<span class="string">""</span>,<span class="attr">age</span>:<span class="number">5</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> s1 =<span class="string">"我叫："</span>+obj.name+<span class="string">"，今年："</span>+obj.age+<span class="string">"岁。"</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h2><ul>
-<li><p>对象的解构赋值</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">name</span>:<span class="string">"张三"</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123;name,age&#125;=obj; </span><br><span class="line"><span class="comment">//生成2个变量，</span></span><br><span class="line"><span class="comment">//  name值来自于obj.name、</span></span><br><span class="line"><span class="comment">//  age值来自于obj.age</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123;<span class="attr">name</span>:title&#125;=obj;</span><br><span class="line"><span class="comment">//生成一个变量：title，值来自于obj.name</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>函数参数的解构赋值</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.age);</span><br><span class="line">    <span class="built_in">console</span>.log(obj.height)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">&#123; age,height &#125;</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">    <span class="built_in">console</span>.log(height)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f1(&#123;<span class="attr">age</span>:<span class="number">5</span>,<span class="attr">height</span>:<span class="number">180</span>&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>补充：属性的简写</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span> ; </span><br><span class="line"><span class="keyword">var</span> c = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> b = &#123; a,c &#125; ;   </span><br><span class="line"><span class="comment">//b对象有一个a属性，a属性的值，来自于a变量  ，</span></span><br><span class="line"><span class="comment">//还有一个c属性，c属性的值来自于c变量</span></span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><h3 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h3><ul>
-<li><p>使用背景：es6的</p>
-</li>
-<li><p>优点：arguments是伪数组，而rest参数是真数组</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">...args</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(args);  <span class="comment">//数组：[1,2,3,4,5]</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3></li>
-<li><p>场景：用于替换匿名函数</p>
-</li>
-<li><p>基本用法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//匿名函数</span></span><br><span class="line">div.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"你好"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//箭头函数</span></span><br><span class="line">div.onclick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"你好"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>有一个参数的箭头函数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fn=<span class="function">(<span class="params">a</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="keyword">var</span> fn=<span class="function"><span class="params">a</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>有2个及更多参数的箭头函数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> f=<span class="function">(<span class="params">a,b,c</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>箭头函数和普通匿名函数有哪些不同？</p>
-<ul>
-<li>函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</li>
-<li>不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</li>
-<li>不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</li>
-<li>（不常用）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 <ul>
-<li>generator函数现在经常用async替代</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="对象的扩展"><a href="#对象的扩展" class="headerlink" title="对象的扩展"></a>对象的扩展</h2><ul>
-<li>Object.assign：实现拷贝继承</li>
-<li>对象扩展运算符<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1=&#123; <span class="attr">age</span>:<span class="number">5</span>,<span class="attr">gender</span>:<span class="string">"男"</span> &#125;</span><br><span class="line"><span class="keyword">var</span> obj2=&#123; ...obj1 &#125;</span><br><span class="line"><span class="keyword">var</span> obj3=&#123; ...obj1 , <span class="attr">age</span>:<span class="number">10</span> &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h3 id="为什么要有promise：解决（回调地狱）的问题"><a href="#为什么要有promise：解决（回调地狱）的问题" class="headerlink" title="为什么要有promise：解决（回调地狱）的问题"></a>为什么要有promise：解决（回调地狱）的问题</h3><h3 id="回调地狱："><a href="#回调地狱：" class="headerlink" title="回调地狱："></a>回调地狱：</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//跟以前的if条件地狱很像</span></span><br><span class="line"><span class="comment">// if()&#123;</span></span><br><span class="line"><span class="comment">//     if()&#123;</span></span><br><span class="line"><span class="comment">//         if()&#123;</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">$.<span class="keyword">get</span>("/getUser",function(res)&#123;</span><br><span class="line">    $.<span class="keyword">get</span>("/getUserDetail",function()&#123;</span><br><span class="line">        $.<span class="keyword">get</span>("/getCart",function()&#123;</span><br><span class="line">            $.<span class="keyword">get</span>("/getBooks",function()&#123;</span><br><span class="line">                <span class="comment">//...</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//node开发：读取文件；开个服务器、接收一个请求、请求路径、访问数据库</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Promise函数基本用法"><a href="#Promise函数基本用法" class="headerlink" title="Promise函数基本用法"></a>Promise函数基本用法</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> promise=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//b 把需要执行的异步操作放在这里</span></span><br><span class="line">    $.<span class="keyword">get</span>("/getUser",res=&gt;&#123;</span><br><span class="line">        <span class="comment">//获取数据的异步操作已经执行完毕了，等待下一步的执行，通过执行resolve函数，告诉外界你可以执行下一步操作了</span></span><br><span class="line">        <span class="comment">//c、</span></span><br><span class="line">        resolve(res)</span><br><span class="line">        <span class="comment">//而执行的下一步操作，其实就是写在then的回调函数中的</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//a、</span></span><br><span class="line">promise.then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//d、执行后续的操作</span></span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Promise函数实现多层回调"><a href="#Promise函数实现多层回调" class="headerlink" title="Promise函数实现多层回调"></a>Promise函数实现多层回调</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    $.<span class="keyword">get</span>("/getUser",res=&gt;&#123;</span><br><span class="line">        resolve(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//用户基本信息</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">        $.<span class="keyword">get</span>("/getUserDetail",res=&gt;&#123;</span><br><span class="line">            resolve(res)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//用户详情</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">        $.<span class="keyword">get</span>("/getCart",res=&gt;&#123;</span><br><span class="line">            resolve(res)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//购物车信息</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Promise函数错误处理"><a href="#Promise函数错误处理" class="headerlink" title="Promise函数错误处理"></a>Promise函数错误处理</h3><ul>
-<li><p>第一种方式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:<span class="string">"/getUser"</span>,</span><br><span class="line">        type:<span class="string">"GET"</span>,</span><br><span class="line">        success:<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            resolve(res);</span><br><span class="line">        &#125;,</span><br><span class="line">        error:<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            reject(res)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">resSuccess</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//成功的返回值</span></span><br><span class="line">&#125;,resError=&gt;&#123;</span><br><span class="line">    <span class="comment">//失败的返回值</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第二种方式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:<span class="string">"/getUser"</span>,</span><br><span class="line">        type:<span class="string">"GET"</span>,</span><br><span class="line">        success:<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            resolve(res);</span><br><span class="line">        &#125;,</span><br><span class="line">        error:<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            reject(res)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">resSuccess</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//成功的返回值</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">resError</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//失败的返回值</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><ul>
-<li><p>async其实是一个promise的语法糖</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'开始执行'</span>);</span><br><span class="line">    <span class="keyword">var</span> res = <span class="keyword">await</span> timer()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'执行结束：'</span>,res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            resolve(<span class="string">"你好"</span>);</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">get</span>();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>await可以执行异步操作，但是await必须在async函数内执行</p>
-</li>
-<li><p>await操作可以有返回值，这个返回值表示promise操作成功的返回值</p>
-</li>
-<li><p>如果await里面执行的异步操作发生了reject，或者发生了错误，那么只能使用try…catch语法来进行错误处理</p>
-</li>
-</ul>
-<h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><h3 id="定义一个类"><a href="#定义一个类" class="headerlink" title="定义一个类"></a>定义一个类</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//相当于：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加实例方法"><a href="#添加实例方法" class="headerlink" title="添加实例方法"></a>添加实例方法</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name,age) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//定义方法</span></span><br><span class="line">    say() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"大家好，我叫："</span>+<span class="keyword">this</span>.name+<span class="string">"，今年："</span>+<span class="keyword">this</span>.age+<span class="string">"岁"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    travel()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"坐着飞机去巴厘岛"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加静态方法"><a href="#添加静态方法" class="headerlink" title="添加静态方法"></a>添加静态方法</h3><ul>
-<li>静态成员：静态属性、静态方法</li>
-<li>静态属性：通过类本身来访问：Person.maxAge</li>
-<li>静态方法：通过类本身来访问的一个方法：Person.born();<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这就是一个静态方法了</span></span><br><span class="line">    <span class="keyword">static</span> born()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"小呆萌出生了"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//访问静态方法</span></span><br><span class="line">Animal.born();</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Student类继承自Person类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">//构造方法</span></span><br><span class="line">    <span class="keyword">constructor</span>(name,grade)&#123;</span><br><span class="line">        <span class="comment">//规定：必须调用父类构造方法，如果不调用就会报错</span></span><br><span class="line">        <span class="keyword">super</span>(name);    </span><br><span class="line">        <span class="comment">//调用父类构造方法，从而给子类的实例添加了name属性</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.grade=grade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">value,index</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>].map(<span class="function">(<span class="params">value,index</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//以前变量和字符串拼接，现在用模板字符串</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="es6的新语法"><a href="#es6的新语法" class="headerlink" title="es6的新语法"></a>es6的新语法</h2><ul>
-<li>个人建议：不要去试想着一下子全部把之前的代码习惯变成es6的方式<ul>
-<li>而是今年学会了模板字符串，把今天项目用到的所有字符串拼接都换成模板字符串</li>
-<li>过了几天学会了箭头函数，把当天项目里面的所有用到的匿名函数都换成箭头函数</li>
-</ul>
-</li>
-</ul>
-<h2 id="预习作业：通过MDN学习Object-defineProperty-的用法"><a href="#预习作业：通过MDN学习Object-defineProperty-的用法" class="headerlink" title="预习作业：通过MDN学习Object.defineProperty()的用法"></a>预习作业：通过MDN学习Object.defineProperty()的用法</h2><h2 id="module-–-gt-放到后面的模块化课程中讲解"><a href="#module-–-gt-放到后面的模块化课程中讲解" class="headerlink" title="module –&gt;放到后面的模块化课程中讲解"></a>module –&gt;放到后面的模块化课程中讲解</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><ul>
-<li><p>导出模块：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//common.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; <span class="attr">name</span>:<span class="string">"abc"</span> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>导入模块：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="keyword">import</span> common <span class="keyword">from</span> <span class="string">"common.js"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( common.name ) <span class="comment">//"abc"</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="模块有多个导出"><a href="#模块有多个导出" class="headerlink" title="模块有多个导出"></a>模块有多个导出</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//person.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> jim = &#123; <span class="attr">country</span> :<span class="string">"France"</span> &#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> tony = &#123; <span class="attr">color</span>:<span class="string">"gray"</span> &#125;</span><br><span class="line"><span class="comment">//默认的导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; <span class="attr">name</span>:<span class="string">"abc"</span> &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">import</span> person , &#123; jim , tony &#125; <span class="keyword">from</span> <span class="string">"person.js"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//person：&#123; name:"abc" &#125;</span></span><br><span class="line"><span class="comment">//jim：&#123; country :"France" &#125;</span></span><br><span class="line"><span class="comment">//tony：&#123; color:"gray" &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="模块导入导出取别名"><a href="#模块导入导出取别名" class="headerlink" title="模块导入导出取别名"></a>模块导入导出取别名</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//person.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> tony = &#123; <span class="attr">color</span>:<span class="string">"gray"</span> &#125;</span><br><span class="line"><span class="keyword">export</span> &#123; tony <span class="keyword">as</span> Tony &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; Tony &#125; <span class="keyword">from</span> <span class="string">"person.js"</span></span><br><span class="line"><span class="keyword">import</span> &#123; Tony <span class="keyword">as</span> man&#125; <span class="keyword">from</span> <span class="string">"person.js"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(man)    <span class="comment">//&#123; color:"gray" &#125;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-</blockquote>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> HTTPS </tag>
+            
+            <tag> SSL </tag>
+            
+            <tag> 网络安全 </tag>
+            
+            <tag> CDN </tag>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> 域名 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ES6学习中</title>
+      <link href="/2019/11/26/es6study/"/>
+      <url>/2019/11/26/es6study/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>ES6的常见语法</p></blockquote><a id="more"></a><h1 id="ES6-常用的、重点的"><a href="#ES6-常用的、重点的" class="headerlink" title="ES6(常用的、重点的)"></a>ES6(常用的、重点的)</h1><h2 id="数组API、正则API、字符串API都不讲"><a href="#数组API、正则API、字符串API都不讲" class="headerlink" title="数组API、正则API、字符串API都不讲"></a>数组API、正则API、字符串API都不讲</h2><h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><ul><li>模板字符串的基本用法<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="string">`abc`</span></span><br></pre></td></tr></table></figure></li><li>模板字符串的优势：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123; <span class="attr">name</span>:<span class="string">""</span>,<span class="attr">age</span>:<span class="number">5</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> s1 =<span class="string">"我叫："</span>+obj.name+<span class="string">"，今年："</span>+obj.age+<span class="string">"岁。"</span></span><br></pre></td></tr></table></figure></li></ul><h2 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h2><ul><li><p>对象的解构赋值</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;<span class="attr">name</span>:<span class="string">"张三"</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123;name,age&#125;=obj; </span><br><span class="line"><span class="comment">//生成2个变量，</span></span><br><span class="line"><span class="comment">//  name值来自于obj.name、</span></span><br><span class="line"><span class="comment">//  age值来自于obj.age</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> &#123;<span class="attr">name</span>:title&#125;=obj;</span><br><span class="line"><span class="comment">//生成一个变量：title，值来自于obj.name</span></span><br></pre></td></tr></table></figure></li><li><p>函数参数的解构赋值</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.age);</span><br><span class="line">    <span class="built_in">console</span>.log(obj.height)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">&#123; age,height &#125;</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">    <span class="built_in">console</span>.log(height)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f1(&#123;<span class="attr">age</span>:<span class="number">5</span>,<span class="attr">height</span>:<span class="number">180</span>&#125;)</span><br></pre></td></tr></table></figure></li><li><p>补充：属性的简写</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">3</span> ; </span><br><span class="line"><span class="keyword">var</span> c = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> b = &#123; a,c &#125; ;   </span><br><span class="line"><span class="comment">//b对象有一个a属性，a属性的值，来自于a变量  ，</span></span><br><span class="line"><span class="comment">//还有一个c属性，c属性的值来自于c变量</span></span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br></pre></td></tr></table></figure></li></ul><h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><h3 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h3><ul><li><p>使用背景：es6的</p></li><li><p>优点：arguments是伪数组，而rest参数是真数组</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">...args</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(args);  <span class="comment">//数组：[1,2,3,4,5]</span></span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br></pre></td></tr></table></figure><h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3></li><li><p>场景：用于替换匿名函数</p></li><li><p>基本用法：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匿名函数</span></span><br><span class="line">div.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"你好"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//箭头函数</span></span><br><span class="line">div.onclick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"你好"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>有一个参数的箭头函数</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn=<span class="function">(<span class="params">a</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="keyword">var</span> fn=<span class="function"><span class="params">a</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>有2个及更多参数的箭头函数</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f=<span class="function">(<span class="params">a,b,c</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>箭头函数和普通匿名函数有哪些不同？</p><ul><li>函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</li><li>不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</li><li>不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</li><li>（不常用）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。 <ul><li>generator函数现在经常用async替代</li></ul></li></ul></li></ul><h2 id="对象的扩展"><a href="#对象的扩展" class="headerlink" title="对象的扩展"></a>对象的扩展</h2><ul><li>Object.assign：实现拷贝继承</li><li>对象扩展运算符<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1=&#123; <span class="attr">age</span>:<span class="number">5</span>,<span class="attr">gender</span>:<span class="string">"男"</span> &#125;</span><br><span class="line"><span class="keyword">var</span> obj2=&#123; ...obj1 &#125;</span><br><span class="line"><span class="keyword">var</span> obj3=&#123; ...obj1 , <span class="attr">age</span>:<span class="number">10</span> &#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h3 id="为什么要有promise：解决（回调地狱）的问题"><a href="#为什么要有promise：解决（回调地狱）的问题" class="headerlink" title="为什么要有promise：解决（回调地狱）的问题"></a>为什么要有promise：解决（回调地狱）的问题</h3><h3 id="回调地狱："><a href="#回调地狱：" class="headerlink" title="回调地狱："></a>回调地狱：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跟以前的if条件地狱很像</span></span><br><span class="line"><span class="comment">// if()&#123;</span></span><br><span class="line"><span class="comment">//     if()&#123;</span></span><br><span class="line"><span class="comment">//         if()&#123;</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">$.<span class="keyword">get</span>("/getUser",function(res)&#123;</span><br><span class="line">    $.<span class="keyword">get</span>("/getUserDetail",function()&#123;</span><br><span class="line">        $.<span class="keyword">get</span>("/getCart",function()&#123;</span><br><span class="line">            $.<span class="keyword">get</span>("/getBooks",function()&#123;</span><br><span class="line">                <span class="comment">//...</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//node开发：读取文件；开个服务器、接收一个请求、请求路径、访问数据库</span></span><br></pre></td></tr></table></figure><h3 id="Promise函数基本用法"><a href="#Promise函数基本用法" class="headerlink" title="Promise函数基本用法"></a>Promise函数基本用法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//b 把需要执行的异步操作放在这里</span></span><br><span class="line">    $.<span class="keyword">get</span>("/getUser",res=&gt;&#123;</span><br><span class="line">        <span class="comment">//获取数据的异步操作已经执行完毕了，等待下一步的执行，通过执行resolve函数，告诉外界你可以执行下一步操作了</span></span><br><span class="line">        <span class="comment">//c、</span></span><br><span class="line">        resolve(res)</span><br><span class="line">        <span class="comment">//而执行的下一步操作，其实就是写在then的回调函数中的</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//a、</span></span><br><span class="line">promise.then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//d、执行后续的操作</span></span><br><span class="line">    <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="Promise函数实现多层回调"><a href="#Promise函数实现多层回调" class="headerlink" title="Promise函数实现多层回调"></a>Promise函数实现多层回调</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    $.<span class="keyword">get</span>("/getUser",res=&gt;&#123;</span><br><span class="line">        resolve(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//用户基本信息</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">        $.<span class="keyword">get</span>("/getUserDetail",res=&gt;&#123;</span><br><span class="line">            resolve(res)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//用户详情</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span>=&gt;</span>&#123;</span><br><span class="line">        $.<span class="keyword">get</span>("/getCart",res=&gt;&#123;</span><br><span class="line">            resolve(res)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//购物车信息</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="Promise函数错误处理"><a href="#Promise函数错误处理" class="headerlink" title="Promise函数错误处理"></a>Promise函数错误处理</h3><ul><li><p>第一种方式</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:<span class="string">"/getUser"</span>,</span><br><span class="line">        type:<span class="string">"GET"</span>,</span><br><span class="line">        success:<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            resolve(res);</span><br><span class="line">        &#125;,</span><br><span class="line">        error:<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            reject(res)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">resSuccess</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//成功的返回值</span></span><br><span class="line">&#125;,resError=&gt;&#123;</span><br><span class="line">    <span class="comment">//失败的返回值</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li><li><p>第二种方式</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:<span class="string">"/getUser"</span>,</span><br><span class="line">        type:<span class="string">"GET"</span>,</span><br><span class="line">        success:<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            resolve(res);</span><br><span class="line">        &#125;,</span><br><span class="line">        error:<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            reject(res)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">resSuccess</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//成功的返回值</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">resError</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//失败的返回值</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ul><h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><ul><li><p>async其实是一个promise的语法糖</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'开始执行'</span>);</span><br><span class="line">    <span class="keyword">var</span> res = <span class="keyword">await</span> timer()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'执行结束：'</span>,res);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            resolve(<span class="string">"你好"</span>);</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">get</span>();</span><br></pre></td></tr></table></figure></li><li><p>await可以执行异步操作，但是await必须在async函数内执行</p></li><li><p>await操作可以有返回值，这个返回值表示promise操作成功的返回值</p></li><li><p>如果await里面执行的异步操作发生了reject，或者发生了错误，那么只能使用try…catch语法来进行错误处理</p></li></ul><h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><h3 id="定义一个类"><a href="#定义一个类" class="headerlink" title="定义一个类"></a>定义一个类</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//相当于：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="添加实例方法"><a href="#添加实例方法" class="headerlink" title="添加实例方法"></a>添加实例方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name,age) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//定义方法</span></span><br><span class="line">    say() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"大家好，我叫："</span>+<span class="keyword">this</span>.name+<span class="string">"，今年："</span>+<span class="keyword">this</span>.age+<span class="string">"岁"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    travel()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"坐着飞机去巴厘岛"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="添加静态方法"><a href="#添加静态方法" class="headerlink" title="添加静态方法"></a>添加静态方法</h3><ul><li>静态成员：静态属性、静态方法</li><li>静态属性：通过类本身来访问：Person.maxAge</li><li>静态方法：通过类本身来访问的一个方法：Person.born();<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这就是一个静态方法了</span></span><br><span class="line">    <span class="keyword">static</span> born()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"小呆萌出生了"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//访问静态方法</span></span><br><span class="line">Animal.born();</span><br></pre></td></tr></table></figure></li></ul><h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Student类继承自Person类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">//构造方法</span></span><br><span class="line">    <span class="keyword">constructor</span>(name,grade)&#123;</span><br><span class="line">        <span class="comment">//规定：必须调用父类构造方法，如果不调用就会报错</span></span><br><span class="line">        <span class="keyword">super</span>(name);    </span><br><span class="line">        <span class="comment">//调用父类构造方法，从而给子类的实例添加了name属性</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.grade=grade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">value,index</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>].map(<span class="function">(<span class="params">value,index</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//以前变量和字符串拼接，现在用模板字符串</span></span><br></pre></td></tr></table></figure><h2 id="es6的新语法"><a href="#es6的新语法" class="headerlink" title="es6的新语法"></a>es6的新语法</h2><ul><li>个人建议：不要去试想着一下子全部把之前的代码习惯变成es6的方式<ul><li>而是今年学会了模板字符串，把今天项目用到的所有字符串拼接都换成模板字符串</li><li>过了几天学会了箭头函数，把当天项目里面的所有用到的匿名函数都换成箭头函数</li></ul></li></ul><h2 id="预习作业：通过MDN学习Object-defineProperty-的用法"><a href="#预习作业：通过MDN学习Object-defineProperty-的用法" class="headerlink" title="预习作业：通过MDN学习Object.defineProperty()的用法"></a>预习作业：通过MDN学习Object.defineProperty()的用法</h2><h2 id="module-–-gt-放到后面的模块化课程中讲解"><a href="#module-–-gt-放到后面的模块化课程中讲解" class="headerlink" title="module –&gt;放到后面的模块化课程中讲解"></a>module –&gt;放到后面的模块化课程中讲解</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><ul><li><p>导出模块：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//common.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; <span class="attr">name</span>:<span class="string">"abc"</span> &#125;</span><br></pre></td></tr></table></figure></li><li><p>导入模块：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="keyword">import</span> common <span class="keyword">from</span> <span class="string">"common.js"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( common.name ) <span class="comment">//"abc"</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="模块有多个导出"><a href="#模块有多个导出" class="headerlink" title="模块有多个导出"></a>模块有多个导出</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//person.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> jim = &#123; <span class="attr">country</span> :<span class="string">"France"</span> &#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> tony = &#123; <span class="attr">color</span>:<span class="string">"gray"</span> &#125;</span><br><span class="line"><span class="comment">//默认的导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; <span class="attr">name</span>:<span class="string">"abc"</span> &#125;</span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">import</span> person , &#123; jim , tony &#125; <span class="keyword">from</span> <span class="string">"person.js"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//person：&#123; name:"abc" &#125;</span></span><br><span class="line"><span class="comment">//jim：&#123; country :"France" &#125;</span></span><br><span class="line"><span class="comment">//tony：&#123; color:"gray" &#125;</span></span><br></pre></td></tr></table></figure><h3 id="模块导入导出取别名"><a href="#模块导入导出取别名" class="headerlink" title="模块导入导出取别名"></a>模块导入导出取别名</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//person.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> tony = &#123; <span class="attr">color</span>:<span class="string">"gray"</span> &#125;</span><br><span class="line"><span class="keyword">export</span> &#123; tony <span class="keyword">as</span> Tony &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; Tony &#125; <span class="keyword">from</span> <span class="string">"person.js"</span></span><br><span class="line"><span class="keyword">import</span> &#123; Tony <span class="keyword">as</span> man&#125; <span class="keyword">from</span> <span class="string">"person.js"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(man)    <span class="comment">//&#123; color:"gray" &#125;</span></span><br></pre></td></tr></table></figure><blockquote></blockquote>]]></content>
+      
+      
       <categories>
-        <category>JavaScript</category>
-        <category>ES6</category>
+          
+          <category> JavaScript </category>
+          
+          <category> ES6 </category>
+          
       </categories>
-      <tags>
-        <tag>学习之旅</tag>
-        <tag>箭头函数</tag>
-        <tag>ES6</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jQuery简单学习</title>
-    <url>/2019/11/26/jqstudy/</url>
-    <content><![CDATA[<h2 id="一-jQuery的基本使用"><a href="#一-jQuery的基本使用" class="headerlink" title="一.jQuery的基本使用"></a>一.jQuery的基本使用</h2><ul>
-<li>1.0  2.0  3.0   分别支持ie8  部分支持ie8  全部不支持ie8  开发的时候最常用的是1.几版本</li>
-<li>分为开发版本和压缩版本  带有min的是压缩版本，一般情况下使用的是开发版本</li>
-<li>window.onload=function(){}    &lt;=&gt;    $(function(){})   绑定文档加载完成的监听</li>
-<li>分为两种使用     使用jQuery核心函数或者jQuery核心对象    核心函数$/jQuery   核心对象 执行$()返回的对象</li>
-</ul>
-<h2 id="二-jQuert的两把利器"><a href="#二-jQuert的两把利器" class="headerlink" title="二.jQuert的两把利器"></a>二.jQuert的两把利器</h2><ul>
-<li>jQuery的核心函数,直接可用</li>
-<li>jQuery的核心对象,执行jQuery函数调用他</li>
-</ul>
-<h2 id="三-jQuery函数的使用"><a href="#三-jQuery函数的使用" class="headerlink" title="三.jQuery函数的使用"></a>三.jQuery函数的使用</h2><p>  I.作为一般函数使用:$(param)<br>    1).  参数为函数  :  当DOM加载完成后，执行此回调函数<br>    2).  参数为DOM对象  : 将DOM对象封装成jQuery对象<br>    3).  参数为选择器字符串 : 查找所有匹配的标签，并将他们分装成jQuery对象<br>    4).  参数为html标签字符串  : (用的少)创建标签对象并分装成jQuery对象</p>
-<p>  II.作为对象使用:$.xxx()<br>    1).  $.each() :  隐使遍历数组     回调函数中第一个为key，第二个为value<br>    2).  $.trim() :  去除两端空格     </p>
-<p>  III. 事件回调函数中   this指向的是 #btn  DOM对象元素</p>
-<h2 id="四-jQuery对象的使用"><a href="#四-jQuery对象的使用" class="headerlink" title="四.jQuery对象的使用"></a>四.jQuery对象的使用</h2><pre><code>I. 理解
-
-1).即执行jQuery核心函数返回的对象
-2).jQuery对象内部包含的是dom元素对象的伪数组
-3).jQuery对象拥有很多有用的方法和属性
-
-II. 基本行为
-
-1).size()/length : 包含的DOM元素
-2).[index]/get(index)  :  得到DOM元素对应的下标
-3).each()  :  遍历DOM元素
-4).index()  :  得到DOM元素的下标
-
-III. 伪数组
-
-1).伪数组是一个对象
-2).伪数组必须有length属性
-3).如果这个对象的length不为0，那么必须要有按照下标存储的数据
-4).没有数组特别的方法 forEach() push() pop() splice()</code></pre><h2 id="五-jQuery基本选择器"><a href="#五-jQuery基本选择器" class="headerlink" title="五.jQuery基本选择器"></a>五.jQuery基本选择器</h2><pre><code>1).class   &quot;.b&quot;代表所有的class属性为b的元素
-2).id      &quot;#div&quot;  代表id元素
-3).标签               &quot;div&quot;   代表标签元素
-4).子集               &quot;div.box&quot; 代表class属性为btn中的div元素
-5).并集               &quot;#b,#c&quot;  代表id为c和id为b的元素</code></pre><h2 id="六-jQuery层次选择器"><a href="#六-jQuery层次选择器" class="headerlink" title="六.jQuery层次选择器"></a>六.jQuery层次选择器</h2><pre><code>I.查找子元素，后代元素，兄弟元素的选择器
-
-1).  &gt;   是指当前这一代的下一代，不包括下下代
-2).  +   是指当前元素的下一个元素，只包括一个
-3).  ~   是指当前元素的后面所有兄弟姐妹元素(就是不能包括上一级的元素)</code></pre><h2 id="七-jQuery过滤选择器"><a href="#七-jQuery过滤选择器" class="headerlink" title="七.jQuery过滤选择器"></a>七.jQuery过滤选择器</h2><pre><code>I. 选择器
-
-1).  :first  正序
-2).  :last   倒叙
-3).  :not(.box)   选择不包含clss为box的元素
-4).  :lt(3):gt(0)  小于第三个大于第零个
-5).  :contains(&quot;name&quot;)  选择所有标签的innerHTML内容是name的标签
-6).  :hidden()  选择隐藏的标签
-7).  [title]  选择所有带有title属性的标签体
-8).  [title=hello]  选择title属性为hello的标签
-
-II.  多个选择器不是同时执行，而是以此执行</code></pre><h2 id="八-jQuery隔行换色"><a href="#八-jQuery隔行换色" class="headerlink" title="八.jQuery隔行换色"></a>八.jQuery隔行换色</h2><pre><code>1).   odd:偶数       even:奇数    nth-child(2n)偶数</code></pre><h2 id="九-jQuery表单选择器"><a href="#九-jQuery表单选择器" class="headerlink" title="九.jQuery表单选择器"></a>九.jQuery表单选择器</h2><pre><code>I.表单的常用选择器
-
-1).  text[disabled]  :选择text文本的不可用输入框
-2).  checkbox:checked  :选择被选中的复选框按钮  
-
-II. :等价于[]   在选择器中等价存在</code></pre><h2 id="十-jQuery-工具方法"><a href="#十-jQuery-工具方法" class="headerlink" title="十.jQuery_$工具方法"></a>十.jQuery_$工具方法</h2><pre><code>I.工具方法
-
-1).  $.each()  :  遍历数组对象中的数据
-2).  $.trim()  :  去除字符串两遍的空格
-3).  $.type(obj) : 得到数据类型
-4).  $.isArray(obj) : 判断是否是数组
-5).  $.isFunction(obj) : 判断是否是函数
-6).  $.parseJSON(json) : 解析json字符串转换为js对象
-
-II. JSON
-
-1).  &apos;{&quot;name&quot;:&quot;Tom&quot; , &quot;Age&quot;:12 }&apos;  这是一个json 
-2).  &apos;[{&quot;name&quot;:&quot;Tom&quot;,&quot;Age&quot;:12},{&quot;name&quot;:&quot;Allen&quot;,&quot;Age&quot;:24}]&apos;   这是一个json数组
-3).   JSON.parse(jsonString)  json字符串----&gt;js对象/数组
-4).   JSON.stringify(jsObj/jsArr)  js对象/数组----&gt;json字符串</code></pre><h2 id="十一-jQuery多tab点击切换"><a href="#十一-jQuery多tab点击切换" class="headerlink" title="十一.jQuery多tab点击切换"></a>十一.jQuery多tab点击切换</h2><pre><code>I.  设计思路    获取全部的DOM元素，然后通过this获取到这个index()，最后通过操作jQuery对象的下标的方式操作
-
-II.  先获取全部的DOM元素，然后定义一个当前显示的元素的下标，先让这个元素隐藏，在显示当前点击的元素，最后更新下标（效率上更高）</code></pre><h2 id="十二-jQuery属性"><a href="#十二-jQuery属性" class="headerlink" title="十二.jQuery属性"></a>十二.jQuery属性</h2><pre><code>I.属性
-
-1).attr()  一个参数代表查看，两个参数代表第二个参数覆盖    但是不能操作布尔值
-2).removeAttr()  移除
-3).addClass()  添加class 
-4).html()   标签   有字符串代表-&gt;这是标签体
-5).prop()   专门操作属性值为boolean的属性值</code></pre><h2 id="十三-jQuery的CSS操作"><a href="#十三-jQuery的CSS操作" class="headerlink" title="十三.jQuery的CSS操作"></a>十三.jQuery的CSS操作</h2><pre><code>I.CSS操作
-
-1).css()   一个参数代表查看，两个参数代表第二个参数覆盖  
-2).css({&apos;color&apos;:&apos;#ff0011&apos;})可以这是多个值</code></pre><h2 id="十四-jQuery位置操作"><a href="#十四-jQuery位置操作" class="headerlink" title="十四.jQuery位置操作"></a>十四.jQuery位置操作</h2><pre><code>I.offset 和   position
-
-1).offset().left 和  offset().top  两个可以获取相对于页面的位置
-2).position()  和上面是一样，这个获取的是父元素的位置</code></pre><h2 id="十五-jQuery中的位置滚动"><a href="#十五-jQuery中的位置滚动" class="headerlink" title="十五.jQuery中的位置滚动"></a>十五.jQuery中的位置滚动</h2><pre><code>I.常用方法
-
-1).scrollTop()  可以得到元素的滚动高度
-2).scrollLeft()   可以得到x轴滚动距离
-3).上面的两个方法(number)  既可设置滚动的距离
-
-II.如何获取窗体滚动       获取页面的html+body两个滚动条的滚动总量</code></pre><h2 id="十六-练习-jQuery回滚到顶部"><a href="#十六-练习-jQuery回滚到顶部" class="headerlink" title="十六.练习 jQuery回滚到顶部"></a>十六.练习 jQuery回滚到顶部</h2><pre><code>I.瞬间回到顶部   $(&apos;html,body&apos;).scrollTop(0)
-II.平滑滚动    计算总时间，时间间隔（定时器的时间）总距离 每次移动的距离（总距离除以需要的时间）  然后用定时器执行</code></pre><h2 id="十七-jQuery元素的尺寸"><a href="#十七-jQuery元素的尺寸" class="headerlink" title="十七.jQuery元素的尺寸"></a>十七.jQuery元素的尺寸</h2><pre><code>I.内容尺寸
-
-1).height() :height
-2).width()  :width
-
-II.内部尺寸
-
-1).innerHeight() :height+padding
-2).innerWidth()  :width+padding
-
-III.外部尺寸
-
-1).outerHeight(false/true)  :height+padding+border  如果是true，加上margin
-1).outerWidth(false/true)  :width+padding+border  如果是true，加上margin</code></pre><h2 id="十八-jQuery的筛选"><a href="#十八-jQuery的筛选" class="headerlink" title="十八.jQuery的筛选"></a>十八.jQuery的筛选</h2><pre><code>I.过滤
-
-1).first()  第一个
-2).last()  最后一个
-3).eq()*  指定某一个  参数为number  
-4).filter(&apos;[title=hello]&apos;)  指定title属性为hello的
-5).not(&apos;[title=hello]&apos;)   指定不是hello的(还包括没有title属性)
-6).filter(&apos;[title][title!=hello]&apos;)   交集选择器代表两个条件
-7).has(&apos;span&apos;)   指向内部标签
-
-II.查找
-
-1).children()  子标签  
-2).find()      后代标签
-3).parent()    父标签
-4).prevAll()   前面的标签
-5).siblings()  兄弟标签</code></pre><h2 id="十九-jQuery文档操作"><a href="#十九-jQuery文档操作" class="headerlink" title="十九.jQuery文档操作 *"></a>十九.jQuery文档操作 *</h2><pre><code>I.增删改
-
-1).append(ELement)   向内部最后添加元素
-2).prepend(Element)  向内部最前添加元素
-3).before(Element)   向兄弟前面添加元素
-4).after(ELement)    向兄弟后面添加元素
-5).replaceWith(Element)   替换指定的内部元素
-6).remove(DOM_Element)    移除指定的内部元素</code></pre><h2 id="二十-jQuery事件处理"><a href="#二十-jQuery事件处理" class="headerlink" title="二十.jQuery事件处理"></a>二十.jQuery事件处理</h2><pre><code>I.常用事件
-
-1).mouseenter()    鼠标移入
-2).mouseleave()    鼠标移出
-
-II.事件处理
-
-1).on(eve,fn)      第一个参数代表事件的处理方式
-2).off()           和第一个相对应，取消时间绑定
-3).点击时传入ev 
-    -&gt;ev.clientX     到客户端左上角的距离
-    -&gt;ev.pageX       到页面顶部左上角的距离
-    -&gt;ev.offsetX     到相对于事件左上角的距离
-    -&gt;ev.stopPropagation()    阻止事件的冒泡
-    -&gt;ev.preventDefault()     阻止事件的默认行为
-
-III.事件切换
-
-1).hover(fn,fn)     是mouseenter,mouseleave两个函数的回调函数
-
-IV.区别mouseover与mouseenter
-
-*mouseover:在移入子元素时也会触发,对应mouseout
-*mouseenter:只在移入当前元素时触发,对应mouseleave
-
-V.事件委托
-
-1).将多个子元素(li)的事件监听委托给父元素(ul)处理
-2).监听回调是加在了父元素上
-3).当操作任何一个子元素(li)时，事件会冒泡到父元素(ul)上
-4).父辈元素不会直接处理，而是根据event.target得到发生事件的子元素(li)，通过这个子元素调用事件回调函数
-5).委托方 ：  业主     li
-6).被委托方  :   中介    ul
-7).添加新的子元素，自动由事件响应处理
-8).减少事件监听的数量:    n==&gt;1
-9).设置事件委托API: $(parentSelector).delegate(childrenSelector,eventName,callback)
-10).取消事件的委托API:$(parentSelector).undelegate(eventName)</code></pre><h2 id="二十一-jQuery动画"><a href="#二十一-jQuery动画" class="headerlink" title="二十一.jQuery动画"></a>二十一.jQuery动画</h2><pre><code>I.内置动画
-
-1).fadeOut()   淡入   param---&gt;number  代表存在秒数    
-2).fadeIn()    淡出   参数和上面一样
-3).fadeToggle()  淡入淡出切换   可以传一个回调函数，当切换结束的时候触发
-4).不断改变元素opacity来实现
-5).slideDown()   带动画的展开
-6).sildeUp()     带动画的收缩
-7).sildeToggle()   带动画的切换展开/收缩
-8).不断改变元素height实现
-9).show()     显示
-10).hide()    隐藏
-11).toggle()  切换
-12).不断改变opacity和height和width实现
-
-II.自定义动画
-
-1).animate()    指定自定义动画  参数可以传一个json 分别指定值
-2).animate()    不需要带有单位，还可以进行字符串的加减
-3).stop()       可以阻止动画的继续进行</code></pre><h2 id="二十二-jQuery多库共存"><a href="#二十二-jQuery多库共存" class="headerlink" title="二十二.jQuery多库共存"></a>二十二.jQuery多库共存</h2><pre><code>I.当多个$库同时存在时,需要使用
-II.调用jQuery.noConflict()释放$使用权
-III.下文需要调用的$时，只能使用jQuery</code></pre><h2 id="二十三-区别onload与ready"><a href="#二十三-区别onload与ready" class="headerlink" title="二十三.区别onload与ready"></a>二十三.区别onload与ready</h2><pre><code>I.window.onload
-
-1).包括页面的图片加载完后才会调用(晚)
-2).只能有一个监听回调
-
-II.$(document).ready()
-
-1).等同于$(function(){})
-2).页面加载完就回调(早)
-3).可以有多个监听回调</code></pre><h2 id="二十四-jQuery扩展工具"><a href="#二十四-jQuery扩展工具" class="headerlink" title="二十四.jQuery扩展工具"></a>二十四.jQuery扩展工具</h2><pre><code>I.$扩展本身, 使用方式----&gt;$.min()  
-
-1).定义
-$.extend({
-    xx:function(){
-        ...
-    },
-    yy:function(){
-        ...
-    }
-})
-
-II.$添加新的方法,使用方式-----&gt;$.checkAll()
-
-1).定义 
-$.fn.extend({
-    xx:function(){
-        ...
-    },
-    yy:function(){
-        ...
-    }
-})</code></pre>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 学习之旅 </tag>
+            
+            <tag> 箭头函数 </tag>
+            
+            <tag> ES6 </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jQuery简单学习</title>
+      <link href="/2019/11/26/jqstudy/"/>
+      <url>/2019/11/26/jqstudy/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一-jQuery的基本使用"><a href="#一-jQuery的基本使用" class="headerlink" title="一.jQuery的基本使用"></a>一.jQuery的基本使用</h2><ul><li>1.0  2.0  3.0   分别支持ie8  部分支持ie8  全部不支持ie8  开发的时候最常用的是1.几版本</li><li>分为开发版本和压缩版本  带有min的是压缩版本，一般情况下使用的是开发版本</li><li>window.onload=function(){}    &lt;=&gt;    $(function(){})   绑定文档加载完成的监听</li><li>分为两种使用     使用jQuery核心函数或者jQuery核心对象    核心函数$/jQuery   核心对象 执行$()返回的对象</li></ul><h2 id="二-jQuert的两把利器"><a href="#二-jQuert的两把利器" class="headerlink" title="二.jQuert的两把利器"></a>二.jQuert的两把利器</h2><ul><li>jQuery的核心函数,直接可用</li><li>jQuery的核心对象,执行jQuery函数调用他</li></ul><h2 id="三-jQuery函数的使用"><a href="#三-jQuery函数的使用" class="headerlink" title="三.jQuery函数的使用"></a>三.jQuery函数的使用</h2><p>  I.作为一般函数使用:$(param)<br>    1).  参数为函数  :  当DOM加载完成后，执行此回调函数<br>    2).  参数为DOM对象  : 将DOM对象封装成jQuery对象<br>    3).  参数为选择器字符串 : 查找所有匹配的标签，并将他们分装成jQuery对象<br>    4).  参数为html标签字符串  : (用的少)创建标签对象并分装成jQuery对象</p><p>  II.作为对象使用:$.xxx()<br>    1).  $.each() :  隐使遍历数组     回调函数中第一个为key，第二个为value<br>    2).  $.trim() :  去除两端空格     </p><p>  III. 事件回调函数中   this指向的是 #btn  DOM对象元素</p><h2 id="四-jQuery对象的使用"><a href="#四-jQuery对象的使用" class="headerlink" title="四.jQuery对象的使用"></a>四.jQuery对象的使用</h2><pre><code>I. 理解1).即执行jQuery核心函数返回的对象2).jQuery对象内部包含的是dom元素对象的伪数组3).jQuery对象拥有很多有用的方法和属性II. 基本行为1).size()/length : 包含的DOM元素2).[index]/get(index)  :  得到DOM元素对应的下标3).each()  :  遍历DOM元素4).index()  :  得到DOM元素的下标III. 伪数组1).伪数组是一个对象2).伪数组必须有length属性3).如果这个对象的length不为0，那么必须要有按照下标存储的数据4).没有数组特别的方法 forEach() push() pop() splice()</code></pre><h2 id="五-jQuery基本选择器"><a href="#五-jQuery基本选择器" class="headerlink" title="五.jQuery基本选择器"></a>五.jQuery基本选择器</h2><pre><code>1).class   &quot;.b&quot;代表所有的class属性为b的元素2).id      &quot;#div&quot;  代表id元素3).标签               &quot;div&quot;   代表标签元素4).子集               &quot;div.box&quot; 代表class属性为btn中的div元素5).并集               &quot;#b,#c&quot;  代表id为c和id为b的元素</code></pre><h2 id="六-jQuery层次选择器"><a href="#六-jQuery层次选择器" class="headerlink" title="六.jQuery层次选择器"></a>六.jQuery层次选择器</h2><pre><code>I.查找子元素，后代元素，兄弟元素的选择器1).  &gt;   是指当前这一代的下一代，不包括下下代2).  +   是指当前元素的下一个元素，只包括一个3).  ~   是指当前元素的后面所有兄弟姐妹元素(就是不能包括上一级的元素)</code></pre><h2 id="七-jQuery过滤选择器"><a href="#七-jQuery过滤选择器" class="headerlink" title="七.jQuery过滤选择器"></a>七.jQuery过滤选择器</h2><pre><code>I. 选择器1).  :first  正序2).  :last   倒叙3).  :not(.box)   选择不包含clss为box的元素4).  :lt(3):gt(0)  小于第三个大于第零个5).  :contains(&quot;name&quot;)  选择所有标签的innerHTML内容是name的标签6).  :hidden()  选择隐藏的标签7).  [title]  选择所有带有title属性的标签体8).  [title=hello]  选择title属性为hello的标签II.  多个选择器不是同时执行，而是以此执行</code></pre><h2 id="八-jQuery隔行换色"><a href="#八-jQuery隔行换色" class="headerlink" title="八.jQuery隔行换色"></a>八.jQuery隔行换色</h2><pre><code>1).   odd:偶数       even:奇数    nth-child(2n)偶数</code></pre><h2 id="九-jQuery表单选择器"><a href="#九-jQuery表单选择器" class="headerlink" title="九.jQuery表单选择器"></a>九.jQuery表单选择器</h2><pre><code>I.表单的常用选择器1).  text[disabled]  :选择text文本的不可用输入框2).  checkbox:checked  :选择被选中的复选框按钮  II. :等价于[]   在选择器中等价存在</code></pre><h2 id="十-jQuery-工具方法"><a href="#十-jQuery-工具方法" class="headerlink" title="十.jQuery_$工具方法"></a>十.jQuery_$工具方法</h2><pre><code>I.工具方法1).  $.each()  :  遍历数组对象中的数据2).  $.trim()  :  去除字符串两遍的空格3).  $.type(obj) : 得到数据类型4).  $.isArray(obj) : 判断是否是数组5).  $.isFunction(obj) : 判断是否是函数6).  $.parseJSON(json) : 解析json字符串转换为js对象II. JSON1).  &apos;{&quot;name&quot;:&quot;Tom&quot; , &quot;Age&quot;:12 }&apos;  这是一个json 2).  &apos;[{&quot;name&quot;:&quot;Tom&quot;,&quot;Age&quot;:12},{&quot;name&quot;:&quot;Allen&quot;,&quot;Age&quot;:24}]&apos;   这是一个json数组3).   JSON.parse(jsonString)  json字符串----&gt;js对象/数组4).   JSON.stringify(jsObj/jsArr)  js对象/数组----&gt;json字符串</code></pre><h2 id="十一-jQuery多tab点击切换"><a href="#十一-jQuery多tab点击切换" class="headerlink" title="十一.jQuery多tab点击切换"></a>十一.jQuery多tab点击切换</h2><pre><code>I.  设计思路    获取全部的DOM元素，然后通过this获取到这个index()，最后通过操作jQuery对象的下标的方式操作II.  先获取全部的DOM元素，然后定义一个当前显示的元素的下标，先让这个元素隐藏，在显示当前点击的元素，最后更新下标（效率上更高）</code></pre><h2 id="十二-jQuery属性"><a href="#十二-jQuery属性" class="headerlink" title="十二.jQuery属性"></a>十二.jQuery属性</h2><pre><code>I.属性1).attr()  一个参数代表查看，两个参数代表第二个参数覆盖    但是不能操作布尔值2).removeAttr()  移除3).addClass()  添加class 4).html()   标签   有字符串代表-&gt;这是标签体5).prop()   专门操作属性值为boolean的属性值</code></pre><h2 id="十三-jQuery的CSS操作"><a href="#十三-jQuery的CSS操作" class="headerlink" title="十三.jQuery的CSS操作"></a>十三.jQuery的CSS操作</h2><pre><code>I.CSS操作1).css()   一个参数代表查看，两个参数代表第二个参数覆盖  2).css({&apos;color&apos;:&apos;#ff0011&apos;})可以这是多个值</code></pre><h2 id="十四-jQuery位置操作"><a href="#十四-jQuery位置操作" class="headerlink" title="十四.jQuery位置操作"></a>十四.jQuery位置操作</h2><pre><code>I.offset 和   position1).offset().left 和  offset().top  两个可以获取相对于页面的位置2).position()  和上面是一样，这个获取的是父元素的位置</code></pre><h2 id="十五-jQuery中的位置滚动"><a href="#十五-jQuery中的位置滚动" class="headerlink" title="十五.jQuery中的位置滚动"></a>十五.jQuery中的位置滚动</h2><pre><code>I.常用方法1).scrollTop()  可以得到元素的滚动高度2).scrollLeft()   可以得到x轴滚动距离3).上面的两个方法(number)  既可设置滚动的距离II.如何获取窗体滚动       获取页面的html+body两个滚动条的滚动总量</code></pre><h2 id="十六-练习-jQuery回滚到顶部"><a href="#十六-练习-jQuery回滚到顶部" class="headerlink" title="十六.练习 jQuery回滚到顶部"></a>十六.练习 jQuery回滚到顶部</h2><pre><code>I.瞬间回到顶部   $(&apos;html,body&apos;).scrollTop(0)II.平滑滚动    计算总时间，时间间隔（定时器的时间）总距离 每次移动的距离（总距离除以需要的时间）  然后用定时器执行</code></pre><h2 id="十七-jQuery元素的尺寸"><a href="#十七-jQuery元素的尺寸" class="headerlink" title="十七.jQuery元素的尺寸"></a>十七.jQuery元素的尺寸</h2><pre><code>I.内容尺寸1).height() :height2).width()  :widthII.内部尺寸1).innerHeight() :height+padding2).innerWidth()  :width+paddingIII.外部尺寸1).outerHeight(false/true)  :height+padding+border  如果是true，加上margin1).outerWidth(false/true)  :width+padding+border  如果是true，加上margin</code></pre><h2 id="十八-jQuery的筛选"><a href="#十八-jQuery的筛选" class="headerlink" title="十八.jQuery的筛选"></a>十八.jQuery的筛选</h2><pre><code>I.过滤1).first()  第一个2).last()  最后一个3).eq()*  指定某一个  参数为number  4).filter(&apos;[title=hello]&apos;)  指定title属性为hello的5).not(&apos;[title=hello]&apos;)   指定不是hello的(还包括没有title属性)6).filter(&apos;[title][title!=hello]&apos;)   交集选择器代表两个条件7).has(&apos;span&apos;)   指向内部标签II.查找1).children()  子标签  2).find()      后代标签3).parent()    父标签4).prevAll()   前面的标签5).siblings()  兄弟标签</code></pre><h2 id="十九-jQuery文档操作"><a href="#十九-jQuery文档操作" class="headerlink" title="十九.jQuery文档操作 *"></a>十九.jQuery文档操作 *</h2><pre><code>I.增删改1).append(ELement)   向内部最后添加元素2).prepend(Element)  向内部最前添加元素3).before(Element)   向兄弟前面添加元素4).after(ELement)    向兄弟后面添加元素5).replaceWith(Element)   替换指定的内部元素6).remove(DOM_Element)    移除指定的内部元素</code></pre><h2 id="二十-jQuery事件处理"><a href="#二十-jQuery事件处理" class="headerlink" title="二十.jQuery事件处理"></a>二十.jQuery事件处理</h2><pre><code>I.常用事件1).mouseenter()    鼠标移入2).mouseleave()    鼠标移出II.事件处理1).on(eve,fn)      第一个参数代表事件的处理方式2).off()           和第一个相对应，取消时间绑定3).点击时传入ev     -&gt;ev.clientX     到客户端左上角的距离    -&gt;ev.pageX       到页面顶部左上角的距离    -&gt;ev.offsetX     到相对于事件左上角的距离    -&gt;ev.stopPropagation()    阻止事件的冒泡    -&gt;ev.preventDefault()     阻止事件的默认行为III.事件切换1).hover(fn,fn)     是mouseenter,mouseleave两个函数的回调函数IV.区别mouseover与mouseenter*mouseover:在移入子元素时也会触发,对应mouseout*mouseenter:只在移入当前元素时触发,对应mouseleaveV.事件委托1).将多个子元素(li)的事件监听委托给父元素(ul)处理2).监听回调是加在了父元素上3).当操作任何一个子元素(li)时，事件会冒泡到父元素(ul)上4).父辈元素不会直接处理，而是根据event.target得到发生事件的子元素(li)，通过这个子元素调用事件回调函数5).委托方 ：  业主     li6).被委托方  :   中介    ul7).添加新的子元素，自动由事件响应处理8).减少事件监听的数量:    n==&gt;19).设置事件委托API: $(parentSelector).delegate(childrenSelector,eventName,callback)10).取消事件的委托API:$(parentSelector).undelegate(eventName)</code></pre><h2 id="二十一-jQuery动画"><a href="#二十一-jQuery动画" class="headerlink" title="二十一.jQuery动画"></a>二十一.jQuery动画</h2><pre><code>I.内置动画1).fadeOut()   淡入   param---&gt;number  代表存在秒数    2).fadeIn()    淡出   参数和上面一样3).fadeToggle()  淡入淡出切换   可以传一个回调函数，当切换结束的时候触发4).不断改变元素opacity来实现5).slideDown()   带动画的展开6).sildeUp()     带动画的收缩7).sildeToggle()   带动画的切换展开/收缩8).不断改变元素height实现9).show()     显示10).hide()    隐藏11).toggle()  切换12).不断改变opacity和height和width实现II.自定义动画1).animate()    指定自定义动画  参数可以传一个json 分别指定值2).animate()    不需要带有单位，还可以进行字符串的加减3).stop()       可以阻止动画的继续进行</code></pre><h2 id="二十二-jQuery多库共存"><a href="#二十二-jQuery多库共存" class="headerlink" title="二十二.jQuery多库共存"></a>二十二.jQuery多库共存</h2><pre><code>I.当多个$库同时存在时,需要使用II.调用jQuery.noConflict()释放$使用权III.下文需要调用的$时，只能使用jQuery</code></pre><h2 id="二十三-区别onload与ready"><a href="#二十三-区别onload与ready" class="headerlink" title="二十三.区别onload与ready"></a>二十三.区别onload与ready</h2><pre><code>I.window.onload1).包括页面的图片加载完后才会调用(晚)2).只能有一个监听回调II.$(document).ready()1).等同于$(function(){})2).页面加载完就回调(早)3).可以有多个监听回调</code></pre><h2 id="二十四-jQuery扩展工具"><a href="#二十四-jQuery扩展工具" class="headerlink" title="二十四.jQuery扩展工具"></a>二十四.jQuery扩展工具</h2><pre><code>I.$扩展本身, 使用方式----&gt;$.min()  1).定义$.extend({    xx:function(){        ...    },    yy:function(){        ...    }})II.$添加新的方法,使用方式-----&gt;$.checkAll()1).定义 $.fn.extend({    xx:function(){        ...    },    yy:function(){        ...    }})</code></pre>]]></content>
+      
+      
       <categories>
-        <category>jQuery</category>
-        <category>前端</category>
+          
+          <category> jQuery </category>
+          
+          <category> 前端 </category>
+          
       </categories>
-      <tags>
-        <tag>jQuery</tag>
-        <tag>学习之旅</tag>
-        <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm简单使用</title>
-    <url>/2019/11/25/npmstudy/</url>
-    <content><![CDATA[<blockquote>
-<p>简单概括npm常用命令</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="npm包管理工具"><a href="#npm包管理工具" class="headerlink" title="npm包管理工具"></a><code>npm</code>包管理工具</h2><ul>
-<li>npm可以理解为前端的maven,一个包的管理工具</li>
-</ul>
-<h3 id="1-查看npm和node版本"><a href="#1-查看npm和node版本" class="headerlink" title="1. 查看npm和node版本"></a>1. 查看npm和node版本</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">node -v </span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2-初始化项目"><a href="#2-初始化项目" class="headerlink" title="2. 初始化项目"></a>2. 初始化项目</h3><p><code>npm init</code></p>
-<ul>
-<li>默认配置初始化项目</li>
-</ul>
-<p><code>npm init -y</code></p>
-<h3 id="3-安装"><a href="#3-安装" class="headerlink" title="3. 安装"></a>3. 安装</h3><h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><p><code>npm install &lt;Module Name&gt;@版本号</code></p>
-<h4 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h4><p><code>npm install &lt;Module Name&gt;@版本号 -g</code></p>
-<h4 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h4><ul>
-<li>^ 插入号 + 指定版本号：比如 ^3.5.2 ，安装<code>3.x.x</code>的最新版本（不低于 3.5.2），但是不安装 <code>4.x.x</code><strong>提升版本,不提升大版本</strong></li>
-<li>指定版本号：比如 3.5.2 ，只安装指定版本</li>
-<li>~ 波浪号 + 指定版本号：比如 ~3.5.2 ，安装 <code>3.5.x</code> 的最新版本（不低于 3.5.2），但是不安装 <code>3.6.x</code><strong>提升版本,不提升小版本</strong></li>
-</ul>
-<h4 id="全局安装-1"><a href="#全局安装-1" class="headerlink" title="全局安装"></a>全局安装</h4><ul>
-<li>如果你不知道<code>npm</code>的全局目录在哪,可以运行下面的命令</li>
-</ul>
-<p><code>npm root -g</code></p>
-<ul>
-<li>修改默认全局目录</li>
-</ul>
-<p><code>npm config set prefix &quot;D:/npm&quot;</code></p>
-<ul>
-<li>全局安装<code>vue</code>模板</li>
-</ul>
-<p><code>npm install vue -g</code></p>
-<ul>
-<li>查看全局安装的模板</li>
-</ul>
-<p><code>npm list -g</code></p>
-<h4 id="生产环境模块开发"><a href="#生产环境模块开发" class="headerlink" title="生产环境模块开发"></a>生产环境模块开发</h4><ul>
-<li>生产环境依赖安装  (默认)</li>
-</ul>
-<p><code>npm install &lt;Module Name&gt;</code>[–save|S]</p>
-<h4 id="开发环境模块开发"><a href="#开发环境模块开发" class="headerlink" title="开发环境模块开发"></a>开发环境模块开发</h4><ul>
-<li>开发模块依赖安装</li>
-</ul>
-<p><code>npm install &lt;Module Name&gt;[--save-dev|D]</code></p>
-<h4 id="批量安装"><a href="#批量安装" class="headerlink" title="批量安装"></a>批量安装</h4><p><code>npm install</code></p>
-<p>or</p>
-<p><code>npm i</code></p>
-<h3 id="4-模板"><a href="#4-模板" class="headerlink" title="4. 模板"></a>4. 模板</h3><h4 id="本地模板"><a href="#本地模板" class="headerlink" title="本地模板"></a>本地模板</h4><ul>
-<li>查看所有模板</li>
-</ul>
-<p><code>npm list</code></p>
-<ul>
-<li>查看全局所有模板</li>
-</ul>
-<p><code>npm list -g</code></p>
-<ul>
-<li>查看指定模板</li>
-</ul>
-<p><code>npm list &lt;Module Name&gt;</code></p>
-<h4 id="远程模板"><a href="#远程模板" class="headerlink" title="远程模板"></a>远程模板</h4><ul>
-<li>查看<code>jquery</code>的最新版本</li>
-</ul>
-<p><code>npm view jquery version</code></p>
-<ul>
-<li>查看<code>jquery</code>的全部版本</li>
-</ul>
-<p><code>npm view jquery versions</code></p>
-<h4 id="卸载模块"><a href="#卸载模块" class="headerlink" title="卸载模块"></a>卸载模块</h4><ul>
-<li>布局卸载</li>
-</ul>
-<p><code>npm install &lt;Module Name&gt;</code></p>
-<ul>
-<li>全局卸载</li>
-</ul>
-<p><code>npm install -g &lt;Module Name&gt;</code></p>
-<h3 id="5-修改淘宝镜像"><a href="#5-修改淘宝镜像" class="headerlink" title="5.修改淘宝镜像"></a>5.修改淘宝镜像</h3><ul>
-<li>查看当前镜像地址</li>
-</ul>
-<p><code>npm get registory</code></p>
-<ul>
-<li>配置淘宝镜像</li>
-</ul>
-<p><code>npm config set registry https://registry.npm.taobao.org</code></p>
-<ul>
-<li>安装下载模块</li>
-</ul>
-<p><code>npm install &lt;Module Name&gt;</code></p>
-<ul>
-<li>还原默认镜像地址</li>
-</ul>
-<p><code>npm config set registry https://registry.npmjs.org/</code></p>
-]]></content>
-      <tags>
-        <tag>npm</tag>
-        <tag>包管理工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客园样式</title>
-    <url>/2019/11/24/bkyys/</url>
-    <content><![CDATA[<blockquote>
-<p>测试网址: <a href="https://www.cnblogs.com/sunhang32/" target="_blank" rel="noopener">https://www.cnblogs.com/sunhang32/</a></p>
-<p>实现目标: 学习更多的知识,了解更广的世界</p>
-<p>简述原理: 自己整合并且简单修改</p>
-<p>目前: 长期活跃的论坛之一,还在不断完善中</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="欢迎来到残梦博客园"><a href="#欢迎来到残梦博客园" class="headerlink" title="欢迎来到残梦博客园"></a>欢迎来到残梦博客园</h1><p><font color="#999">首先声明一点: 样式并不全是本人所写,是我个人整合(感觉每个人的博客都喜欢一点,所以自己整合了一下)</font></p>
-<p><font color=red size=5>由于每次更新博客,都需要重新更新此文档很麻烦,所以此博客只会定期更新,如果想要使用最新版本博客园样式,请前往本人<a href="https://github.com/2662419405/cnblogs" target="_blank" rel="noopener">github</a></font></p>
-<h2 id="如果喜欢的小伙伴可以自己配置"><a href="#如果喜欢的小伙伴可以自己配置" class="headerlink" title="如果喜欢的小伙伴可以自己配置"></a>如果喜欢的小伙伴可以自己配置</h2><h3 id="首先你要有一个博客园-这个我估计我说的有点废话了"><a href="#首先你要有一个博客园-这个我估计我说的有点废话了" class="headerlink" title="首先你要有一个博客园(这个我估计我说的有点废话了)"></a>首先你要有一个博客园(这个我估计我说的有点废话了)</h3><h3 id="在博客园的官网左上角开通博客园"><a href="#在博客园的官网左上角开通博客园" class="headerlink" title="在博客园的官网左上角开通博客园"></a>在<a href="https://www.cnblogs.com" target="_blank" rel="noopener">博客园</a>的官网左上角开通博客园</h3><h3 id="博客园的个人配置页面-gt-先申请js权限"><a href="#博客园的个人配置页面-gt-先申请js权限" class="headerlink" title="博客园的个人配置页面-&gt;先申请js权限"></a>博客园的个人配置页面-&gt;先申请js权限</h3><fancybox>
-<img src="https://img2018.cnblogs.com/blog/1860563/201911/1860563-20191113210840922-512269453.png" />
-</fancybox>
-
-<h3 id="禁用页面的css样式"><a href="#禁用页面的css样式" class="headerlink" title="禁用页面的css样式"></a>禁用页面的css样式</h3><fancybox>
-<img src="https://img2018.cnblogs.com/blog/1860563/201911/1860563-20191113210905600-717115239.png" />
-</fancybox>
-
-<h3 id="选择页面的主题"><a href="#选择页面的主题" class="headerlink" title="选择页面的主题"></a>选择页面的主题</h3><fancybox>
-<img src="https://img2018.cnblogs.com/blog/1860563/201911/1860563-20191113211243480-623230909.png" />
-</fancybox>
-
-<h3 id="粘贴一下代码到定制页面css代码中-由于css文件较大-所以这里提供了超链接"><a href="#粘贴一下代码到定制页面css代码中-由于css文件较大-所以这里提供了超链接" class="headerlink" title="粘贴一下代码到定制页面css代码中,由于css文件较大,所以这里提供了超链接"></a>粘贴一下代码到定制页面css代码中,由于css文件较大,所以这里提供了超链接</h3><p><a href="https://blog-static.cnblogs.com/files/sunhang32/canmeng.css" target="_blank" rel="noopener">css</a></p>
-<h3 id="粘贴博客侧面公告代码"><a href="#粘贴博客侧面公告代码" class="headerlink" title="粘贴博客侧面公告代码"></a>粘贴博客侧面公告代码</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.cnblogsConfig = &#123;</span></span><br><span class="line"><span class="actionscript">        GhVersions    : <span class="string">'v1.2.0'</span>, <span class="comment">// 版本</span></span></span><br><span class="line"><span class="actionscript">        blogUser      : <span class="string">"残梦"</span>, <span class="comment">// 用户名</span></span></span><br><span class="line"><span class="actionscript">        essayCodeHighlightingType: <span class="string">"highlightjs"</span>,</span></span><br><span class="line"><span class="actionscript">        essayCodeHighlighting: <span class="string">"a11y-dark"</span>,</span></span><br><span class="line">        homeTopImg: [</span><br><span class="line"><span class="actionscript">           <span class="string">"http://studyit.club/Study/sun/o_o_wallhaven-698904.jpg"</span></span></span><br><span class="line">        ],</span><br><span class="line"><span class="actionscript">         menuUserInfoBgImg: <span class="string">'https://bndong.github.io/images/menu_bg.gif'</span>,</span></span><br><span class="line"><span class="actionscript">         menuNavList: [ <span class="comment">// 列表数据 ['导航名称', '链接']</span></span></span><br><span class="line"><span class="actionscript">             [<span class="string">'github'</span>, <span class="string">'https://github.com/2662419405'</span>],</span></span><br><span class="line"><span class="actionscript">             [<span class="string">'CSDN'</span>, <span class="string">'https://blog.csdn.net/qq_43268396'</span>],</span></span><br><span class="line"><span class="actionscript">             [<span class="string">'简书'</span>, <span class="string">'https://www.jianshu.com/u/3c7ad314336f'</span>],</span></span><br><span class="line"><span class="actionscript">             [<span class="string">'技能树'</span>, <span class="string">'https://2662419405.github.io/sh.github.io/'</span>],</span></span><br><span class="line">        ],</span><br><span class="line"><span class="actionscript">        fontIconExtend: <span class="string">"//at.alicdn.com/t/font_543384_ezv3l7gd9r7.css"</span>,  <span class="comment">//字体图标扩展</span></span></span><br><span class="line"><span class="actionscript">        webpageTitleOnblur        : <span class="string">"(◍´꒳`◍)你为何狠心离去 "</span>, <span class="comment">// 当前页失去焦点，页面title显示文字</span></span></span><br><span class="line"><span class="actionscript">        webpageTitleOnblurTimeOut : <span class="number">500</span>, <span class="comment">// 当前页失去焦点，页面title变化，延时时间，单位毫秒</span></span></span><br><span class="line"><span class="actionscript">        webpageTitleFocus         : <span class="string">"(*´∇｀*) 帅的人回来了！"</span>, <span class="comment">// 当前页获取焦点，页面title显示文字，显示后延时恢复原title</span></span></span><br><span class="line"><span class="actionscript">        webpageTitleFocusTimeOut  : <span class="number">2000</span>, <span class="comment">// 当前页获取焦点，页面title变化，延时时间，单位毫秒</span></span></span><br><span class="line"><span class="actionscript">        blogAvatar    : <span class="string">"http://studyit.club/Study/sh.jpg"</span>, <span class="comment">// 用户头像</span></span></span><br><span class="line"><span class="actionscript">        blogStartDate : <span class="string">"2019-11-07"</span>, <span class="comment">// 入园时间，年-月-日。入园时间查看方法,鼠标停留园龄时间上，会显示入园时间</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/gh/BNDong/Cnblogs-Theme-SimpleMemory@v1.2.0/src/script/simpleMemory.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>粘贴页首代码 </p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// 此处为空</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>粘贴页脚代码 </p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 滚动进度 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"bottomProgressBar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 音乐菜单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://blog-static.cnblogs.com/files/elkyo/APlayer.min.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"player"</span> <span class="attr">class</span>=<span class="string">"aplayer aplayer-withlist aplayer-fixed"</span> <span class="attr">data-id</span>=<span class="string">"3025663508"</span> <span class="attr">data-server</span>=<span class="string">"netease"</span> <span class="attr">data-type</span>=<span class="string">"playlist"</span> <span class="attr">data-order</span>=<span class="string">"random"</span> <span class="attr">data-fixed</span>=<span class="string">"true"</span> <span class="attr">data-listfolded</span>=<span class="string">"true"</span> <span class="attr">data-theme</span>=<span class="string">"#2D8CF0"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://blog-static.cnblogs.com/files/elkyo/APlayer.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://blog-static.cnblogs.com/files/elkyo/Meting.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 网站运行时间 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"text-align:center;"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"timeDate"</span>&gt;</span>载入天数...<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"times"</span>&gt;</span>载入时分秒...<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">createtime</span><span class="params">()</span> </span>&#123; </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> grt= <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"11/06/2019 17:38:00"</span>);<span class="comment">//在此处修改你的建站时间</span></span></span><br><span class="line">        now.setTime(now.getTime()+250); </span><br><span class="line"><span class="javascript">        days = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>; dnum = <span class="built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="javascript">        hours = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> - (<span class="number">24</span> * dnum); hnum = <span class="built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(<span class="built_in">String</span>(hnum).length ==<span class="number">1</span> )&#123;hnum = <span class="string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="number">1000</span> /<span class="number">60</span> - (<span class="number">24</span> * <span class="number">60</span> * dnum) - (<span class="number">60</span> * hnum); </span></span><br><span class="line"><span class="javascript">        mnum = <span class="built_in">Math</span>.floor(minutes); <span class="keyword">if</span>(<span class="built_in">String</span>(mnum).length ==<span class="number">1</span> )&#123;mnum = <span class="string">"0"</span> + mnum;&#125; </span></span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span><br><span class="line"><span class="javascript">        snum = <span class="built_in">Math</span>.round(seconds); <span class="keyword">if</span>(<span class="built_in">String</span>(snum).length ==<span class="number">1</span> )&#123;snum = <span class="string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"timeDate"</span>).innerHTML = <span class="string">"本站勉强运行 "</span>+dnum+<span class="string">" 天 "</span>; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"times"</span>).innerHTML = hnum + <span class="string">" 小时 "</span> + mnum + <span class="string">" 分 "</span> + snum + <span class="string">" 秒"</span>; </span></span><br><span class="line">    &#125; </span><br><span class="line"><span class="actionscript">setInterval(<span class="string">"createtime()"</span>,<span class="number">250</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 右下角菜单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"rightMenu"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--看板娘 - 猫--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">      L2Dwidget.init(&#123;</span><br><span class="line"><span class="actionscript">          <span class="string">"model"</span>: &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">              jsonPath: "https://unpkg.com/live2d-widget-model-hijiki/assets/hijiki.model.json",<span class="comment">&lt;!--这里改模型，前面后面都要改--&gt;</span></span></span></span><br><span class="line"><span class="actionscript">              <span class="string">"scale"</span>: <span class="number">1</span></span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="actionscript">          <span class="string">"display"</span>: &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">              "position": "left",<span class="comment">&lt;!--设置看板娘的上下左右位置--&gt;</span></span></span></span><br><span class="line"><span class="actionscript">              <span class="string">"width"</span>: <span class="number">100</span>,</span></span><br><span class="line"><span class="actionscript">              <span class="string">"height"</span>: <span class="number">200</span>,</span></span><br><span class="line"><span class="actionscript">              <span class="string">"hOffset"</span>: <span class="number">70</span>,</span></span><br><span class="line"><span class="actionscript">              <span class="string">"vOffset"</span>: <span class="number">0</span></span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="actionscript">          <span class="string">"mobile"</span>: &#123;</span></span><br><span class="line"><span class="actionscript">              <span class="string">"show"</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">              <span class="string">"scale"</span>: <span class="number">0.4</span></span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="actionscript">          <span class="string">"react"</span>: &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">              "opacityDefault": 0.5,<span class="comment">&lt;!--设置透明度--&gt;</span></span></span></span><br><span class="line"><span class="actionscript">              <span class="string">"opacityOnHover"</span>: <span class="number">0.2</span></span></span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">       $(<span class="string">"#live2dcanvas"</span>).attr(<span class="string">"style"</span>,<span class="string">"display:block;position: fixed; opacity: 0.7; left: 70px; bottom: 0px; z-index: 1; pointer-events: none;"</span>)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 线条效果 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span></span></span><br><span class="line"><span class="tag"><span class="attr">color</span>=<span class="string">"220,220,220"</span> <span class="attr">opacity</span>=<span class="string">'0.9'</span> <span class="attr">zIndex</span>=<span class="string">"-2"</span> <span class="attr">count</span>=<span class="string">"500"</span> <span class="attr">src</span>=<span class="string">"//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://blog-static.cnblogs.com/files/sunhang32/myconsole.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 文字显示 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://files.cnblogs.com/files/sunhang32/myText.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<p><em>————–如果你对你的代码不满意的话,可以接下来自定义设置—————-</em></p>
-<p><font color=red size=4>此处请前往<a href="https://github.com/2662419405/cnblogs" target="_blank" rel="noopener">github</font></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> jQuery </tag>
+            
+            <tag> 学习之旅 </tag>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>npm简单使用</title>
+      <link href="/2019/11/25/npmstudy/"/>
+      <url>/2019/11/25/npmstudy/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>简单概括npm常用命令</p></blockquote><a id="more"></a><h2 id="npm包管理工具"><a href="#npm包管理工具" class="headerlink" title="npm包管理工具"></a><code>npm</code>包管理工具</h2><ul><li>npm可以理解为前端的maven,一个包的管理工具</li></ul><h3 id="1-查看npm和node版本"><a href="#1-查看npm和node版本" class="headerlink" title="1. 查看npm和node版本"></a>1. 查看npm和node版本</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v </span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure><h3 id="2-初始化项目"><a href="#2-初始化项目" class="headerlink" title="2. 初始化项目"></a>2. 初始化项目</h3><p><code>npm init</code></p><ul><li>默认配置初始化项目</li></ul><p><code>npm init -y</code></p><h3 id="3-安装"><a href="#3-安装" class="headerlink" title="3. 安装"></a>3. 安装</h3><h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><p><code>npm install &lt;Module Name&gt;@版本号</code></p><h4 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h4><p><code>npm install &lt;Module Name&gt;@版本号 -g</code></p><h4 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h4><ul><li>^ 插入号 + 指定版本号：比如 ^3.5.2 ，安装<code>3.x.x</code>的最新版本（不低于 3.5.2），但是不安装 <code>4.x.x</code><strong>提升版本,不提升大版本</strong></li><li>指定版本号：比如 3.5.2 ，只安装指定版本</li><li>~ 波浪号 + 指定版本号：比如 ~3.5.2 ，安装 <code>3.5.x</code> 的最新版本（不低于 3.5.2），但是不安装 <code>3.6.x</code><strong>提升版本,不提升小版本</strong></li></ul><h4 id="全局安装-1"><a href="#全局安装-1" class="headerlink" title="全局安装"></a>全局安装</h4><ul><li>如果你不知道<code>npm</code>的全局目录在哪,可以运行下面的命令</li></ul><p><code>npm root -g</code></p><ul><li>修改默认全局目录</li></ul><p><code>npm config set prefix &quot;D:/npm&quot;</code></p><ul><li>全局安装<code>vue</code>模板</li></ul><p><code>npm install vue -g</code></p><ul><li>查看全局安装的模板</li></ul><p><code>npm list -g</code></p><h4 id="生产环境模块开发"><a href="#生产环境模块开发" class="headerlink" title="生产环境模块开发"></a>生产环境模块开发</h4><ul><li>生产环境依赖安装  (默认)</li></ul><p><code>npm install &lt;Module Name&gt;</code>[–save|S]</p><h4 id="开发环境模块开发"><a href="#开发环境模块开发" class="headerlink" title="开发环境模块开发"></a>开发环境模块开发</h4><ul><li>开发模块依赖安装</li></ul><p><code>npm install &lt;Module Name&gt;[--save-dev|D]</code></p><h4 id="批量安装"><a href="#批量安装" class="headerlink" title="批量安装"></a>批量安装</h4><p><code>npm install</code></p><p>or</p><p><code>npm i</code></p><h3 id="4-模板"><a href="#4-模板" class="headerlink" title="4. 模板"></a>4. 模板</h3><h4 id="本地模板"><a href="#本地模板" class="headerlink" title="本地模板"></a>本地模板</h4><ul><li>查看所有模板</li></ul><p><code>npm list</code></p><ul><li>查看全局所有模板</li></ul><p><code>npm list -g</code></p><ul><li>查看指定模板</li></ul><p><code>npm list &lt;Module Name&gt;</code></p><h4 id="远程模板"><a href="#远程模板" class="headerlink" title="远程模板"></a>远程模板</h4><ul><li>查看<code>jquery</code>的最新版本</li></ul><p><code>npm view jquery version</code></p><ul><li>查看<code>jquery</code>的全部版本</li></ul><p><code>npm view jquery versions</code></p><h4 id="卸载模块"><a href="#卸载模块" class="headerlink" title="卸载模块"></a>卸载模块</h4><ul><li>布局卸载</li></ul><p><code>npm install &lt;Module Name&gt;</code></p><ul><li>全局卸载</li></ul><p><code>npm install -g &lt;Module Name&gt;</code></p><h3 id="5-修改淘宝镜像"><a href="#5-修改淘宝镜像" class="headerlink" title="5.修改淘宝镜像"></a>5.修改淘宝镜像</h3><ul><li>查看当前镜像地址</li></ul><p><code>npm get registory</code></p><ul><li>配置淘宝镜像</li></ul><p><code>npm config set registry https://registry.npm.taobao.org</code></p><ul><li>安装下载模块</li></ul><p><code>npm install &lt;Module Name&gt;</code></p><ul><li>还原默认镜像地址</li></ul><p><code>npm config set registry https://registry.npmjs.org/</code></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> npm </tag>
+            
+            <tag> 包管理工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客园样式</title>
+      <link href="/2019/11/24/bkyys/"/>
+      <url>/2019/11/24/bkyys/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>测试网址: <a href="https://www.cnblogs.com/sunhang32/" target="_blank" rel="noopener">https://www.cnblogs.com/sunhang32/</a></p><p>实现目标: 学习更多的知识,了解更广的世界</p><p>简述原理: 自己整合并且简单修改</p><p>目前: 长期活跃的论坛之一,还在不断完善中</p></blockquote><a id="more"></a><h1 id="欢迎来到残梦博客园"><a href="#欢迎来到残梦博客园" class="headerlink" title="欢迎来到残梦博客园"></a>欢迎来到残梦博客园</h1><p><font color="#999">首先声明一点: 样式并不全是本人所写,是我个人整合(感觉每个人的博客都喜欢一点,所以自己整合了一下)</font></p><p><font color=red size=5>由于每次更新博客,都需要重新更新此文档很麻烦,所以此博客只会定期更新,如果想要使用最新版本博客园样式,请前往本人<a href="https://github.com/2662419405/cnblogs" target="_blank" rel="noopener">github</a></font></p><h2 id="如果喜欢的小伙伴可以自己配置"><a href="#如果喜欢的小伙伴可以自己配置" class="headerlink" title="如果喜欢的小伙伴可以自己配置"></a>如果喜欢的小伙伴可以自己配置</h2><h3 id="首先你要有一个博客园-这个我估计我说的有点废话了"><a href="#首先你要有一个博客园-这个我估计我说的有点废话了" class="headerlink" title="首先你要有一个博客园(这个我估计我说的有点废话了)"></a>首先你要有一个博客园(这个我估计我说的有点废话了)</h3><h3 id="在博客园的官网左上角开通博客园"><a href="#在博客园的官网左上角开通博客园" class="headerlink" title="在博客园的官网左上角开通博客园"></a>在<a href="https://www.cnblogs.com" target="_blank" rel="noopener">博客园</a>的官网左上角开通博客园</h3><h3 id="博客园的个人配置页面-gt-先申请js权限"><a href="#博客园的个人配置页面-gt-先申请js权限" class="headerlink" title="博客园的个人配置页面-&gt;先申请js权限"></a>博客园的个人配置页面-&gt;先申请js权限</h3><fancybox><img src="https://img2018.cnblogs.com/blog/1860563/201911/1860563-20191113210840922-512269453.png" /></fancybox><h3 id="禁用页面的css样式"><a href="#禁用页面的css样式" class="headerlink" title="禁用页面的css样式"></a>禁用页面的css样式</h3><fancybox><img src="https://img2018.cnblogs.com/blog/1860563/201911/1860563-20191113210905600-717115239.png" /></fancybox><h3 id="选择页面的主题"><a href="#选择页面的主题" class="headerlink" title="选择页面的主题"></a>选择页面的主题</h3><fancybox><img src="https://img2018.cnblogs.com/blog/1860563/201911/1860563-20191113211243480-623230909.png" /></fancybox><h3 id="粘贴一下代码到定制页面css代码中-由于css文件较大-所以这里提供了超链接"><a href="#粘贴一下代码到定制页面css代码中-由于css文件较大-所以这里提供了超链接" class="headerlink" title="粘贴一下代码到定制页面css代码中,由于css文件较大,所以这里提供了超链接"></a>粘贴一下代码到定制页面css代码中,由于css文件较大,所以这里提供了超链接</h3><p><a href="https://blog-static.cnblogs.com/files/sunhang32/canmeng.css" target="_blank" rel="noopener">css</a></p><h3 id="粘贴博客侧面公告代码"><a href="#粘贴博客侧面公告代码" class="headerlink" title="粘贴博客侧面公告代码"></a>粘贴博客侧面公告代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.cnblogsConfig = &#123;</span></span><br><span class="line"><span class="actionscript">        GhVersions    : <span class="string">'v1.2.0'</span>, <span class="comment">// 版本</span></span></span><br><span class="line"><span class="actionscript">        blogUser      : <span class="string">"残梦"</span>, <span class="comment">// 用户名</span></span></span><br><span class="line"><span class="actionscript">        essayCodeHighlightingType: <span class="string">"highlightjs"</span>,</span></span><br><span class="line"><span class="actionscript">        essayCodeHighlighting: <span class="string">"a11y-dark"</span>,</span></span><br><span class="line">        homeTopImg: [</span><br><span class="line"><span class="actionscript">           <span class="string">"http://studyit.club/Study/sun/o_o_wallhaven-698904.jpg"</span></span></span><br><span class="line">        ],</span><br><span class="line"><span class="actionscript">         menuUserInfoBgImg: <span class="string">'https://bndong.github.io/images/menu_bg.gif'</span>,</span></span><br><span class="line"><span class="actionscript">         menuNavList: [ <span class="comment">// 列表数据 ['导航名称', '链接']</span></span></span><br><span class="line"><span class="actionscript">             [<span class="string">'github'</span>, <span class="string">'https://github.com/2662419405'</span>],</span></span><br><span class="line"><span class="actionscript">             [<span class="string">'CSDN'</span>, <span class="string">'https://blog.csdn.net/qq_43268396'</span>],</span></span><br><span class="line"><span class="actionscript">             [<span class="string">'简书'</span>, <span class="string">'https://www.jianshu.com/u/3c7ad314336f'</span>],</span></span><br><span class="line"><span class="actionscript">             [<span class="string">'技能树'</span>, <span class="string">'https://2662419405.github.io/sh.github.io/'</span>],</span></span><br><span class="line">        ],</span><br><span class="line"><span class="actionscript">        fontIconExtend: <span class="string">"//at.alicdn.com/t/font_543384_ezv3l7gd9r7.css"</span>,  <span class="comment">//字体图标扩展</span></span></span><br><span class="line"><span class="actionscript">        webpageTitleOnblur        : <span class="string">"(◍´꒳`◍)你为何狠心离去 "</span>, <span class="comment">// 当前页失去焦点，页面title显示文字</span></span></span><br><span class="line"><span class="actionscript">        webpageTitleOnblurTimeOut : <span class="number">500</span>, <span class="comment">// 当前页失去焦点，页面title变化，延时时间，单位毫秒</span></span></span><br><span class="line"><span class="actionscript">        webpageTitleFocus         : <span class="string">"(*´∇｀*) 帅的人回来了！"</span>, <span class="comment">// 当前页获取焦点，页面title显示文字，显示后延时恢复原title</span></span></span><br><span class="line"><span class="actionscript">        webpageTitleFocusTimeOut  : <span class="number">2000</span>, <span class="comment">// 当前页获取焦点，页面title变化，延时时间，单位毫秒</span></span></span><br><span class="line"><span class="actionscript">        blogAvatar    : <span class="string">"http://studyit.club/Study/sh.jpg"</span>, <span class="comment">// 用户头像</span></span></span><br><span class="line"><span class="actionscript">        blogStartDate : <span class="string">"2019-11-07"</span>, <span class="comment">// 入园时间，年-月-日。入园时间查看方法,鼠标停留园龄时间上，会显示入园时间</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/gh/BNDong/Cnblogs-Theme-SimpleMemory@v1.2.0/src/script/simpleMemory.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><ul><li><p>粘贴页首代码 </p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 此处为空</span><br></pre></td></tr></table></figure></li><li><p>粘贴页脚代码 </p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 滚动进度 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"bottomProgressBar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 音乐菜单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://blog-static.cnblogs.com/files/elkyo/APlayer.min.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"player"</span> <span class="attr">class</span>=<span class="string">"aplayer aplayer-withlist aplayer-fixed"</span> <span class="attr">data-id</span>=<span class="string">"3025663508"</span> <span class="attr">data-server</span>=<span class="string">"netease"</span> <span class="attr">data-type</span>=<span class="string">"playlist"</span> <span class="attr">data-order</span>=<span class="string">"random"</span> <span class="attr">data-fixed</span>=<span class="string">"true"</span> <span class="attr">data-listfolded</span>=<span class="string">"true"</span> <span class="attr">data-theme</span>=<span class="string">"#2D8CF0"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://blog-static.cnblogs.com/files/elkyo/APlayer.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://blog-static.cnblogs.com/files/elkyo/Meting.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 网站运行时间 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"text-align:center;"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"timeDate"</span>&gt;</span>载入天数...<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"times"</span>&gt;</span>载入时分秒...<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">createtime</span><span class="params">()</span> </span>&#123; </span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> grt= <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"11/06/2019 17:38:00"</span>);<span class="comment">//在此处修改你的建站时间</span></span></span><br><span class="line">        now.setTime(now.getTime()+250); </span><br><span class="line"><span class="javascript">        days = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>; dnum = <span class="built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="javascript">        hours = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> - (<span class="number">24</span> * dnum); hnum = <span class="built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span>(<span class="built_in">String</span>(hnum).length ==<span class="number">1</span> )&#123;hnum = <span class="string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="number">1000</span> /<span class="number">60</span> - (<span class="number">24</span> * <span class="number">60</span> * dnum) - (<span class="number">60</span> * hnum); </span></span><br><span class="line"><span class="javascript">        mnum = <span class="built_in">Math</span>.floor(minutes); <span class="keyword">if</span>(<span class="built_in">String</span>(mnum).length ==<span class="number">1</span> )&#123;mnum = <span class="string">"0"</span> + mnum;&#125; </span></span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span><br><span class="line"><span class="javascript">        snum = <span class="built_in">Math</span>.round(seconds); <span class="keyword">if</span>(<span class="built_in">String</span>(snum).length ==<span class="number">1</span> )&#123;snum = <span class="string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"timeDate"</span>).innerHTML = <span class="string">"本站勉强运行 "</span>+dnum+<span class="string">" 天 "</span>; </span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"times"</span>).innerHTML = hnum + <span class="string">" 小时 "</span> + mnum + <span class="string">" 分 "</span> + snum + <span class="string">" 秒"</span>; </span></span><br><span class="line">    &#125; </span><br><span class="line"><span class="actionscript">setInterval(<span class="string">"createtime()"</span>,<span class="number">250</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 右下角菜单 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"rightMenu"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--看板娘 - 猫--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">      L2Dwidget.init(&#123;</span><br><span class="line"><span class="actionscript">          <span class="string">"model"</span>: &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">              jsonPath: "https://unpkg.com/live2d-widget-model-hijiki/assets/hijiki.model.json",<span class="comment">&lt;!--这里改模型，前面后面都要改--&gt;</span></span></span></span><br><span class="line"><span class="actionscript">              <span class="string">"scale"</span>: <span class="number">1</span></span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="actionscript">          <span class="string">"display"</span>: &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">              "position": "left",<span class="comment">&lt;!--设置看板娘的上下左右位置--&gt;</span></span></span></span><br><span class="line"><span class="actionscript">              <span class="string">"width"</span>: <span class="number">100</span>,</span></span><br><span class="line"><span class="actionscript">              <span class="string">"height"</span>: <span class="number">200</span>,</span></span><br><span class="line"><span class="actionscript">              <span class="string">"hOffset"</span>: <span class="number">70</span>,</span></span><br><span class="line"><span class="actionscript">              <span class="string">"vOffset"</span>: <span class="number">0</span></span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="actionscript">          <span class="string">"mobile"</span>: &#123;</span></span><br><span class="line"><span class="actionscript">              <span class="string">"show"</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">              <span class="string">"scale"</span>: <span class="number">0.4</span></span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="actionscript">          <span class="string">"react"</span>: &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">              "opacityDefault": 0.5,<span class="comment">&lt;!--设置透明度--&gt;</span></span></span></span><br><span class="line"><span class="actionscript">              <span class="string">"opacityOnHover"</span>: <span class="number">0.2</span></span></span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">       $(<span class="string">"#live2dcanvas"</span>).attr(<span class="string">"style"</span>,<span class="string">"display:block;position: fixed; opacity: 0.7; left: 70px; bottom: 0px; z-index: 1; pointer-events: none;"</span>)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 线条效果 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span></span></span><br><span class="line"><span class="tag"><span class="attr">color</span>=<span class="string">"220,220,220"</span> <span class="attr">opacity</span>=<span class="string">'0.9'</span> <span class="attr">zIndex</span>=<span class="string">"-2"</span> <span class="attr">count</span>=<span class="string">"500"</span> <span class="attr">src</span>=<span class="string">"//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://blog-static.cnblogs.com/files/sunhang32/myconsole.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 文字显示 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://files.cnblogs.com/files/sunhang32/myText.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul><p><em>————–如果你对你的代码不满意的话,可以接下来自定义设置—————-</em></p><p><font color=red size=4>此处请前往<a href="https://github.com/2662419405/cnblogs" target="_blank" rel="noopener">github</font></p>]]></content>
+      
+      
       <categories>
-        <category>jQuery</category>
+          
+          <category> jQuery </category>
+          
       </categories>
-      <tags>
-        <tag>博客园</tag>
-        <tag>样式自定义</tag>
-        <tag>BLOG</tag>
-        <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第一个接触的前端项目</title>
-    <url>/2019/11/20/dycjcqd/</url>
-    <content><![CDATA[<blockquote>
-<p>测试网址: <a href="http://studyit.club" target="_blank" rel="noopener">http://studyit.club</a></p>
-<p>实现目标: 简易版社团,学习资源分享,富文本论坛,空间,美图秀秀等</p>
-<p>简述原理: 常见前端框架混合使用</p>
-<p>目前: 由于精力有限,目前暂停维护和开发 </p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="Study-IT-club"><a href="#Study-IT-club" class="headerlink" title="Study IT .club"></a>Study IT .club</h1><h3 id="萌新报道"><a href="#萌新报道" class="headerlink" title="萌新报道"></a>萌新报道</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Hello Everybody</span><br></pre></td></tr></table></figure>
-
-<p>​    第一次尝试分享一个自己写的非常简单的自己社团的官网 </p>
-<p>​    有兴趣的小伙伴可以去开一下 ——-&gt; <a href="http://studyit.club" target="_blank" rel="noopener">网站地址</a></p>
-<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><fancybox>
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/index.png" />
-</fancybox>
-
-<fancybox>
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/main.png" />
-</fancybox>
-
-<h3 id="语言和框架"><a href="#语言和框架" class="headerlink" title="语言和框架"></a>语言和框架</h3><ul>
-<li>数据库方面使用<code>Mysql</code> 数据库 没有事务处理 存储引擎为<code>MyISAM</code></li>
-<li>后台语言为<code>PHP</code></li>
-<li>讨论专区的框架为<code>BootStrap</code></li>
-<li>首页框架为 <code>jQuery</code></li>
-<li>谈论专区发帖的模块使用了 富文本编辑器<code>UEditor</code></li>
-<li>在个人空间主要<code>AJAX</code>滚动局部刷新</li>
-<li>个人空间方面用了<code>QQ</code>表情包</li>
-<li>个人设置用了美图秀秀的PC插件<code>crossdomain.xml</code></li>
-<li>个人空间使用 <code>Highslide.js</code>图片预览插件和多图片上传插件</li>
-</ul>
-<hr>
-<h3 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h3><ul>
-<li><p>需要挂载在本地的<code>PHP</code>服务器之上</p>
-</li>
-<li><p>推荐使用<code>PHPstudy</code>或者warm等集成开发环境</p>
-</li>
-<li><p>数据库方面配置在<code>connect/config.php</code>中,端口和数据库配置在这里面</p>
-</li>
-<li><p>所有的数据库模型都在主目录的 <code>数据库.txt</code>目录下面</p>
-</li>
-<li><p>美图秀秀插件配置:把主目录的 <code>crossdomain.xml</code>放在服务器的根目录</p>
-</li>
-</ul>
-<p><a href="https://github.com/2662419405/Studyit-club" target="_blank" rel="noopener">项目源码</a>—-&gt;地址</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 博客园 </tag>
+            
+            <tag> 样式自定义 </tag>
+            
+            <tag> BLOG </tag>
+            
+            <tag> jQuery </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第一个接触的前端项目</title>
+      <link href="/2019/11/20/dycjcqd/"/>
+      <url>/2019/11/20/dycjcqd/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>测试网址: <a href="http://studyit.club" target="_blank" rel="noopener">http://studyit.club</a></p><p>实现目标: 简易版社团,学习资源分享,富文本论坛,空间,美图秀秀等</p><p>简述原理: 常见前端框架混合使用</p><p>目前: 由于精力有限,目前暂停维护和开发 </p></blockquote><a id="more"></a><h1 id="Study-IT-club"><a href="#Study-IT-club" class="headerlink" title="Study IT .club"></a>Study IT .club</h1><h3 id="萌新报道"><a href="#萌新报道" class="headerlink" title="萌新报道"></a>萌新报道</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello Everybody</span><br></pre></td></tr></table></figure><p>​    第一次尝试分享一个自己写的非常简单的自己社团的官网 </p><p>​    有兴趣的小伙伴可以去开一下 ——-&gt; <a href="http://studyit.club" target="_blank" rel="noopener">网站地址</a></p><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/index.png" /></fancybox><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/main.png" /></fancybox><h3 id="语言和框架"><a href="#语言和框架" class="headerlink" title="语言和框架"></a>语言和框架</h3><ul><li>数据库方面使用<code>Mysql</code> 数据库 没有事务处理 存储引擎为<code>MyISAM</code></li><li>后台语言为<code>PHP</code></li><li>讨论专区的框架为<code>BootStrap</code></li><li>首页框架为 <code>jQuery</code></li><li>谈论专区发帖的模块使用了 富文本编辑器<code>UEditor</code></li><li>在个人空间主要<code>AJAX</code>滚动局部刷新</li><li>个人空间方面用了<code>QQ</code>表情包</li><li>个人设置用了美图秀秀的PC插件<code>crossdomain.xml</code></li><li>个人空间使用 <code>Highslide.js</code>图片预览插件和多图片上传插件</li></ul><hr><h3 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h3><ul><li><p>需要挂载在本地的<code>PHP</code>服务器之上</p></li><li><p>推荐使用<code>PHPstudy</code>或者warm等集成开发环境</p></li><li><p>数据库方面配置在<code>connect/config.php</code>中,端口和数据库配置在这里面</p></li><li><p>所有的数据库模型都在主目录的 <code>数据库.txt</code>目录下面</p></li><li><p>美图秀秀插件配置:把主目录的 <code>crossdomain.xml</code>放在服务器的根目录</p></li></ul><p><a href="https://github.com/2662419405/Studyit-club" target="_blank" rel="noopener">项目源码</a>—-&gt;地址</p>]]></content>
+      
+      
       <categories>
-        <category>jQuery</category>
-        <category>PHP</category>
-        <category>Mysql</category>
+          
+          <category> jQuery </category>
+          
+          <category> PHP </category>
+          
+          <category> Mysql </category>
+          
       </categories>
-      <tags>
-        <tag>我的项目</tag>
-        <tag>学习之旅</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的第一个React项目</title>
-    <url>/2019/11/18/dygReactxm/</url>
-    <content><![CDATA[<blockquote>
-<p>测试网址: <a href="http://shtodream.cn:9093" target="_blank" rel="noopener">http://shtodream.cn:9093</a></p>
-<p>实现目标: 双向聊天</p>
-<p>简述原理: socketio全双工通信</p>
-<p>目前bug: 注册之后再次登录才可以聊天</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="简招-React-Node-MongoDB"><a href="#简招-React-Node-MongoDB" class="headerlink" title="简招 (React+Node+MongoDB)"></a>简招 (React+Node+MongoDB)</h1><blockquote>
-<p>开始制作的时间是从 2019-10-10 起至今</p>
-</blockquote>
-<p><img src="http://studyit.club/Study/sh.jpg" alt="sh"></p>
-<p>自己也发布过几个小型的demo,虽然没人看(๑•ૅૄ•๑), 但还是喜欢与大家共同学习进步</p>
-<p>测试网址 ———&gt;  <a href="http://shtodream.cn:9093" target="_blank" rel="noopener">网址</a></p>
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>校园招聘<code>APP</code>,是一款手机端的求职网站,招聘者可以注册为BOSS,求职者可以注册为牛人,牛人和BOSS可以聊天,并且可以互相查看到对方的基本信息和简介薪资等方面</p>
-<p>计划制作:</p>
-<ul>
-<li>使用React的<code>Antd-mobile</code>支持手机端端制作</li>
-<li><code>ReactNative</code>独立开发<code>App</code>端和<code>IOS</code></li>
-<li>有人肯定会很好奇,PC和手机为何要制作两次,主要是本人很萌新,想要学习更多的框架</li>
-</ul>
-<blockquote>
-<p>只有学习更多的框架,并且锻炼更好的自学能力,才能更上一层楼</p>
-</blockquote>
-<h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><p>我是一个<strong>热门计算机</strong>并且<strong>对计算机充满兴趣</strong>的程序员</p>
-<p>学过<code>Java</code>,<code>.net</code>,<code>PHP</code>,曾经一度认为<code>PHP</code>是最牛逼的语言</p>
-<p>后来正式的接触前端,学习过</p>
-<ul>
-<li><code>ES6</code></li>
-<li><code>Node</code></li>
-<li><code>React</code></li>
-<li><code>Vue</code></li>
-<li><code>ReactNative</code></li>
-<li><code>Angular</code></li>
-<li>微信一系列开发</li>
-<li><code>jq</code>,<code>bootstarp</code>等一些简单库</li>
-</ul>
-<p>发现前端很神奇,比后台和数据方面更加的有意思,想要称为一名前端工程师</p>
-<h3 id="项目简述"><a href="#项目简述" class="headerlink" title="项目简述"></a>项目简述</h3><blockquote>
-<p>这是一个React项目,你的电脑要具备Node(8.0)以上</p>
-</blockquote>
-<h4 id="所使用的node包技术阐述"><a href="#所使用的node包技术阐述" class="headerlink" title="所使用的node包技术阐述"></a>所使用的node包技术阐述</h4><fancybox>
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-10-24_11-25-04.png" />
-</fancybox>
-
-<blockquote>
-<p>前端主要采用了React全家桶，没什么多说的，脚手架构建项目，react-router控制路由，axios进行前后端交互。后端是基于node搭的服务，用的是express。我为什么不用koa呢，纯粹是图方便，因为koa不熟（捂脸）。聊天最重要的当然是通信，项目用<a href="https://www.w3cschool.cn/socket/socket-1olq2egc.html" target="_blank" rel="noopener">socket.io</a>来进行前后端通信。</p>
-</blockquote>
-<p><em>=============分割线  下面是每个包的详细解释===============</em></p>
-<ul>
-<li><p><strong>(按需加载问题)</strong> 使用<code>babel-plugin-import</code>包</p>
-</li>
-<li><p><strong>(由于跨域问题)</strong> 在<code>package.json</code>中使用<code>proxy</code>配置</p>
-<ul>
-<li><p>需要详细说明一下,安装完这个包,需要在<code>package.json</code>文件中配置</p>
-</li>
-<li><pre><code class="js"><span class="string">"proxy"</span>: <span class="string">"http://localhost:9093"</span>
-&lt;!--￼<span class="number">0</span>--&gt;</code></pre>
-</li>
-</ul>
-</li>
-<li><p><strong>(配置服务端渲染)</strong> 使用<code>babel-cli</code>包</p>
-<ul>
-<li><p>安装</p>
-</li>
-<li><pre><code class="js">npm install babel-cli --save 
-&lt;!--￼<span class="number">1</span>--&gt;
-
-
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>目录结构</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 项目结构</span></span><br><span class="line">├─build</span><br><span class="line">├─config</span><br><span class="line">├─data</span><br><span class="line">│  ├─MongoDB            				  <span class="comment">// 数据库解释    </span></span><br><span class="line">├─server  								  <span class="comment">// 后台</span></span><br><span class="line">│  ├─model          					  <span class="comment">// 数据库原型     </span></span><br><span class="line">│  ├─main          				  		  <span class="comment">// 后台文件入口  </span></span><br><span class="line">│  ├─user          				 		  <span class="comment">// 后台接口api    </span></span><br><span class="line">├─src</span><br><span class="line">│  ├─components                           <span class="comment">// 全局组件</span></span><br><span class="line">│  │  ├─autoRouter</span><br><span class="line">│  │  ├─avatar-select</span><br><span class="line">│  │  ├─boss</span><br><span class="line">│  │  ├─chat</span><br><span class="line">│  │  ├─Dashboard</span><br><span class="line">│  │  ├─genius</span><br><span class="line">│  │  ├─img</span><br><span class="line">│  │  ├─logo</span><br><span class="line">│  │  ├─msg</span><br><span class="line">│  │  ├─navlink</span><br><span class="line">│  │  ├─shForm</span><br><span class="line">│  │  ├─user</span><br><span class="line">│  │  └─chatCard</span><br><span class="line">│  ├─router                                <span class="comment">// 路由</span></span><br><span class="line">│  ├─index                                 <span class="comment">// 入口	</span></span><br><span class="line">│  ├─util                                  <span class="comment">// 方法</span></span><br><span class="line">│  ├─config                                <span class="comment">// 请求拦截</span></span><br><span class="line">│  └─container</span><br><span class="line">│      ├─bossinfo   					   <span class="comment">// boss</span></span><br><span class="line">│      ├─login          				   <span class="comment">// 登录</span></span><br><span class="line">│      ├─register                          <span class="comment">// 注册</span></span><br><span class="line">│      └─genuisinfo                        <span class="comment">// 牛人</span></span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>注册时, 进行密码MD5加密</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// md5加密</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5pwd</span>(<span class="params">pwd</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> salt = <span class="string">'qwe123~~-!@#$%^&amp;&amp;*()sunhang'</span></span><br><span class="line">    <span class="keyword">return</span> utility.md5(utility.md5(salt+pwd))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>进行登录以及cookie的存储</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//进行注册</span></span><br><span class="line">Router.post(<span class="string">'/register'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; user,pwd,type &#125; = req.body</span><br><span class="line">    User.findOne(&#123;user&#125;,(err,doc)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(doc)&#123;</span><br><span class="line">            <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">1</span>,<span class="attr">msg</span>:<span class="string">'用户名存在'</span>&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> userModel = <span class="keyword">new</span> User(&#123;user,type,<span class="attr">pwd</span>:md5pwd(pwd)&#125;)</span><br><span class="line">        userModel.save(<span class="function"><span class="keyword">function</span>(<span class="params">e,d</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">2</span>,<span class="attr">msg</span>:<span class="string">'后端出错了'</span>&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> &#123;user,type,_id&#125; = d</span><br><span class="line">            res.cookie(<span class="string">'userid'</span>,_id)</span><br><span class="line">            <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">3</span>,<span class="attr">msg</span>:<span class="string">'注册成功'</span>,<span class="attr">data</span>:&#123;user,type,_id&#125;&#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>axios拦截器的制作</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Toast &#125; <span class="keyword">from</span> <span class="string">'antd-mobile'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//拦截请求</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="keyword">function</span>(<span class="params">config</span>)</span>&#123;</span><br><span class="line">    Toast.loading(<span class="string">'加载中'</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//拦截响应</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="keyword">function</span>(<span class="params">config</span>)</span>&#123;</span><br><span class="line">    Toast.hide();</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>登录和注册效果展示</li>
-</ul>
-<fancybox>
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/register.gif">
-</fancybox>
-
-<ul>
-<li>双方聊天展示</li>
-</ul>
-<fancybox>
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/chat.gif">
-</fancybox>
-
-
-
-<ul>
-<li>消息的更新和排序</li>
-</ul>
-<fancybox>
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/clear.gif">
-</fancybox>
-
-
-
-<ul>
-<li>手机端表情包展示</li>
-</ul>
-<fancybox>
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Screenshot_2019-10-24-14-14-39-53_cb819d8fa60af39.jpg">
-</fancybox>
-
-<blockquote>
-<p>手机端的表情包就是可以用的,现在的表情包都可以直接使用了,不同代码了,很神奇</p>
-</blockquote>
-<h3 id="后台方向"><a href="#后台方向" class="headerlink" title="后台方向"></a>后台方向</h3><ul>
-<li>由于本人主要是面向前端,数据库就是<code>MongoDB</code></li>
-<li>数据库的使用请参照<code>data</code>目录下面的<code>mongodb.md</code></li>
-</ul>
-<ul>
-<li>数据库方面使用 <strong>(mongoose)</strong></li>
-</ul>
-<ul>
-<li>后台主要使用<code>node</code>的<code>express</code></li>
-</ul>
-<ul>
-<li>后台文件在<code>server</code></li>
-</ul>
-<h1 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h1><ul>
-<li><p>需要电脑有 mongo 和 react 还有node环境</p>
-</li>
-<li><p>首先:下载本项目</p>
-</li>
-<li><pre><code class="js"><span class="comment">// 第一种方式</span>
-npm install <span class="comment">//安装包依赖</span>
-npm run build <span class="comment">//打包项目</span>
-npm run server <span class="comment">//启动  打开浏览器输入localhost:9093</span>
-&lt;!--￼<span class="number">6</span>--&gt;
-
-</code></pre>
-</li>
-</ul>
-<p>如果还有bug和建议,欢迎告诉我  (͏ ˉ ꈊ ˉ)✧˖°</p>
-<fancybox>
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/qq.jpg" />
-</fancybox>
-
-
-
-<blockquote>
-<p> 一开始还是遇到了很多的坑,第一次使用antd-mobile这个库,最主要的坑,还是对于项目的上线运行,毕竟个人不太擅长服务器的使用,在配置Nginx的时候卡了很久,为了性能优化,SSR渲染也是花了很大的心血,感觉里面的坑太多了,总的来说收获还是很大的,后期我还会画时间进行界面上的美化</p>
-<p>感觉支持  喜欢的朋友记得给个star  </p>
-</blockquote>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 我的项目 </tag>
+            
+            <tag> 学习之旅 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>我的第一个React项目</title>
+      <link href="/2019/11/18/dygReactxm/"/>
+      <url>/2019/11/18/dygReactxm/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>测试网址: <a href="http://shtodream.cn:9093" target="_blank" rel="noopener">http://shtodream.cn:9093</a></p><p>实现目标: 双向聊天</p><p>简述原理: socketio全双工通信</p><p>目前bug: 注册之后再次登录才可以聊天</p></blockquote><a id="more"></a><h1 id="简招-React-Node-MongoDB"><a href="#简招-React-Node-MongoDB" class="headerlink" title="简招 (React+Node+MongoDB)"></a>简招 (React+Node+MongoDB)</h1><blockquote><p>开始制作的时间是从 2019-10-10 起至今</p></blockquote><p><img src="http://studyit.club/Study/sh.jpg" alt="sh"></p><p>自己也发布过几个小型的demo,虽然没人看(๑•ૅૄ•๑), 但还是喜欢与大家共同学习进步</p><p>测试网址 ———&gt;  <a href="http://shtodream.cn:9093" target="_blank" rel="noopener">网址</a></p><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>校园招聘<code>APP</code>,是一款手机端的求职网站,招聘者可以注册为BOSS,求职者可以注册为牛人,牛人和BOSS可以聊天,并且可以互相查看到对方的基本信息和简介薪资等方面</p><p>计划制作:</p><ul><li>使用React的<code>Antd-mobile</code>支持手机端端制作</li><li><code>ReactNative</code>独立开发<code>App</code>端和<code>IOS</code></li><li>有人肯定会很好奇,PC和手机为何要制作两次,主要是本人很萌新,想要学习更多的框架</li></ul><blockquote><p>只有学习更多的框架,并且锻炼更好的自学能力,才能更上一层楼</p></blockquote><h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><p>我是一个<strong>热门计算机</strong>并且<strong>对计算机充满兴趣</strong>的程序员</p><p>学过<code>Java</code>,<code>.net</code>,<code>PHP</code>,曾经一度认为<code>PHP</code>是最牛逼的语言</p><p>后来正式的接触前端,学习过</p><ul><li><code>ES6</code></li><li><code>Node</code></li><li><code>React</code></li><li><code>Vue</code></li><li><code>ReactNative</code></li><li><code>Angular</code></li><li>微信一系列开发</li><li><code>jq</code>,<code>bootstarp</code>等一些简单库</li></ul><p>发现前端很神奇,比后台和数据方面更加的有意思,想要称为一名前端工程师</p><h3 id="项目简述"><a href="#项目简述" class="headerlink" title="项目简述"></a>项目简述</h3><blockquote><p>这是一个React项目,你的电脑要具备Node(8.0)以上</p></blockquote><h4 id="所使用的node包技术阐述"><a href="#所使用的node包技术阐述" class="headerlink" title="所使用的node包技术阐述"></a>所使用的node包技术阐述</h4><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-10-24_11-25-04.png" /></fancybox><blockquote><p>前端主要采用了React全家桶，没什么多说的，脚手架构建项目，react-router控制路由，axios进行前后端交互。后端是基于node搭的服务，用的是express。我为什么不用koa呢，纯粹是图方便，因为koa不熟（捂脸）。聊天最重要的当然是通信，项目用<a href="https://www.w3cschool.cn/socket/socket-1olq2egc.html" target="_blank" rel="noopener">socket.io</a>来进行前后端通信。</p></blockquote><p><em>=============分割线  下面是每个包的详细解释===============</em></p><ul><li><p><strong>(按需加载问题)</strong> 使用<code>babel-plugin-import</code>包</p></li><li><p><strong>(由于跨域问题)</strong> 在<code>package.json</code>中使用<code>proxy</code>配置</p><ul><li><p>需要详细说明一下,安装完这个包,需要在<code>package.json</code>文件中配置</p></li><li><pre><code class="js"><span class="string">"proxy"</span>: <span class="string">"http://localhost:9093"</span>&lt;!--￼<span class="number">0</span>--&gt;</code></pre></li></ul></li><li><p><strong>(配置服务端渲染)</strong> 使用<code>babel-cli</code>包</p><ul><li><p>安装</p></li><li><pre><code class="js">npm install babel-cli --save &lt;!--￼<span class="number">1</span>--&gt;</code></pre></li></ul></li></ul><ul><li>目录结构</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 项目结构</span></span><br><span class="line">├─build</span><br><span class="line">├─config</span><br><span class="line">├─data</span><br><span class="line">│  ├─MongoDB              <span class="comment">// 数据库解释    </span></span><br><span class="line">├─server    <span class="comment">// 后台</span></span><br><span class="line">│  ├─model            <span class="comment">// 数据库原型     </span></span><br><span class="line">│  ├─main              <span class="comment">// 后台文件入口  </span></span><br><span class="line">│  ├─user             <span class="comment">// 后台接口api    </span></span><br><span class="line">├─src</span><br><span class="line">│  ├─components                           <span class="comment">// 全局组件</span></span><br><span class="line">│  │  ├─autoRouter</span><br><span class="line">│  │  ├─avatar-select</span><br><span class="line">│  │  ├─boss</span><br><span class="line">│  │  ├─chat</span><br><span class="line">│  │  ├─Dashboard</span><br><span class="line">│  │  ├─genius</span><br><span class="line">│  │  ├─img</span><br><span class="line">│  │  ├─logo</span><br><span class="line">│  │  ├─msg</span><br><span class="line">│  │  ├─navlink</span><br><span class="line">│  │  ├─shForm</span><br><span class="line">│  │  ├─user</span><br><span class="line">│  │  └─chatCard</span><br><span class="line">│  ├─router                                <span class="comment">// 路由</span></span><br><span class="line">│  ├─index                                 <span class="comment">// 入口</span></span><br><span class="line">│  ├─util                                  <span class="comment">// 方法</span></span><br><span class="line">│  ├─config                                <span class="comment">// 请求拦截</span></span><br><span class="line">│  └─container</span><br><span class="line">│      ├─bossinfo      <span class="comment">// boss</span></span><br><span class="line">│      ├─login             <span class="comment">// 登录</span></span><br><span class="line">│      ├─register                          <span class="comment">// 注册</span></span><br><span class="line">│      └─genuisinfo                        <span class="comment">// 牛人</span></span><br></pre></td></tr></table></figure><blockquote><p>注册时, 进行密码MD5加密</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// md5加密</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5pwd</span>(<span class="params">pwd</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> salt = <span class="string">'qwe123~~-!@#$%^&amp;&amp;*()sunhang'</span></span><br><span class="line">    <span class="keyword">return</span> utility.md5(utility.md5(salt+pwd))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>进行登录以及cookie的存储</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//进行注册</span></span><br><span class="line">Router.post(<span class="string">'/register'</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; user,pwd,type &#125; = req.body</span><br><span class="line">    User.findOne(&#123;user&#125;,(err,doc)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(doc)&#123;</span><br><span class="line">            <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">1</span>,<span class="attr">msg</span>:<span class="string">'用户名存在'</span>&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> userModel = <span class="keyword">new</span> User(&#123;user,type,<span class="attr">pwd</span>:md5pwd(pwd)&#125;)</span><br><span class="line">        userModel.save(<span class="function"><span class="keyword">function</span>(<span class="params">e,d</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">2</span>,<span class="attr">msg</span>:<span class="string">'后端出错了'</span>&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> &#123;user,type,_id&#125; = d</span><br><span class="line">            res.cookie(<span class="string">'userid'</span>,_id)</span><br><span class="line">            <span class="keyword">return</span> res.json(&#123;<span class="attr">code</span>:<span class="number">3</span>,<span class="attr">msg</span>:<span class="string">'注册成功'</span>,<span class="attr">data</span>:&#123;user,type,_id&#125;&#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><blockquote><p>axios拦截器的制作</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Toast &#125; <span class="keyword">from</span> <span class="string">'antd-mobile'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//拦截请求</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="keyword">function</span>(<span class="params">config</span>)</span>&#123;</span><br><span class="line">    Toast.loading(<span class="string">'加载中'</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//拦截响应</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="keyword">function</span>(<span class="params">config</span>)</span>&#123;</span><br><span class="line">    Toast.hide();</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><ul><li>登录和注册效果展示</li></ul><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/register.gif"></fancybox><ul><li>双方聊天展示</li></ul><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/chat.gif"></fancybox><ul><li>消息的更新和排序</li></ul><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/clear.gif"></fancybox><ul><li>手机端表情包展示</li></ul><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Screenshot_2019-10-24-14-14-39-53_cb819d8fa60af39.jpg"></fancybox><blockquote><p>手机端的表情包就是可以用的,现在的表情包都可以直接使用了,不同代码了,很神奇</p></blockquote><h3 id="后台方向"><a href="#后台方向" class="headerlink" title="后台方向"></a>后台方向</h3><ul><li>由于本人主要是面向前端,数据库就是<code>MongoDB</code></li><li>数据库的使用请参照<code>data</code>目录下面的<code>mongodb.md</code></li></ul><ul><li>数据库方面使用 <strong>(mongoose)</strong></li></ul><ul><li>后台主要使用<code>node</code>的<code>express</code></li></ul><ul><li>后台文件在<code>server</code></li></ul><h1 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h1><ul><li><p>需要电脑有 mongo 和 react 还有node环境</p></li><li><p>首先:下载本项目</p></li><li><pre><code class="js"><span class="comment">// 第一种方式</span>npm install <span class="comment">//安装包依赖</span>npm run build <span class="comment">//打包项目</span>npm run server <span class="comment">//启动  打开浏览器输入localhost:9093</span>&lt;!--￼<span class="number">6</span>--&gt;</code></pre></li></ul><p>如果还有bug和建议,欢迎告诉我  (͏ ˉ ꈊ ˉ)✧˖°</p><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/qq.jpg" /></fancybox><blockquote><p> 一开始还是遇到了很多的坑,第一次使用antd-mobile这个库,最主要的坑,还是对于项目的上线运行,毕竟个人不太擅长服务器的使用,在配置Nginx的时候卡了很久,为了性能优化,SSR渲染也是花了很大的心血,感觉里面的坑太多了,总的来说收获还是很大的,后期我还会画时间进行界面上的美化</p><p>感觉支持  喜欢的朋友记得给个star  </p></blockquote>]]></content>
+      
+      
       <categories>
-        <category>Node</category>
-        <category>MongoDB</category>
-        <category>React</category>
+          
+          <category> Node </category>
+          
+          <category> MongoDB </category>
+          
+          <category> React </category>
+          
       </categories>
-      <tags>
-        <tag>我的项目</tag>
-        <tag>学习之旅</tag>
-        <tag>React</tag>
-        <tag>MongoDB</tag>
-        <tag>Node</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 我的项目 </tag>
+            
+            <tag> 学习之旅 </tag>
+            
+            <tag> React </tag>
+            
+            <tag> MongoDB </tag>
+            
+            <tag> Node </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
