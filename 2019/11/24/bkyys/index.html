@@ -567,7 +567,7 @@
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 我的项目</a> <a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 学习之旅</a>
+                                  <a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 学习之旅</a> <a class="tag" href="/tags/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 我的项目</a>
                               </h6>
                           
                       </span>
@@ -594,6 +594,12 @@
           <div id="gitalk-container"></div>
         </section>
       
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
       
     </section>
   </article>
@@ -1560,6 +1566,36 @@
   </script>
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "",
+    appKey: "",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
 
 
 
