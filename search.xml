@@ -90,9 +90,9 @@
       
         <tags>
             
-            <tag> 学习之旅 </tag>
-            
             <tag> jQuery </tag>
+            
+            <tag> 学习之旅 </tag>
             
             <tag> 前端 </tag>
             
@@ -164,9 +164,9 @@
       
       <categories>
           
-          <category> PHP </category>
-          
           <category> jQuery </category>
+          
+          <category> PHP </category>
           
           <category> Mysql </category>
           
@@ -175,9 +175,9 @@
       
         <tags>
             
-            <tag> 我的项目 </tag>
-            
             <tag> 学习之旅 </tag>
+            
+            <tag> 我的项目 </tag>
             
         </tags>
       
@@ -206,9 +206,9 @@
       
         <tags>
             
-            <tag> 我的项目 </tag>
-            
             <tag> 学习之旅 </tag>
+            
+            <tag> 我的项目 </tag>
             
             <tag> React </tag>
             
