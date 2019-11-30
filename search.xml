@@ -430,8 +430,8 @@ $.fn.extend({
         <category>前端</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>jQuery</tag>
+        <tag>学习之旅</tag>
         <tag>前端</tag>
       </tags>
   </entry>
@@ -631,8 +631,8 @@ $.fn.extend({
         <category>Mysql</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>我的项目</tag>
+        <tag>学习之旅</tag>
       </tags>
   </entry>
   <entry>
@@ -796,8 +796,8 @@ npm run server <span class="comment">//启动  打开浏览器输入localhost:90
         <category>React</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>我的项目</tag>
+        <tag>学习之旅</tag>
         <tag>React</tag>
         <tag>MongoDB</tag>
         <tag>Node</tag>
