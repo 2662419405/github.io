@@ -17,7 +17,9 @@
 
 > CSDN: https://blog.csdn.net/qq_43268396
 
-> 如果sunhang.top访问过慢，可以访问: https://d088x1.coding-pages.com (国内加速)
+> 个人学习成长记录: https://sunhang.top
+>
+> 如果上面的网站挂掉,可以访问下面的备份服务器
 >
 > github网站备份服务器: https://shtodream.cn
 
