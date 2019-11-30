@@ -15,11 +15,9 @@
 
 > CSDN: https://blog.csdn.net/qq_43268396
 
-> 个人学习记录网站: https://shtodream.cn
+> 如果sunhang.top访问过慢，可以访问: https://d088x1.coding-pages.com (国内加速)
 >
-> 如果上面这个网站加载过慢
->
-> github网站备份服务器: https://2662419405.github.io
+> github网站备份服务器: https://shtodream.cn
 
 > 个人第一个上线项目: http://studyit.club
 

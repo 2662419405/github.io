@@ -431,8 +431,8 @@ $.fn.extend({
       </categories>
       <tags>
         <tag>学习之旅</tag>
-        <tag>jQuery</tag>
         <tag>前端</tag>
+        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
@@ -576,10 +576,10 @@ $.fn.extend({
         <category>jQuery</category>
       </categories>
       <tags>
+        <tag>jQuery</tag>
         <tag>博客园</tag>
         <tag>样式自定义</tag>
         <tag>BLOG</tag>
-        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
