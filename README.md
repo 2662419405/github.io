@@ -23,7 +23,7 @@
 >
 > github网站备份服务器: https://shtodream.cn
 
-> 个人第一个上线项目: http://studyit.club
+> 个人第一个上线项目: https://studyit.club
 
 > 个人第一个React项目: http://shtodream.cn:9093
 
