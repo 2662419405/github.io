@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> BLOG </tag>
-            
             <tag> 学习之旅 </tag>
+            
+            <tag> BLOG </tag>
             
             <tag> Hexo </tag>
             
@@ -123,9 +123,9 @@
       
         <tags>
             
-            <tag> jQuery </tag>
-            
             <tag> 学习之旅 </tag>
+            
+            <tag> jQuery </tag>
             
             <tag> 前端 </tag>
             
@@ -197,9 +197,9 @@
       
       <categories>
           
-          <category> jQuery </category>
-          
           <category> PHP </category>
+          
+          <category> jQuery </category>
           
           <category> Mysql </category>
           

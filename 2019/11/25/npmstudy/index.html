@@ -55,6 +55,7 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 </script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/bd4254a0.js","daovoice")</script>
   
   
@@ -596,7 +597,7 @@
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/jQuery/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> jQuery</a> <a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 学习之旅</a> <a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 前端</a>
+                                  <a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 学习之旅</a> <a class="tag" href="/tags/jQuery/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> jQuery</a> <a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 前端</a>
                               </h6>
                           
                       </span>
@@ -638,10 +639,6 @@
       <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
       
       
-      
-        <section id="comments">
-          <div id="gitalk-container"></div>
-        </section>
       
       
         <section id="comments">
@@ -1288,7 +1285,7 @@
 </header>
 
     <div class="content material">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\24\bkyys\" title="博客园样式" rel="bookmark">博客园样式</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\18\dygReactxm\" title="我的第一个React项目" rel="bookmark">我的第一个React项目</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\20\dycjcqd\" title="第一个接触的前端项目" rel="bookmark">第一个接触的前端项目</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\24\bkyys\" title="博客园样式" rel="bookmark">博客园样式</a></h3></div></li></ul>
     </div>
   </section>
 
@@ -1598,23 +1595,6 @@
 
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-  <script type="text/javascript">
-    var gitalk = new Gitalk({
-      clientID: "107fa155d1a4c3632080",
-      clientSecret: "50529954654475a8e102bc81f9eb0460027216c5",
-      repo: "2662419405.github.io",
-      owner: "2662419405",
-      admin: "2662419405",
-      
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-      
-      distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-    gitalk.render('gitalk-container');
-  </script>
-
 
 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
@@ -1637,13 +1617,15 @@
     verify: verify,
     guest_info: guest_info,
     
-    appId: "",
-    appKey: "",
-    placeholder: "快来评论吧~",
-    pageSize:'10',
+    appId: "LdC0GtLKTgaSzMz9LyLFse4x-gzGzoHsz",
+    appKey: "19GQm8mkv42v62AU9MYEjSRn",
+    placeholder: "博主太菜了,快来吐槽啊",
+    pageSize:'20',
     avatar:'mp',
     lang:'zh-cn',
-    highlight:'true'
+    highlight:'true',
+    avatar:'monsterid',
+    visitor: true
   })
   </script>
 
