@@ -389,7 +389,7 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>采用 Gitalk 评论系统，需使用 GitHub 账号登录，请尽情灌水吧！😉</p>
+        <p>采用 Valine 评论系统，这个有邮箱回复并且有表情包，请尽情灌水吧！😉</p>
 <img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/1b6143e016a95a7560a29f4e444a1a4c03434c.png" />
       </div>
       
@@ -1349,8 +1349,8 @@
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
-    notify: notify,
-    verify: verify,
+    notify: true,
+    verify: true,
     guest_info: guest_info,
     
     appId: "LdC0GtLKTgaSzMz9LyLFse4x-gzGzoHsz",
