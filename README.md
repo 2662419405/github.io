@@ -19,7 +19,7 @@
 >
 > Gitee服务器备份: [https://itstusy.gitee.io](https://itstusy.gitee.io/)
 >
-> Coding服务器备份: [https://itstusy.gitee.io](https://d088x1.coding-pages.com/)
+> Coding服务器备份: [https://d088x1.coding-pages.com/](https://d088x1.coding-pages.com/)
 
 > 网站使用 [Github Pages](https://pages.github.com/) 和 [Hexo](https://hexo.io/) 搭建而成
 
