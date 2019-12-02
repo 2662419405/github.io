@@ -9,23 +9,31 @@
     <img src="https://img.shields.io/badge/weibo-%40SH-blueviolet"  />
 </p>
 
-## 本站已经开启github+coding双线部署，实现国内外加速访问
-
-欢迎各位的到来
-
 > 博客园: https://www.cnblogs.com/sunhang32/
 
 > CSDN: https://blog.csdn.net/qq_43268396
 
-> 个人学习成长记录: https://sunhang.top
+> 个人学习记录网站: https://sunhang.top
 >
-> 如果上面的网站挂掉,可以访问下面的备份服务器
+> 个人备份服务器：https://shtodream.cn
 >
-> github网站备份服务器: https://shtodream.cn
+> Gitee服务器备份: [https://itstusy.gitee.io](https://itstusy.gitee.io/)
+>
+> Coding服务器备份: [https://itstusy.gitee.io](https://d088x1.coding-pages.com/)
 
-> 个人第一个上线项目: https://studyit.club
+> 网站使用 [Github Pages](https://pages.github.com/) 和 [Hexo](https://hexo.io/) 搭建而成
+
+> 个人第一个上线项目: http://studyit.club
+
+>  自己为何选择计算机 ^-^ ：https://www.cnblogs.com/sunhang32/p/11832179.html
+
+> 业精于勤，荒于嬉；行成于思，毁于随。求知若饥，虚心若愚，好记性不如烂笔头，记录学习过程！
 
 > 个人第一个React项目: http://shtodream.cn:9093
+
+> 有问题欢迎随时咨询
+
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/qq.jpg"/>
 
 ## 1.2.0版本升级
 
