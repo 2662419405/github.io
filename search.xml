@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>DIY自己的评论表情包</title>
+    <url>/2019/12/03/csbqb/</url>
+    <content><![CDATA[<blockquote>
+<p>定制属于自己的专属表情包,虽然Voline有自己的一套表情包,但是感觉不是很好看,那么现在就来自己定制一下吧</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="1-下载js文件"><a href="#1-下载js文件" class="headerlink" title="1. 下载js文件"></a>1. 下载js文件</h2><p>这个是建立在valine的基础上修改的文件,所以和valine使用方式一样,就是导入的js改变一下即可<br>先clone一下<a href="https://github.com/2662419405/volantis" target="_blank">仓库</a>到本地,这个我就不说了</p>
+<h2 id="2-本地测试"><a href="#2-本地测试" class="headerlink" title="2. 本地测试"></a>2. 本地测试</h2><p>在clone的目录下面,新建一个html文件<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-03_21-19-51.png" /><br></fancybox><br>导入js运行html<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-03_21-20-57.png" /><br></fancybox><br>测试一下js是否生效了<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-03_21-21-19.png" /><br></fancybox></p>
+<h2 id="3-加入自己想要的表情包"><a href="#3-加入自己想要的表情包" class="headerlink" title="3. 加入自己想要的表情包"></a>3. 加入自己想要的表情包</h2><fancybox>
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-03_21-27-34.png" />
+</fancybox>
+
+<p>重新打开html页面,发现表情包添加了,但是变成了下面这样</p>
+<fancybox>
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-03_21-27-54.png" />
+</fancybox>
+
+<p>微调css文件,加入下面的css文件调整,当然可以根据自己的个人爱好添加</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.l_main</span> <span class="selector-id">#comments</span> <span class="selector-class">.vemojis</span> <span class="selector-tag">i</span> <span class="selector-class">.emoji</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">24px</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">6px</span>;</span><br><span class="line">    <span class="attribute">background</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.l_main</span> <span class="selector-id">#comments</span> <span class="selector-class">.vemojis</span> <span class="selector-tag">i</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: auto;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">36px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">8px</span> <span class="number">8px</span> <span class="number">0</span> <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-修改Hexo"><a href="#4-修改Hexo" class="headerlink" title="4. 修改Hexo"></a>4. 修改Hexo</h2><p>这个表情包本身就是valine的表情包的扩展,所以直接修改hexo中导入的js文件即可<br>把修改好的文件上传到自己的服务器上面,如果没有可以参考<a href="https://github.com/2662419405/CDN" target="_blank" rel="noopener">Github+jsDelivr</a>上传到CDN<br>我的是在<code>themes\material-x\layout\_partial\script.ejs</code>文件中,然后直接<code>Ctrl+F</code>搜索找到替换成自己的文件即可,我的js文件是<code>https://cdn.jsdelivr.net/gh/2662419405/CDN/volantisPlus.js</code></p>
+<ul>
+<li>最好把这个volantisPlus压缩一下,本人太懒了,就没弄,经过上面的配置,你也拥有了自己的DIY表情包,美滋滋啊</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>表情包</tag>
+        <tag>DIY</tag>
+        <tag>volantis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>加速自己的hexo，使用GitHub+Coding实现国内外网站加速</title>
     <url>/2019/11/30/github-coding/</url>
     <content><![CDATA[<blockquote>
@@ -875,6 +909,18 @@ npm run server <span class="comment">//启动  打开浏览器输入localhost:90
         <tag>React</tag>
         <tag>MongoDB</tag>
         <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>❤Thanksgiving❤</title>
+    <url>/2019/11/05/welcome/</url>
+    <content><![CDATA[<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/2ba4e2431c8f59fa8fdcf10f0348f6ff7f0d5b.png" />
+
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>感谢相遇</tag>
+        <tag>码农</tag>
+        <tag>苦逼程序员</tag>
       </tags>
   </entry>
 </search>
