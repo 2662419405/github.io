@@ -1,4 +1,4 @@
-# SH'S BLOG
+# SH'S BLOG (使用Coding针对于国内加速)
 
 <p align="center" style="margin:50px 0;">
 	<img src="https://img.shields.io/badge/language-html-blue" />
