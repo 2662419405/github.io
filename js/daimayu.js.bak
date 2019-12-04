@@ -1,4 +1,4 @@
-window.onload = function(){
+
     //获取画布对象
     var canvas = document.getElementById("canvv");
     //获取画布的上下文
@@ -54,4 +54,3 @@ window.onload = function(){
     }
     draw();
     setInterval(draw,35);
-};
