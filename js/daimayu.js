@@ -1,4 +1,4 @@
-window.onload = function(){
+
     //��ȡ��������
     var canvas = document.getElementById("canvv");
     //��ȡ������������
@@ -54,4 +54,3 @@ window.onload = function(){
     }
     draw();
     setInterval(draw,35);
-};
