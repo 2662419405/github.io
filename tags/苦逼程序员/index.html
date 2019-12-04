@@ -1336,14 +1336,14 @@
       $(function(){
         if ('.cover') {
           $('.cover').backstretch(
-          ["https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.2.1/images/background/021.webp"],
+          [""],
           {
             duration: "6000",
             fade: "2500"
           });
         } else {
           $.backstretch(
-          ["https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.2.1/images/background/021.webp"],
+          [""],
           {
             duration: "6000",
             fade: "2500"
@@ -1485,19 +1485,22 @@
   <script type="text/javascript" src="/js/love.js"></script> 
   <!-- 标题 -->
   <script type="text/javascript" src="\js\FunnyTitle.js"></script>
-  <!--动态线条背景-->
+  <!--动态线条背景
   <script type="text/javascript"
      color="27,195,251" opacity='0.9' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
-  </script>
+  </script> -->
+  <!-- 代码雨效果 -->
+  <canvas id="canvv" width="1440" height="900" ></canvas>
+  <script type="text/javascript" src="/js/daimayu.js"></script>
   <!-- 输入框特效 -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/2662419405/CDN/shblog1.js"></script>
+  <script type="text/javascript" src="/js/shblog.js"></script>
   <script>
 	POWERMODE.colorful = 'true'; // make power mode colorful
 	POWERMODE.shake = 'true'; // turn off shake
 	document.body.addEventListener('input', POWERMODE);
   </script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/2662419405/CDN/ce.js"></script>
   <script>
+	console.log = function(){}
 	console.info("%c ", "background: url(https://images.cnblogs.com/cnblogs_com/miluluyo/1493340/o_a.gif) no-repeat center;padding-left:400px;padding-bottom: 160px;background-size:400px")
 	console.info('\n' + ' %c 残梦 CNBlogs %c https://www.cnblogs.com/sunhang32/ ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 	console.info('\n' + ' %c 残梦 GitHub %c https://github.com/2662419405' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');

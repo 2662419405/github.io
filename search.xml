@@ -62,8 +62,8 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>BLOG</tag>
         <tag>学习之旅</tag>
+        <tag>BLOG</tag>
         <tag>Hexo</tag>
         <tag>Github</tag>
         <tag>Coding</tag>
@@ -499,8 +499,8 @@ $.fn.extend({
         <category>前端</category>
       </categories>
       <tags>
-        <tag>jQuery</tag>
         <tag>学习之旅</tag>
+        <tag>jQuery</tag>
         <tag>前端</tag>
       </tags>
   </entry>
@@ -710,8 +710,8 @@ $.fn.extend({
 <p><a href="https://github.com/2662419405/Studyit-club" target="_blank" rel="noopener">项目源码</a>—-&gt;地址</p>
 ]]></content>
       <categories>
-        <category>jQuery</category>
         <category>PHP</category>
+        <category>jQuery</category>
         <category>Mysql</category>
       </categories>
       <tags>
