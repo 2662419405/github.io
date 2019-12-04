@@ -1,6 +1,6 @@
 window.onload = function(){
     //��ȡ��������
-    var canvas = document.getElementById("canvas");
+    var canvas = document.getElementById("canvv");
     //��ȡ������������
     var context =canvas.getContext("2d");
     var s = window.screen;
