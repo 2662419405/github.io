@@ -62,11 +62,11 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>BLOG</tag>
         <tag>学习之旅</tag>
+        <tag>Hexo</tag>
         <tag>Github</tag>
         <tag>Coding</tag>
-        <tag>BLOG</tag>
       </tags>
   </entry>
   <entry>
@@ -499,9 +499,9 @@ $.fn.extend({
         <category>前端</category>
       </categories>
       <tags>
+        <tag>jQuery</tag>
         <tag>学习之旅</tag>
         <tag>前端</tag>
-        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
@@ -654,10 +654,10 @@ $.fn.extend({
         <category>jQuery</category>
       </categories>
       <tags>
-        <tag>BLOG</tag>
-        <tag>jQuery</tag>
         <tag>博客园</tag>
         <tag>样式自定义</tag>
+        <tag>BLOG</tag>
+        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
