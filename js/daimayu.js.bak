@@ -1,6 +1,6 @@
-
+window.onload = function(){
     //获取画布对象
-    var canvas = document.getElementById("canvv");
+    var canvas = document.getElementById("canvas");
     //获取画布的上下文
     var context =canvas.getContext("2d");
     var s = window.screen;
@@ -23,7 +23,7 @@
         drops.push(0);
     }
     //运动的文字
-    var str ="WELCOME TO SH'S BLOG";
+    var str ="WELCOME TO WWW.ITRHX.COM";
     //4:fillText(str,x,y);原理就是去更改y的坐标位置
     //绘画的函数
     function draw(){
@@ -54,3 +54,4 @@
     }
     draw();
     setInterval(draw,35);
+};

@@ -1,6 +1,6 @@
-window.onload=function({
+window.onload = function(){
     //��ȡ��������
-    var canvas = document.getElementById("canvv");
+    var canvas = document.getElementById("canvas");
     //��ȡ������������
     var context =canvas.getContext("2d");
     var s = window.screen;
@@ -54,4 +54,4 @@ window.onload=function({
     }
     draw();
     setInterval(draw,35);
-})
+};
