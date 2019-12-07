@@ -198,3 +198,17 @@ ul.link-content li:nth-child(7n+6) {
 ul.link-content li:nth-child(7n+7) {
     border-left-color: #008b8b
 }
+
+/*
+     手机端兼容性
+*/
+
+@media screen and (max-width:770px){
+    #head-nav{
+        overflow-x: auto;
+        width: 100%;
+    }
+    #menu-index{
+        width: 1080px;
+    }
+}
