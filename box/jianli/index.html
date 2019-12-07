@@ -6,8 +6,18 @@
     <style id="style-tag"></style>
     <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
     <script src="app.js"></script>
+    <script>
+        document.onkeydown = function () {
+            if (window.event && window.event.keyCode == 123) {
+                event.keyCode = 0;
+                event.returnValue = false;
+                return false;
+            }
+        };
+    </script>
   </head>
-  <body spellcheck="false">
+  <body  oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false"
+  ondragstart="window.event.returnValue=false" spellcheck="false">
     <div id="content">
       <pre contenteditable id="style-text"></pre>
       <pre id="work-text"></pre>
