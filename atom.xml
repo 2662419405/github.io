@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://2662419405.github.io/"/>
-  <updated>2019-12-03T13:37:20.419Z</updated>
+  <updated>2019-12-08T10:42:41.067Z</updated>
   <id>https://2662419405.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git开发流程和常见命令</title>
+    <link href="https://2662419405.github.io/2019/12/08/gitEasy/"/>
+    <id>https://2662419405.github.io/2019/12/08/gitEasy/</id>
+    <published>2019-12-08T10:35:37.000Z</published>
+    <updated>2019-12-08T10:42:41.067Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>git,是一种版本控制工具,用于整合项目或者项目回滚有很好的效果,相比于svn,git操作更加灵活,限制更少一些</p></blockquote><a id="more"></a><h1 id="git学习"><a href="#git学习" class="headerlink" title="git学习"></a>git学习</h1><p>工作流程图<br><fancybox><br><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/git多人流程图.png" /><br></fancybox></p><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>工作区(写代码的地方)</p><blockquote><p>git add</p></blockquote><p>暂存区(临时的存储)</p><blockquote><p>git commit</p></blockquote><p>本地库(历史版本)</p><h4 id="初级操作"><a href="#初级操作" class="headerlink" title="初级操作"></a>初级操作</h4><ul><li><p>git status     //状态查看</p></li><li><p>git add        //添加到暂存区</p></li><li><p>git rm –cached    //移除暂存区</p></li><li><p>git commit -m ‘xx’      //提交到本地库</p></li></ul><h3 id="版本操作"><a href="#版本操作" class="headerlink" title="版本操作"></a>版本操作</h3><ul><li><p>git log 命令可以显示所有提交过的版本信息</p></li><li><p>git reflog 可以查看所有分支的所有操作记录（包括已经被删除的 commit 记录和 reset 的操作）</p></li><li><p>git reset –hard xxx 索引值</p></li><li><p>git reset –hard HEAD^ 版本回退一次^^^退三步</p></li><li><p>git reset –hard HEAD~3   版本回退三步</p></li></ul><h4 id="reset命令的三个参数对比"><a href="#reset命令的三个参数对比" class="headerlink" title="reset命令的三个参数对比"></a>reset命令的三个参数对比</h4><ul><li>–soft        仅仅在本地库移动一下指针</li><li>–mixed     在本地库移动HEAD指针,重置暂存区</li><li>–hard       在本地移动HEAD指针,重置暂存区,重置工作区</li></ul><h4 id="查找删除的文件"><a href="#查找删除的文件" class="headerlink" title="查找删除的文件"></a>查找删除的文件</h4><ul><li>查找永久删除的文件<ul><li>git reset –hard 版本回退</li></ul></li><li>添加到暂存区的文件找回<ul><li>git reset –hard HEAD</li></ul></li><li>前提: 删除前,文件的改动保存在本地库了</li><li>操作: git reset –hrad[指针位置]</li></ul><h4 id="对比文件"><a href="#对比文件" class="headerlink" title="对比文件"></a>对比文件</h4><ul><li>diff                       是工作区和暂存区比较</li><li>diff HEAD            是工作区和本地库比较</li></ul><h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><ul><li>命名一采用<code>feature</code>开头,代表功能</li></ul><h4 id="分支的具体操作"><a href="#分支的具体操作" class="headerlink" title="分支的具体操作"></a>分支的具体操作</h4><ul><li>git branch -v 查看分支版本</li><li>git branch xxx  创建分支</li><li>git checkout name  选择分支</li><li>合并分支<ul><li>切换到接受修改的分支上</li><li>执行 git merge 被合并的分支上</li></ul></li></ul><h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4><ul><li>首先产生的原因是: 两个分支的内容发生了冲突</li><li>解决方式<ul><li>编辑文件,删除特殊符号</li><li>把文件修改到满意的程度</li><li>git add [filename]</li><li>git commit -m ‘提交信息’</li><li><strong>git commit 不能写文件名字,必须和上面相符</strong></li></ul></li></ul><h3 id="基本原理分析"><a href="#基本原理分析" class="headerlink" title="基本原理分析"></a>基本原理分析</h3><h4 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h4><ul><li>不管输入量多大,他得到的加密结果长度是固定</li><li>输入唯一的一个明文,可以得到唯一的密文</li><li>输入的明文差异很小,变化很大</li><li>不可逆的</li></ul><h2 id="github使用"><a href="#github使用" class="headerlink" title="github使用"></a><code>github</code>使用</h2><ul><li>git remote -v                        查看远程库</li><li>git remote add origin(别名) <a href="https://xxxxxxxx地址" target="_blank" rel="noopener">https://xxxxxxxx地址</a>              创建连接</li></ul><h4 id="远程分支操作"><a href="#远程分支操作" class="headerlink" title="远程分支操作"></a>远程分支操作</h4><ul><li>git push origin master   //推送分支,远程库别名,分支名</li></ul><h5 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h5><ul><li>下载到本地</li><li>创建origin远程地址别名</li><li>初始化本地库</li></ul><h5 id="多人开发"><a href="#多人开发" class="headerlink" title="多人开发"></a>多人开发</h5><ul><li>某个项目-&gt;setting-&gt;Collaborators-&gt;选择某个用户</li><li>用户就会接收到邀请,同意之后就可以加入到推送中</li></ul><h5 id="拉取仓库"><a href="#拉取仓库" class="headerlink" title="拉取仓库"></a>拉取仓库</h5><ul><li>pull = merge + fetch             拉取,等于下面两个命令<ul><li>fetch  远程地址名  远程分支名      只是抓取下来,并没有合并</li><li>merge origin/master    合并文件</li></ul></li></ul><h3 id="跨团队多人写作"><a href="#跨团队多人写作" class="headerlink" title="跨团队多人写作"></a>跨团队多人写作</h3><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-11-13_15-40-37.png" /></fancybox><h3 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h3><h4 id="集中式工作流"><a href="#集中式工作流" class="headerlink" title="集中式工作流"></a>集中式工作流</h4><h4 id="GitFlow-最常用"><a href="#GitFlow-最常用" class="headerlink" title="GitFlow(最常用)"></a><code>GitFlow</code>(最常用)</h4><ul><li>通过分支去解决开发</li><li>hotfix 一般是解决bug</li><li>develop 开发</li><li>feature_xxx 功能分支,基于develop开发</li><li>release 完成功能前的最终测试</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;git,是一种版本控制工具,用于整合项目或者项目回滚有很好的效果,相比于svn,git操作更加灵活,限制更少一些&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="学习之旅" scheme="https://2662419405.github.io/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"/>
+    
+      <category term="git" scheme="https://2662419405.github.io/tags/git/"/>
+    
+      <category term="多人开发" scheme="https://2662419405.github.io/tags/%E5%A4%9A%E4%BA%BA%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="合作流程" scheme="https://2662419405.github.io/tags/%E5%90%88%E4%BD%9C%E6%B5%81%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>DIY自己的评论表情包</title>
@@ -66,15 +95,15 @@
       <category term="Hexo" scheme="https://2662419405.github.io/categories/Hexo/"/>
     
     
-      <category term="学习之旅" scheme="https://2662419405.github.io/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"/>
-    
       <category term="Hexo" scheme="https://2662419405.github.io/tags/Hexo/"/>
     
-      <category term="BLOG" scheme="https://2662419405.github.io/tags/BLOG/"/>
+      <category term="学习之旅" scheme="https://2662419405.github.io/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"/>
     
       <category term="Github" scheme="https://2662419405.github.io/tags/Github/"/>
     
       <category term="Coding" scheme="https://2662419405.github.io/tags/Coding/"/>
+    
+      <category term="BLOG" scheme="https://2662419405.github.io/tags/BLOG/"/>
     
   </entry>
   
@@ -231,11 +260,11 @@
       <category term="jQuery" scheme="https://2662419405.github.io/categories/jQuery/"/>
     
     
+      <category term="BLOG" scheme="https://2662419405.github.io/tags/BLOG/"/>
+    
       <category term="博客园" scheme="https://2662419405.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/"/>
     
       <category term="样式自定义" scheme="https://2662419405.github.io/tags/%E6%A0%B7%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89/"/>
-    
-      <category term="BLOG" scheme="https://2662419405.github.io/tags/BLOG/"/>
     
       <category term="jQuery" scheme="https://2662419405.github.io/tags/jQuery/"/>
     
@@ -246,7 +275,7 @@
     <link href="https://2662419405.github.io/2019/11/20/dycjcqd/"/>
     <id>https://2662419405.github.io/2019/11/20/dycjcqd/</id>
     <published>2019-11-20T00:16:04.000Z</published>
-    <updated>2019-11-30T06:12:23.122Z</updated>
+    <updated>2019-12-08T10:39:56.709Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>测试网址: <a href="http://studyit.club" target="_blank" rel="noopener">http://studyit.club</a></p><p>实现目标: 简易版社团,学习资源分享,富文本论坛,空间,美图秀秀等</p><p>简述原理: 常见前端框架混合使用</p><p>目前: 由于精力有限,目前暂停维护和开发 </p></blockquote><a id="more"></a><h1 id="Study-IT-club"><a href="#Study-IT-club" class="headerlink" title="Study IT .club"></a>Study IT .club</h1><h3 id="萌新报道"><a href="#萌新报道" class="headerlink" title="萌新报道"></a>萌新报道</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello Everybody</span><br></pre></td></tr></table></figure><p>​    第一次尝试分享一个自己写的非常简单的自己社团的官网 </p><p>​    有兴趣的小伙伴可以去开一下 ——-&gt; <a href="http://studyit.club" target="_blank" rel="noopener">网站地址</a></p><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/index.png" /></fancybox><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/main.png" /></fancybox><h3 id="语言和框架"><a href="#语言和框架" class="headerlink" title="语言和框架"></a>语言和框架</h3><ul><li>数据库方面使用<code>Mysql</code> 数据库 没有事务处理 存储引擎为<code>MyISAM</code></li><li>后台语言为<code>PHP</code></li><li>讨论专区的框架为<code>BootStrap</code></li><li>首页框架为 <code>jQuery</code></li><li>谈论专区发帖的模块使用了 富文本编辑器<code>UEditor</code></li><li>在个人空间主要<code>AJAX</code>滚动局部刷新</li><li>个人空间方面用了<code>QQ</code>表情包</li><li>个人设置用了美图秀秀的PC插件<code>crossdomain.xml</code></li><li>个人空间使用 <code>Highslide.js</code>图片预览插件和多图片上传插件</li></ul><hr><h3 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h3><ul><li><p>需要挂载在本地的<code>PHP</code>服务器之上</p></li><li><p>推荐使用<code>PHPstudy</code>或者warm等集成开发环境</p></li><li><p>数据库方面配置在<code>connect/config.php</code>中,端口和数据库配置在这里面</p></li><li><p>所有的数据库模型都在主目录的 <code>数据库.txt</code>目录下面</p></li><li><p>美图秀秀插件配置:把主目录的 <code>crossdomain.xml</code>放在服务器的根目录</p></li></ul><p><a href="https://github.com/2662419405/Studyit-club" target="_blank" rel="noopener">项目源码</a>—-&gt;地址</p>]]></content>
     
@@ -263,8 +292,6 @@
     
     
       <category term="PHP" scheme="https://2662419405.github.io/categories/PHP/"/>
-    
-      <category term="jQuery" scheme="https://2662419405.github.io/categories/jQuery/"/>
     
       <category term="Mysql" scheme="https://2662419405.github.io/categories/Mysql/"/>
     
