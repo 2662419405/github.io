@@ -31,6 +31,8 @@
 
 > 个人第一个React项目: http://shtodream.cn:9093
 
+> 个人搭建的gitlab: http://shtodream.cn:83
+
 > 有问题欢迎随时咨询
 
 <img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/qq.jpg"/>
