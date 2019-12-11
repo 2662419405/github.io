@@ -42,7 +42,7 @@
 
 所以不得不说软件工程师是一个幸福的工作，你心中住的仍然是那个午后的少年，永远有无数新奇等你发现，永远有无数梦想等你构建。
 
-<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/3360075764-5b896c678a17b_articlex.jfif">
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/3360075764-5b896c678a17b_articlex.jpg">
 
 
 
