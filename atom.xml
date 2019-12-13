@@ -104,13 +104,13 @@
     
     
     
-      <category term="Hexo" scheme="https://2662419405.github.io/tags/Hexo/"/>
-    
       <category term="表情包" scheme="https://2662419405.github.io/tags/%E8%A1%A8%E6%83%85%E5%8C%85/"/>
     
       <category term="DIY" scheme="https://2662419405.github.io/tags/DIY/"/>
     
       <category term="volantis" scheme="https://2662419405.github.io/tags/volantis/"/>
+    
+      <category term="Hexo" scheme="https://2662419405.github.io/tags/Hexo/"/>
     
   </entry>
   
@@ -315,14 +315,14 @@
     <link href="https://2662419405.github.io/2019/11/20/dycjcqd/"/>
     <id>https://2662419405.github.io/2019/11/20/dycjcqd/</id>
     <published>2019-11-20T00:16:04.000Z</published>
-    <updated>2019-12-13T01:14:17.496Z</updated>
+    <updated>2019-12-13T01:23:07.781Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>测试网址: <a href="https://studyit.club" target="_blank" rel="noopener">http://studyit.club</a></p><p>实现目标: 简易版社团,学习资源分享,富文本论坛,空间,美图秀秀等</p><p>简述原理: 常见前端框架混合使用</p><p>目前: 由于精力有限,目前暂停维护和开发 </p></blockquote><a id="more"></a><h1 id="Study-IT-club"><a href="#Study-IT-club" class="headerlink" title="Study IT .club"></a>Study IT .club</h1><h3 id="萌新报道"><a href="#萌新报道" class="headerlink" title="萌新报道"></a>萌新报道</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello Everybody</span><br></pre></td></tr></table></figure><p>​    第一次尝试分享一个自己写的非常简单的自己社团的官网 </p><p>​    有兴趣的小伙伴可以去开一下 ——-&gt; <a href="https://studyit.club" target="_blank" rel="noopener">网站地址</a></p><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/index.png" /></fancybox><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/main.png" /></fancybox><h3 id="语言和框架"><a href="#语言和框架" class="headerlink" title="语言和框架"></a>语言和框架</h3><ul><li>数据库方面使用<code>Mysql</code> 数据库 没有事务处理 存储引擎为<code>MyISAM</code></li><li>后台语言为<code>PHP</code></li><li>讨论专区的框架为<code>BootStrap</code></li><li>首页框架为 <code>jQuery</code></li><li>谈论专区发帖的模块使用了 富文本编辑器<code>UEditor</code></li><li>在个人空间主要<code>AJAX</code>滚动局部刷新</li><li>个人空间方面用了<code>QQ</code>表情包</li><li>个人设置用了美图秀秀的PC插件<code>crossdomain.xml</code></li><li>个人空间使用 <code>Highslide.js</code>图片预览插件和多图片上传插件</li></ul><hr><h3 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h3><ul><li><p>需要挂载在本地的<code>PHP</code>服务器之上</p></li><li><p>推荐使用<code>PHPstudy</code>或者warm等集成开发环境</p></li><li><p>数据库方面配置在<code>connect/config.php</code>中,端口和数据库配置在这里面</p></li><li><p>所有的数据库模型都在主目录的 <code>数据库.txt</code>目录下面</p></li><li><p>美图秀秀插件配置:把主目录的 <code>crossdomain.xml</code>放在服务器的根目录</p></li></ul><p><a href="https://github.com/2662419405/Studyit-club" target="_blank" rel="noopener">项目源码</a>—-&gt;地址</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>测试网址: <a href="https://studyit.club" target="_blank" rel="noopener">https://studyit.club</a></p><p>实现目标: 简易版社团,学习资源分享,富文本论坛,空间,美图秀秀等</p><p>简述原理: 常见前端框架混合使用</p><p>目前: 由于精力有限,目前暂停维护和开发 </p></blockquote><a id="more"></a><h1 id="Study-IT-club"><a href="#Study-IT-club" class="headerlink" title="Study IT .club"></a>Study IT .club</h1><h3 id="萌新报道"><a href="#萌新报道" class="headerlink" title="萌新报道"></a>萌新报道</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello Everybody</span><br></pre></td></tr></table></figure><p>​    第一次尝试分享一个自己写的非常简单的自己社团的官网 </p><p>​    有兴趣的小伙伴可以去开一下 ——-&gt; <a href="https://studyit.club" target="_blank" rel="noopener">网站地址</a></p><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/index.png" /></fancybox><fancybox><img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/main.png" /></fancybox><h3 id="语言和框架"><a href="#语言和框架" class="headerlink" title="语言和框架"></a>语言和框架</h3><ul><li>数据库方面使用<code>Mysql</code> 数据库 没有事务处理 存储引擎为<code>MyISAM</code></li><li>后台语言为<code>PHP</code></li><li>讨论专区的框架为<code>BootStrap</code></li><li>首页框架为 <code>jQuery</code></li><li>谈论专区发帖的模块使用了 富文本编辑器<code>UEditor</code></li><li>在个人空间主要<code>AJAX</code>滚动局部刷新</li><li>个人空间方面用了<code>QQ</code>表情包</li><li>个人设置用了美图秀秀的PC插件<code>crossdomain.xml</code></li><li>个人空间使用 <code>Highslide.js</code>图片预览插件和多图片上传插件</li></ul><hr><h3 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h3><ul><li><p>需要挂载在本地的<code>PHP</code>服务器之上</p></li><li><p>推荐使用<code>PHPstudy</code>或者warm等集成开发环境</p></li><li><p>数据库方面配置在<code>connect/config.php</code>中,端口和数据库配置在这里面</p></li><li><p>所有的数据库模型都在主目录的 <code>数据库.txt</code>目录下面</p></li><li><p>美图秀秀插件配置:把主目录的 <code>crossdomain.xml</code>放在服务器的根目录</p></li></ul><p><a href="https://github.com/2662419405/Studyit-club" target="_blank" rel="noopener">项目源码</a>—-&gt;地址</p>]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;测试网址: &lt;a href=&quot;https://studyit.club&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://studyit.club&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;测试网址: &lt;a href=&quot;https://studyit.club&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://studyit.club&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;实现目标: 简易版社团,学习资源分享,富文本论坛,空间,美图秀秀等&lt;/p&gt;
 &lt;p&gt;简述原理: 常见前端框架混合使用&lt;/p&gt;
 &lt;p&gt;目前: 由于精力有限,目前暂停维护和开发 &lt;/p&gt;

@@ -256,10 +256,10 @@
 </ul>
 ]]></content>
       <tags>
-        <tag>Hexo</tag>
         <tag>表情包</tag>
         <tag>DIY</tag>
         <tag>volantis</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -892,7 +892,7 @@ $.fn.extend({
     <title>第一个接触的前端项目</title>
     <url>/2019/11/20/dycjcqd/</url>
     <content><![CDATA[<blockquote>
-<p>测试网址: <a href="https://studyit.club" target="_blank" rel="noopener">http://studyit.club</a></p>
+<p>测试网址: <a href="https://studyit.club" target="_blank" rel="noopener">https://studyit.club</a></p>
 <p>实现目标: 简易版社团,学习资源分享,富文本论坛,空间,美图秀秀等</p>
 <p>简述原理: 常见前端框架混合使用</p>
 <p>目前: 由于精力有限,目前暂停维护和开发 </p>
