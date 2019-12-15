@@ -85,8 +85,8 @@
 ]]></content>
       <tags>
         <tag>Node</tag>
-        <tag>CDN</tag>
         <tag>性能优化</tag>
+        <tag>CDN</tag>
         <tag>Pm2</tag>
         <tag>雪碧图</tag>
         <tag>Webp</tag>
@@ -290,11 +290,11 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>BLOG</tag>
         <tag>学习之旅</tag>
         <tag>Hexo</tag>
         <tag>Github</tag>
         <tag>Coding</tag>
+        <tag>BLOG</tag>
       </tags>
   </entry>
   <entry>
@@ -359,10 +359,10 @@
         <category>网络安全</category>
       </categories>
       <tags>
+        <tag>CDN</tag>
         <tag>HTTPS</tag>
         <tag>SSL</tag>
         <tag>网络安全</tag>
-        <tag>CDN</tag>
         <tag>服务器</tag>
         <tag>域名</tag>
       </tags>
@@ -727,8 +727,8 @@ $.fn.extend({
         <category>前端</category>
       </categories>
       <tags>
-        <tag>jQuery</tag>
         <tag>学习之旅</tag>
+        <tag>jQuery</tag>
         <tag>前端</tag>
       </tags>
   </entry>
@@ -882,9 +882,9 @@ $.fn.extend({
         <category>jQuery</category>
       </categories>
       <tags>
+        <tag>BLOG</tag>
         <tag>博客园</tag>
         <tag>样式自定义</tag>
-        <tag>BLOG</tag>
         <tag>jQuery</tag>
       </tags>
   </entry>
