@@ -129,7 +129,7 @@
   </ul>
   <!-- 自动代码配置 -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-  <div style="text-align: center;color: #00befe;">
+  <div style="text-align: center;">
     <span id="subtitle"></span>
     <span id="typed-cursor"></span>
   </div>
@@ -475,7 +475,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/BLOG/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>BLOG</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>博客园</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A0%B7%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>样式自定义</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/jQuery/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>jQuery</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%AD/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>博客园</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A0%B7%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>样式自定义</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/BLOG/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>BLOG</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/jQuery/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>jQuery</p></a></div>
 
 
         
@@ -1788,7 +1788,21 @@
 	console.info('\n' + ' %c 残梦 QQ %c 2662419405 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 	console.info('\n' + ' %c 残梦 wx %c qq18445623027 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
   </script>
-  <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+  <script>
+    fetch('https://v1.hitokoto.cn/?c=a')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var h_content = document.getElementById('hitokoto-content');
+        var h_from = document.getElementById('hitokoto-from');
+        h_content.innerText = data.hitokoto; 
+        h_from.innerText = "——" + data.from; 
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
   <script>
 	daovoice('init', {
 	  app_id: "bd4254a0"

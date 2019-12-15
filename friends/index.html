@@ -129,7 +129,7 @@
   </ul>
   <!-- 自动代码配置 -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-  <div style="text-align: center;color: #00befe;">
+  <div style="text-align: center;">
     <span id="subtitle"></span>
     <span id="typed-cursor"></span>
   </div>
@@ -2007,7 +2007,21 @@
 	console.info('\n' + ' %c 残梦 QQ %c 2662419405 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 	console.info('\n' + ' %c 残梦 wx %c qq18445623027 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
   </script>
-  <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+  <script>
+    fetch('https://v1.hitokoto.cn/?c=a')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var h_content = document.getElementById('hitokoto-content');
+        var h_from = document.getElementById('hitokoto-from');
+        h_content.innerText = data.hitokoto; 
+        h_from.innerText = "——" + data.from; 
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
   <script>
 	daovoice('init', {
 	  app_id: "bd4254a0"

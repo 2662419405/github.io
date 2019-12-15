@@ -750,7 +750,7 @@
 </header>
 
   <div class='content material'>
-    <p id="hitokoto"></p>
+    <div><div class="yiyan_left">“</div><div class="yiyan_content"><p id="hitokoto-content"></p></div><div class="yiyan_right">”</div></div><div id="hitokoto-from" class="yiyan_bottom"></div>
   </div>
 </section>
 
@@ -1686,7 +1686,21 @@
 	console.info('\n' + ' %c 残梦 QQ %c 2662419405 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 	console.info('\n' + ' %c 残梦 wx %c qq18445623027 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
   </script>
-  <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+  <script>
+    fetch('https://v1.hitokoto.cn/?c=a')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var h_content = document.getElementById('hitokoto-content');
+        var h_from = document.getElementById('hitokoto-from');
+        h_content.innerText = data.hitokoto; 
+        h_from.innerText = "——" + data.from; 
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
   <script>
 	daovoice('init', {
 	  app_id: "bd4254a0"

@@ -129,7 +129,7 @@
   </ul>
   <!-- 自动代码配置 -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-  <div style="text-align: center;color: #00befe;">
+  <div style="text-align: center;">
     <span id="subtitle"></span>
     <span id="typed-cursor"></span>
   </div>
@@ -586,6 +586,8 @@
     
       <div class="full-width auto-padding tags">
         
+          <a href="/tags/BLOG/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> BLOG</a>
+        
           <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 学习之旅</a>
         
           <a href="/tags/Hexo/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> Hexo</a>
@@ -593,8 +595,6 @@
           <a href="/tags/Github/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> Github</a>
         
           <a href="/tags/Coding/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> Coding</a>
-        
-          <a href="/tags/BLOG/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> BLOG</a>
         
       </div>
     
@@ -856,9 +856,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 学习之旅</a>
-        
           <a href="/tags/jQuery/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jQuery</a>
+        
+          <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 学习之旅</a>
         
           <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 前端</a>
         
@@ -1501,7 +1501,7 @@
 </header>
 
   <div class='content material'>
-    <p id="hitokoto"></p>
+    <div><div class="yiyan_left">“</div><div class="yiyan_content"><p id="hitokoto-content"></p></div><div class="yiyan_right">”</div></div><div id="hitokoto-from" class="yiyan_bottom"></div>
   </div>
 </section>
 
@@ -2437,7 +2437,21 @@
 	console.info('\n' + ' %c 残梦 QQ %c 2662419405 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 	console.info('\n' + ' %c 残梦 wx %c qq18445623027 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
   </script>
-  <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+  <script>
+    fetch('https://v1.hitokoto.cn/?c=a')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var h_content = document.getElementById('hitokoto-content');
+        var h_from = document.getElementById('hitokoto-from');
+        h_content.innerText = data.hitokoto; 
+        h_from.innerText = "——" + data.from; 
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
   <script>
 	daovoice('init', {
 	  app_id: "bd4254a0"
