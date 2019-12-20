@@ -23,11 +23,11 @@
 
 > 网站使用 [Github Pages](https://pages.github.com/) 和 [Hexo](https://hexo.io/) 搭建而成
 
-> 个人第一个上线项目: http://studyit.club
-
->  自己为何选择计算机 ^-^ ：https://www.cnblogs.com/sunhang32/p/11832179.html
-
 > 业精于勤，荒于嬉；行成于思，毁于随。求知若饥，虚心若愚，好记性不如烂笔头，记录学习过程！
+
+> 自己为何选择计算机 ^-^ ：https://www.cnblogs.com/sunhang32/p/11832179.html
+
+> 个人第一个上线项目: http://studyit.club
 
 > 个人第一个React项目: http://shtodream.cn:9093
 
