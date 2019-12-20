@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>❤Thanksgiving❤ | SH&#39;S BLOG</title>
+  <title>使用 Travis-CI 持续集成部署 HEXO 博客项目 | SH&#39;S BLOG</title>
   
   <meta name="keywords" content="前端工程师,残梦,IT">
   
@@ -323,13 +323,15 @@
   <section class='meta'>
     
     
+      <a title='使用 Travis-CI 持续集成部署 HEXO 博客项目' href='/2019/12/20/kcxhjc/'><img class='thumbnail' src='https://cdn.jsdelivr.net/gh/TRHX/ImageHosting/ITRHX-PIC/thumbnail/hexo.png'></a>
+    
     <div class="meta" id="header-meta">
       
         
   
     <h1 class="title">
-      <a href="/2019/11/05/welcome/">
-        ❤Thanksgiving❤
+      <a href="/2019/12/20/kcxhjc/">
+        使用 Travis-CI 持续集成部署 HEXO 博客项目
       </a>
     </h1>
   
@@ -360,7 +362,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-11-05</p>
+    <p>2019-12-20</p>
   </a>
 </div>
 
@@ -368,6 +370,14 @@
         
           
             
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Hexo/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Hexo</p>
+    </a>
+  </div>
+
 
           
         
@@ -404,9 +414,89 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/2ba4e2431c8f59fa8fdcf10f0348f6ff7f0d5b.png" />
-
+        <blockquote>
+<p>优点</p>
+<ol>
+<li><p>让你的项目和源码能够完全分离,即使我们的项目被误删,也可以快速找回</p>
+</li>
+<li><p>当我们需要重复进行某些步骤的时候</p>
+</li>
+<li><p>直接在线编辑文件，立即生效</p>
+</li>
+<li><p>自动部署，同时部署到多个地方</p>
+</li>
+<li><p>发生错误,邮箱自动提醒</p>
+</li>
+</ol>
+</blockquote>
 <a id="more"></a>
+
+<h3 id="What-is-Travis-CI"><a href="#What-is-Travis-CI" class="headerlink" title="What is Travis CI?"></a>What is Travis CI?</h3><p>Travis CI</p>
+<p>CI(Continuous Integration)翻译为持续集成。Travis CI是一个提供持续集成功能的平台，在Github上，可以添加Travis CI，当有code push时候，会推送通知到Travis，根据设置的脚本运行指定任务。</p>
+<p>目前有两个站点:</p>
+<p>Travis.org 对于所有public项目完全免费</p>
+<p>Travics.com 只针对private项目，提供更多一些额外功能，如cache，并行build个数</p>
+<p>两个站点只能看到各自的项目，不能通用。</p>
+<h3 id="Why-we-need-Travis-CI"><a href="#Why-we-need-Travis-CI" class="headerlink" title="Why we need Travis CI?"></a>Why we need Travis CI?</h3><p>有人可能会有疑问: 在本地写完博客，直接一个命令hexo d，不就搞定了么， 为啥要费力搞CI？</p>
+<p>的确, 想用TravisCI来自动部署Hexo博客程序，需要不少设置（瞎折腾），为了给大伙信心，列举一些优点：</p>
+<h4 id="优点1：直接在线编辑文件，立即生效"><a href="#优点1：直接在线编辑文件，立即生效" class="headerlink" title="优点1：直接在线编辑文件，立即生效"></a>优点1：直接在线编辑文件，立即生效</h4><p>假设你已经发表了一篇文章，过了几天你在朋友机器上浏览发现有几个明显的错别字，对于有强迫症的，这是不能容忍的。 但你手头又没有完整的hexo+nodejs+git的开发环境，重新下载git，node，hexo配置会花费不少时间，特别不划算。</p>
+<p>如果按照这篇完整折腾完，你可以直接用浏览器访问github个人项目仓库，直接编辑那篇post的原md文件，前后2分钟改完。 稍等片刻，你的博客就自动更新了。</p>
+<h4 id="优点2：自动部署，同时部署到多个地方"><a href="#优点2：自动部署，同时部署到多个地方" class="headerlink" title="优点2：自动部署，同时部署到多个地方"></a>优点2：自动部署，同时部署到多个地方</h4><p>在gitcafe是被收购之前，很多同学（包括我）都是托管在上面的，国内访问速度比Github快很多。<br>配合DNS根据IP位置可以自动选择导到gitcafe, 还是github，甚至你还可以部署到七牛云的静态网站。<br>利用Travis CI可同时更新多个仓库。</p>
+<p>比如我的博客现在有两个站：一个部署在码云，一个部署在github。都需要我自己手动部署。</p>
+<p>注：最后发现码云并不支持。emmmmm</p>
+<h4 id="优点3：部署快捷方便"><a href="#优点3：部署快捷方便" class="headerlink" title="优点3：部署快捷方便"></a>优点3：部署快捷方便</h4><p>手动deploy需要推送public整个folder到github上，当后期网站文章、图片较多时候，对于天朝的网络，有时候连接github 就是不顺畅，经常要傻等不少上传时间。<br>有了CI，你可以只提交post文件里单独的md文件即可，很快很爽，谁用谁知道。</p>
+<h4 id="优点4：bigger-than-bigger"><a href="#优点4：bigger-than-bigger" class="headerlink" title="优点4：bigger than bigger"></a>优点4：bigger than bigger</h4><p>你的项目Readme里面可以显示CI build图标，很酷有没有？<br>另外通过设置，可以在当build失败时自动发邮件提醒你。<br>上面的图标，如果登陆后你在Github项目里，直接点击图标，会跳转到你当前项目build的log界面，很方便。</p>
+<p>当然有了CI，你可以做很多事情，如自动运行单元测试，成功后再deploy等等。很多项目里的持续集成基本也是这个道理。</p>
+<h3 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h3><h4 id="准备Travis-CI账号"><a href="#准备Travis-CI账号" class="headerlink" title="准备Travis CI账号"></a>准备Travis CI账号</h4><blockquote>
+<p>注册登录,<a href="https://travis-ci.org/" target="_blank" rel="noopener">travis-ci</a>,就会自动显示我们的github下面的所有仓库,点击左上角</p>
+</blockquote>
+<fancybox>
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-20_10-29-13.png" />
+</fancybox>
+
+<blockquote>
+<p>选择开启持续更新哪个仓库</p>
+</blockquote>
+<fancybox>
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-20_10-32-22.png" />
+</fancybox>
+
+<h4 id="准备github的Token"><a href="#准备github的Token" class="headerlink" title="准备github的Token"></a>准备github的Token</h4><blockquote>
+<p>登录你的github账号,选择setting-&gt;Personal access tokens</p>
+</blockquote>
+<fancybox>
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-20_10-34-43.png" />
+</fancybox>
+
+<blockquote>
+<p>注意,这里面生成token之后,在勾选的时候,除了删库,全都勾选上,<font color="red">注意生成之后的文件一定要保存起来,token之后就不可见了</font></p>
+</blockquote>
+<fancybox>
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-20_10-37-34.png" />
+</fancybox>
+
+<h4 id="在travis-ci中添加我们的token"><a href="#在travis-ci中添加我们的token" class="headerlink" title="在travis ci中添加我们的token"></a>在travis ci中添加我们的token</h4><fancybox>
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-20_10-40-57.png" />
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-20_10-41-53.png" />
+</fancybox>
+
+<blockquote>
+<p>在hexo的根目录下面添加.travis.yml,并且开始编写</p>
+</blockquote>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">anguage:</span> <span class="string">node_js</span></span><br><span class="line"></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">directories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br><span class="line"></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">g</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">./public</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">init</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">"sh"</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">"2662419405@qq.com"</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">"TravisCI 自动部署"</span></span><br><span class="line">  <span class="comment"># Github Pages</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">--quiet</span> <span class="string">"https://$&#123;githubblog&#125;@$&#123;GH_REF&#125;"</span> <span class="string">master:master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">GH_REF:</span> <span class="string">github.com/2662419405/2662419405.github.io.git</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">notifications:</span></span><br><span class="line">  <span class="attr">email:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">2662419405</span><span class="string">@qq.com</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">qq2662419405@163.com</span></span><br><span class="line">  <span class="attr">on_success:</span> <span class="string">change</span></span><br><span class="line">  <span class="attr">on_failure:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的邮箱和用户名改成自己的,GH_REF改为自己的github地址,注意格式和我的相符,${githubblog}改为刚刚token的key</p>
+</blockquote>
+<h4 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h4><p>当你弄完这些之后,在hexo根目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;测试Travis ci持续化集成&apos;</span><br><span class="line">git remote add origin xxx //这个地方是你的源码地址</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<fancybox>
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgPlus/Snipaste_2019-12-20_10-49-50.png" />
+</fancybox>
+
+<p>我们的测试就大功告成!!!!</p>
+
       </div>
       
         <br>
@@ -417,10 +507,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-03T21:08:17+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-20T10:50:20+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2019年12月3日</p>
+    <p>更新于 2019年12月20日</p>
   </a>
 </div>
 
@@ -429,7 +519,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%84%9F%E8%B0%A2%E7%9B%B8%E9%81%87/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>感谢相遇</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%A0%81%E5%86%9C/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>码农</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%8B%A6%E9%80%BC%E7%A8%8B%E5%BA%8F%E5%91%98/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>苦逼程序员</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>学习之旅</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/BLOG/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>BLOG</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Hexo/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Hexo</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Github/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Github</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Travis-CI/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Travis CI</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>持续集成自动部署</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Token/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>Token</p></a></div>
 
 
         
@@ -442,7 +532,21 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://2662419405.github.io/2019/11/05/welcome/&title=❤Thanksgiving❤ | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://2662419405.github.io/2019/12/20/kcxhjc/&title=使用 Travis-CI 持续集成部署 HEXO 博客项目 | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary=
+优点
+
+让你的项目和源码能够完全分离,即使我们的项目被误删,也可以快速找回
+
+当我们需要重复进行某些步骤的时候
+
+直接在线编辑文件，立即生效
+
+自动部署，同时部署到多个地方
+
+发生错误,邮箱自动提醒
+
+
+"
           
           >
           
@@ -454,7 +558,21 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://2662419405.github.io/2019/11/05/welcome/&title=❤Thanksgiving❤ | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://2662419405.github.io/2019/12/20/kcxhjc/&title=使用 Travis-CI 持续集成部署 HEXO 博客项目 | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary=
+优点
+
+让你的项目和源码能够完全分离,即使我们的项目被误删,也可以快速找回
+
+当我们需要重复进行某些步骤的时候
+
+直接在线编辑文件，立即生效
+
+自动部署，同时部署到多个地方
+
+发生错误,邮箱自动提醒
+
+
+"
           
           >
           
@@ -464,7 +582,7 @@
       
     
       
-        <a class='qrcode' rel="external nofollow noopener noreferrer noopener" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQW7DMAwF0dz/0i7QVRe1Mp90AogarQrElvVUgCBFvV54XL+D/3r9Getn0m+1hgwZMrZlXMtRW8Qaxt8la5MhQ8Y5jHXgW8PWeL64u5lRUJYhQ4aMJYl/ns8vQ4YMGZ8LuLUALUOGDBmEQaYmZS0qOMOA+3AtLkOGjA0ZaWPgm39/sL8hQ4aMTRhXODqFLg/o8apkyJAxmtG/BkHaALV5eEoqQ4aMMxnxFLh50N+s4qmhDBkytmXUmo61NgAJyukaZMiQcQKDXJ4g4Zg/kxa6wUbIkCFjNKN2PYIfk9UuWNQ2V4YMGfMYpAFA0jgeRjsthNs1yJAh4wAGLyNJuOShPE0Kb+eUIUPGAYz1a/z4Pj16qxXMMmTIOI3xQP+z3QRNmwoyZMg4k1G7kpUuqF/uBv8HGTJkjGPUEriUxw/vWtfOZMiQMY6RXpIgqWHapEzDN8pqZciQMY7xJtnCTQIeNNeLTtsDMmTImM146sIWX1y/6rx9UoYMGUMZ/XI0TePiMMrPC2XIkDGaQQIrT9rS8E2O294EbhkyZIxm9INgrRlZK4Af62zIkCFjK8YVDv6Z2kaQ8PrP1siQIWM0I20D8F/TtK9TKsuQIeMERlqskvZAWqzygFtMEGXIkDGCkU6dtjCLkZ4HcRkyZMgIE7hOk6B4PCdDhgwZuFXZKVnTt4qpoQwZMrZldJI/0inlc7Y6sTJkyBjKqBWQaWnKw3GadMqQIWM04wclS2qYzot5UgAAAABJRU5ErkJggg==' target="_blank">
+        <a class='qrcode' rel="external nofollow noopener noreferrer noopener" href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aW26EMBAEwL3/pZMDrJbt9pBI2MVXBCS4HGk0D79e8fXz4Xp/5/3996ef7lzfv+HCwMB4LOPn8kreueZdw67BxVcwMDAOYFwHviRcXi8lx1x/9+N9DAwMjICULyh5ioGBgTFnTIrSNR4GBgbGJEVbK3fz4HtzLY6BgfFARt51//+f/2S+gYGB8SjGWrt/0jJrx5/RqjAwMLZm5AEuGU9OBpPJV76sBwMD4wDGvQcsJqVmOy7FwMA4gZGE3XzouDZgmIRsDAyMExiTow9to3+texaFZgwMjE0ZeUo3OeaVN+kSRlSFY2BgbMRYK1YniWAbrIs0FAMDY2tGMoZs+1r5ItrG3BcSBgbGdox2JNC26fOCdq3Zh4GBcQJjkti1pWx74CzfGgwMjHMYaw2vu0rT9vhF8X/AwMB4OKP9ZDswaEPt2kZjYGDszchL1jbJm7fS6vcxMDA2ZbSjykmAzrcm/8sYGBgnMPKQuta+z39rnoBiYGCcxlg7GDE5WDY/goaBgXECox0WJk/zQcLaGBUDA+NMxlprrC1328AabR8GBsamjHkyl4wWJqE82mIMDIytGe2wsB1kttuRp4ZtmMbAwHg6I19Q3ozLi9i26MXAwDiZkZepa4cw2m1KQj8GBgZGkpa1vLVCOqJiYGBgDJZYH/AqqRgYGOcw5o2zNhK2KeNt7TYMDIwHMtaOVrSJYzvI/JOhJgYGxvMYvzjf8C6pdmShAAAAAElFTkSuQmCC' target="_blank">
         
           <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
         
@@ -474,7 +592,21 @@
       
         <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://2662419405.github.io/2019/11/05/welcome/&title=❤Thanksgiving❤ | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary="
+          href="http://service.weibo.com/share/share.php?url=https://2662419405.github.io/2019/12/20/kcxhjc/&title=使用 Travis-CI 持续集成部署 HEXO 博客项目 | SH'S BLOG&pics=https://cdn.jsdelivr.net/gh/2662419405/CDN@1.0/sh.jpg&summary=
+优点
+
+让你的项目和源码能够完全分离,即使我们的项目被误删,也可以快速找回
+
+当我们需要重复进行某些步骤的时候
+
+直接在线编辑文件，立即生效
+
+自动部署，同时部署到多个地方
+
+发生错误,邮箱自动提醒
+
+
+"
           
           >
           
@@ -498,25 +630,25 @@
       
           <div class="prev-next">
               
-                  <section class="prev">
-                      <span class="art-item-left">
-                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2019/11/10/qdmst1/" rel="prev" title="前端常见面试题(一)">
-                                
-                                    前端常见面试题(一)
-                                
+                              <a href="/2019/12/10/xnyh/" rel="prev" title="性能优化大合集,必备!">
+                                  
+                                      性能优化大合集,必备!
+                                  
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 学习之旅</a> <a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 前端</a> <a class="tag" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 面试题</a> <a class="tag" href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 兼容性</a> <a class="tag" href="/tags/bug/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> bug</a>
+                                  <a class="tag" href="/tags/Node/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Node</a> <a class="tag" href="/tags/CDN/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> CDN</a> <a class="tag" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 性能优化</a> <a class="tag" href="/tags/Pm2/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Pm2</a> <a class="tag" href="/tags/%E9%9B%AA%E7%A2%A7%E5%9B%BE/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 雪碧图</a> <a class="tag" href="/tags/Webp/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> Webp</a> <a class="tag" href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 反向代理</a> <a class="tag" href="/tags/ngxin/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> ngxin</a> <a class="tag" href="/tags/iconfont/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> iconfont</a>
                               </h6>
                           
                       </span>
                   </section>
-              
               
           </div>
       
@@ -556,7 +688,7 @@
 
   <script>
     window.subData = {
-      title: '❤Thanksgiving❤',
+      title: '使用 Travis-CI 持续集成部署 HEXO 博客项目',
       tools: true
     }
   </script>
@@ -739,6 +871,20 @@
           
             
               
+  <section class='widget toc-wrapper'>
+    
+<header class='material'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer noopener" href="javascript:void(0)" target="_blank"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content material'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Travis-CI"><span class="toc-text">What is Travis CI?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-we-need-Travis-CI"><span class="toc-text">Why we need Travis CI?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点1：直接在线编辑文件，立即生效"><span class="toc-text">优点1：直接在线编辑文件，立即生效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优点2：自动部署，同时部署到多个地方"><span class="toc-text">优点2：自动部署，同时部署到多个地方</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优点3：部署快捷方便"><span class="toc-text">优点3：部署快捷方便</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优点4：bigger-than-bigger"><span class="toc-text">优点4：bigger than bigger</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始使用"><span class="toc-text">开始使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#准备Travis-CI账号"><span class="toc-text">准备Travis CI账号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#准备github的Token"><span class="toc-text">准备github的Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在travis-ci中添加我们的token"><span class="toc-text">在travis ci中添加我们的token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试一下"><span class="toc-text">测试一下</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
             
           
@@ -1307,7 +1453,7 @@
 </header>
 
     <div class="content material">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\20\dycjcqd\" title="第一个接触的前端项目" rel="bookmark">第一个接触的前端项目</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\24\bkyys\" title="博客园样式" rel="bookmark">博客园样式</a></h3></div></li></ul>
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\30\github-coding\" title="加速自己的hexo，使用GitHub+Coding实现国内外网站加速" rel="bookmark">加速自己的hexo，使用GitHub+Coding实现国内外网站加速</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\20\dycjcqd\" title="第一个接触的前端项目" rel="bookmark">第一个接触的前端项目</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\18\dygReactxm\" title="我的第一个React项目" rel="bookmark">我的第一个React项目</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\12\08\gitEasy\" title="git开发流程和常见命令" rel="bookmark">git开发流程和常见命令</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\26\jqstudy\" title="jQuery简单学习" rel="bookmark">jQuery简单学习</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\10\qdmst1\" title="前端常见面试题(一)" rel="bookmark">前端常见面试题(一)</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\26\es6study\" title="ES6学习中" rel="bookmark">ES6学习中</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="\2019\11\24\bkyys\" title="博客园样式" rel="bookmark">博客园样式</a></h3></div></li></ul>
     </div>
   </section>
 
