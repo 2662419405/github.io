@@ -54,6 +54,7 @@
 </head>
 
 <body>
+<div class="loading"><div id="loader"></div></div>
 <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/bd4254a0.js","daovoice")</script>
   
   
@@ -1790,12 +1791,12 @@
 	document.body.addEventListener('input', POWERMODE);
   </script>
   <script>
-	console.log = function(){}
-	console.info("%c ", "background: url(https://cdn.jsdelivr.net/gh/2662419405/imgPlus/o_a.gif) no-repeat center;padding-left:400px;padding-bottom: 160px;background-size:400px")
-	console.info('\n' + ' %c 残梦 CNBlogs %c https://www.cnblogs.com/sunhang32/ ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
-	console.info('\n' + ' %c 残梦 GitHub %c https://github.com/2662419405' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
-	console.info('\n' + ' %c 残梦 QQ %c 2662419405 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
-	console.info('\n' + ' %c 残梦 wx %c qq18445623027 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+    console.log = function(){}
+    console.info("%c ", "background: url(https://cdn.jsdelivr.net/gh/2662419405/imgPlus/o_a.gif) no-repeat center;padding-left:400px;padding-bottom: 160px;background-size:400px")
+    console.info('\n' + ' %c 残梦 CNBlogs %c https://www.cnblogs.com/sunhang32/ ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+    console.info('\n' + ' %c 残梦 GitHub %c https://github.com/2662419405' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+    console.info('\n' + ' %c 残梦 QQ %c 2662419405 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+    console.info('\n' + ' %c 残梦 wx %c qq18445623027 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
   </script>
   <script>
     fetch('https://v1.hitokoto.cn/?c=a')
@@ -1818,33 +1819,25 @@
 	});
 	daovoice('update');
    </script>
-   <script>
-     function paul_shake(action, selector) {
-        var status = false;
-    
-        action.addEventListener("click", function () {
-            if(status === true){
-                status = false;
-                selector.style = "";
-            }
-            else{
-                status = true;
-                selector.style = "animation: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s infinite reverse none running shake-it;";
-            }
-        })
-    }
-    
-    paul_shake(document.getElementById('douqilai'), document.getElementsByClassName('l_body')[0]);
-   </script>  
    <!-- <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.js"></script>
    <script>
     var pjax = new Pjax({
+      elements: "a",
       selectors: [
         "title",
         "meta[name=description]",
         ".l_main",
       ]
     })
+    // 开始 PJAX 执行的函数
+    document.addEventListener('pjax:send', function (){
+      NProgress.start();
+    });
+
+    // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+    document.addEventListener('pjax:complete', function (){
+      NProgress.done();
+    });
    </script> -->
 </body>
 </html>
