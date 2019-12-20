@@ -1694,25 +1694,28 @@
 	});
 	daovoice('update');
    </script>
-   <!-- <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.js"></script>
    <script>
     var pjax = new Pjax({
       elements: "a",
       selectors: [
         "title",
-        "meta[name=description]",
         ".l_main",
+        ".l_side .toc-wrapper",
+        "#links",
+        ".comments",
+        "#pages",
       ]
     })
     // 开始 PJAX 执行的函数
     document.addEventListener('pjax:send', function (){
-      NProgress.start();
+      $(".loading").css("display", "block");
     });
 
     // PJAX 完成之后执行的函数，可以和上面的重载放在一起
     document.addEventListener('pjax:complete', function (){
-      NProgress.done();
+     $(".loading").css("display", "none");
     });
-   </script> -->
+   </script>
 </body>
 </html>
