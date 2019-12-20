@@ -1839,9 +1839,15 @@
     
     paul_shake(document.getElementById('douqilai'), document.getElementsByClassName('l_body')[0]);
    </script>  
-   <script src="https://cdn.jsdelivr.net/gh/2662419405/CDN/jquery.pjax.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.js"></script>
    <script>
-     $(document).pjax('a', '.l_main')
+    var pjax = new Pjax({
+      selectors: [
+        "title",
+        "meta[name=description]",
+        ".l_main",
+      ]
+    })
    </script>
 </body>
 </html>

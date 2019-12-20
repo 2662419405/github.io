@@ -461,9 +461,9 @@
         
           <a href="/tags/BLOG/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> BLOG</a>
         
-          <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 学习之旅</a>
-        
           <a href="/tags/Hexo/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> Hexo</a>
+        
+          <a href="/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 学习之旅</a>
         
           <a href="/tags/Github/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> Github</a>
         
@@ -1721,9 +1721,15 @@
     
     paul_shake(document.getElementById('douqilai'), document.getElementsByClassName('l_body')[0]);
    </script>  
-   <script src="https://cdn.jsdelivr.net/gh/2662419405/CDN/jquery.pjax.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.js"></script>
    <script>
-     $(document).pjax('a', '.l_main')
+    var pjax = new Pjax({
+      selectors: [
+        "title",
+        "meta[name=description]",
+        ".l_main",
+      ]
+    })
    </script>
 </body>
 </html>
