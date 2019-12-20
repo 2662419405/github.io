@@ -90,9 +90,9 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>BLOG</tag>
         <tag>Hexo</tag>
+        <tag>学习之旅</tag>
         <tag>Github</tag>
         <tag>Travis CI</tag>
         <tag>持续集成自动部署</tag>
@@ -355,10 +355,10 @@
 </ul>
 ]]></content>
       <tags>
-        <tag>Hexo</tag>
         <tag>表情包</tag>
         <tag>DIY</tag>
         <tag>volantis</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -389,9 +389,9 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>BLOG</tag>
         <tag>Hexo</tag>
+        <tag>学习之旅</tag>
         <tag>Github</tag>
         <tag>Coding</tag>
       </tags>
@@ -826,8 +826,8 @@ $.fn.extend({
         <category>前端</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>jQuery</tag>
+        <tag>学习之旅</tag>
         <tag>前端</tag>
       </tags>
   </entry>
