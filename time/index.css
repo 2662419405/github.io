@@ -109,6 +109,7 @@ header{
 }
 .tab_inner{
     display: inline-block;
+    cursor: pointer;
 }
 .tab_inner div{
     display: inline-block;
@@ -125,6 +126,9 @@ header{
     text-align: center;
     margin: 0 auto;
     position: relative;
+}
+.timer:nth-of-type(2){
+    display: none;
 }
 .timer::after{
     content: "";
