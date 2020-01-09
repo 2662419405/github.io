@@ -15,8 +15,6 @@
 
 > 个人学习记录网站: https://sunhang.top
 >
-> 个人备份服务器：https://shtodream.cn
->
 > Gitee服务器备份: [https://itstusy.gitee.io](https://itstusy.gitee.io/)
 >
 > Coding服务器备份: [https://zlwj97.coding-pages.com/](https://zlwj97.coding-pages.com/)
@@ -32,6 +30,8 @@
 > 个人第一个React项目: http://shtodream.cn:9093
 
 > 个人搭建的gitlab: http://shtodream.cn:83
+
+> 个人第一个笔记网站: http://shtodream.cn
 
 ### 贡献者
 
