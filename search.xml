@@ -342,9 +342,9 @@
         <category>Hexo</category>
       </categories>
       <tags>
+        <tag>学习之旅</tag>
         <tag>Hexo</tag>
         <tag>BLOG</tag>
-        <tag>学习之旅</tag>
         <tag>Github</tag>
         <tag>Travis CI</tag>
         <tag>持续集成自动部署</tag>
@@ -641,9 +641,9 @@
         <category>Hexo</category>
       </categories>
       <tags>
+        <tag>学习之旅</tag>
         <tag>Hexo</tag>
         <tag>BLOG</tag>
-        <tag>学习之旅</tag>
         <tag>Github</tag>
         <tag>Coding</tag>
       </tags>
@@ -710,10 +710,10 @@
         <category>网络安全</category>
       </categories>
       <tags>
+        <tag>CDN</tag>
         <tag>HTTPS</tag>
         <tag>SSL</tag>
         <tag>网络安全</tag>
-        <tag>CDN</tag>
         <tag>服务器</tag>
         <tag>域名</tag>
       </tags>
@@ -1078,8 +1078,8 @@ $.fn.extend({
         <category>前端</category>
       </categories>
       <tags>
-        <tag>jQuery</tag>
         <tag>学习之旅</tag>
+        <tag>jQuery</tag>
         <tag>前端</tag>
       </tags>
   </entry>
