@@ -1,6 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>前端项目实战大合集</title>
+    <url>/2020/05/18/xiang/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>名称</th>
+<th align="center">源码</th>
+<th align="right">线上网址</th>
+<th align="right">技术栈</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>美团PC端</td>
+<td align="center"><a href="https://github.com/2662419405/meituan" target="_blank" rel="noopener">源码</a></td>
+<td align="right"><a href="http://mt.shtodream.cn/" target="_blank" rel="noopener">线上</a></td>
+<td align="right">原生React+antd+Koa+mongoose</td>
+</tr>
+<tr>
+<td>美团移动端(推荐)</td>
+<td align="center"><a href="https://github.com/2662419405/meituanAn" target="_blank" rel="noopener">源码</a></td>
+<td align="right"><a href="http://react.shtodream.cn/" target="_blank" rel="noopener">线上</a></td>
+<td align="right">umi+dva+antd+Koa+mongoose</td>
+</tr>
+<tr>
+<td>美团后台</td>
+<td align="center"><a href="https://github.com/2662419405/meituanBack" target="_blank" rel="noopener">源码</a></td>
+<td align="right"><a href="http://vue.shtodream.cn/login" target="_blank" rel="noopener">线上</a></td>
+<td align="right">vue+nuxt+elment+Koa+mongoose</td>
+</tr>
+<tr>
+<td>饿了么多端开发</td>
+<td align="center"><a href="https://github.com/2662419405/meituan-taro" target="_blank" rel="noopener">源码</a></td>
+<td align="right"><a href="http://taro.shtodream.cn/" target="_blank" rel="noopener">线上</a></td>
+<td align="right">taro+taro-ui</td>
+</tr>
+<tr>
+<td>饿了么微信小程序</td>
+<td align="center"><a href="https://github.com/2662419405/meituanWx" target="_blank" rel="noopener">源码</a></td>
+<td align="right">暂无</td>
+<td align="right">原生微信小程序</td>
+</tr>
+<tr>
+<td>后台管理系统 (力荐)</td>
+<td align="center"><a href="https://github.com/2662419405/react_admin" target="_blank" rel="noopener">源码</a></td>
+<td align="right"><a href="http://hooks.shtodream.cn" target="_blank" rel="noopener">线上</a></td>
+<td align="right">TS + Hooks + Redux</td>
+</tr>
+<tr>
+<td>React封装自己组件</td>
+<td align="center"><a href="https://github.com/2662419405/sh-react" target="_blank" rel="noopener">源码</a></td>
+<td align="right"><a href="http://2pz8cm.coding-pages.com/?path=/story/welcome-page--welcome" target="_blank" rel="noopener">线上</a></td>
+<td align="right">TS + Hooks</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h3 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h3><p>哈哈哈,纯属啰嗦着玩,经过<code>shansan</code>大佬的提醒发现,自己确实很久没有更新博客了,最近一直在研究一些源码(纯属瞎搞),然后自己写了一个Demo,也算是对于两大框架的综合练习吧,今天就说一下我踩到过的坑</p>
+<h3 id="实战合集"><a href="#实战合集" class="headerlink" title="实战合集"></a>实战合集</h3><blockquote>
+<p>包含上面在内的听多实战合集,每个都是跑通了几个小页面之后,就没有继续往深了去写</p>
+<p>主要是对于技术栈的练习和踩坑的过程</p>
+<p>除去实战,最近还写了一个<a href="https://github.com/2662419405/AllDemo" target="_blank" rel="noopener">Demo合集</a>,大概包含了我2020年学到过的全部知识点</p>
+</blockquote>
+<h3 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h3><ol>
+<li><p>由于React属于单页面应用,在页面跳转的时候,路由是不会回到顶部的,需要单独提炼一个组件</p>
+</li>
+<li><p>React在开发期间如果想要配置代理的话需要使用第三方包<code>http-proxy-middleware</code>,在<code>package.json</code>中配置的proxy只能配置为字符串格式</p>
+</li>
+<li><p>关于React的鉴权,有三种形式</p>
+<ul>
+<li>第一种使用<code>react-router</code>配置的路由守卫<code>onEnter</code>在内部进行判断是否可以进入页面</li>
+<li>第二种是使用一个独立的<code>layout</code>布局页面,把需要守卫的路由都设置为他的<code>props.children</code>这样子(<code>antd-pro</code>)采用的是这种形式</li>
+<li>第三种比较推荐,使用的是配置式路由,把路由拆分为一个对象,和<code>vue-router</code>一样的原理,然后利用<code>HOC</code>的特性进行编写</li>
+</ul>
+</li>
+<li><p>关于前后端交互安全问题,使用<code>jwt</code>规范,把需要守卫的请求用<code>jwt</code>包裹起来,如果没有携带<code>token</code>,则返回401状态码</p>
+</li>
+<li><p>对于React中的redux的数据不可变,直接使用<code>immutablejs</code>来操作,既可以提高性能,还可以解决数据直接修改的问题</p>
+</li>
+<li><p>其中在React中使用到了百度地图的API,但是在React内部组件中使用的时候,就必须要用<code>widown.BMap</code>等格式引用</p>
+</li>
+</ol>
+<blockquote>
+<p>小声逼逼,vue的话没碰到,可能是做的太小了,其中就是在nuxt部署的时候出现了点问题</p>
+</blockquote>
+<h3 id="性能篇"><a href="#性能篇" class="headerlink" title="性能篇"></a>性能篇</h3><ol>
+<li><p>配置各类按需加载,就是使用<code>babel</code>提供的第三方包来配置</p>
+</li>
+<li><p>期间内对于图片的预加载和懒加载配置,预加载是先用<code>new Image()</code>来读取,等计数达到数量再显示页面.懒加载就是用一个base64编码的图片先覆盖,等滚动的时候加载</p>
+</li>
+<li><p>修改webpack</p>
+<ul>
+<li><p>配置<code>webpack-bundle-analyzer</code>来进行打包文件大小的分析</p>
+</li>
+<li><p>把公共文件提取,例如React,ReactDom,Vue等包,使用cdn引入,减少每个页面的引用次数</p>
+</li>
+<li><p>配置<code>externals</code>来让防止import包导入到bundle中</p>
+</li>
+<li><p>资源内联,把一些不影响性能的包直接内联到页面中,使用<code>raw-loader</code></p>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>TS</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>MongoDB</tag>
+        <tag>TS</tag>
+        <tag>Hooks</tag>
+        <tag>Vue</tag>
+        <tag>Umi</tag>
+        <tag>Koa</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx特点和使用</title>
     <url>/2020/01/15/nginx/</url>
     <content><![CDATA[<blockquote>
@@ -342,9 +459,9 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
-        <tag>Hexo</tag>
         <tag>BLOG</tag>
+        <tag>Hexo</tag>
+        <tag>学习之旅</tag>
         <tag>Github</tag>
         <tag>Travis CI</tag>
         <tag>持续集成自动部署</tag>
@@ -436,8 +553,8 @@
 ]]></content>
       <tags>
         <tag>Node</tag>
-        <tag>性能优化</tag>
         <tag>CDN</tag>
+        <tag>性能优化</tag>
         <tag>Pm2</tag>
         <tag>雪碧图</tag>
         <tag>Webp</tag>
@@ -641,9 +758,9 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
-        <tag>Hexo</tag>
         <tag>BLOG</tag>
+        <tag>Hexo</tag>
+        <tag>学习之旅</tag>
         <tag>Github</tag>
         <tag>Coding</tag>
       </tags>
@@ -1078,8 +1195,8 @@ $.fn.extend({
         <category>前端</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>jQuery</tag>
+        <tag>学习之旅</tag>
         <tag>前端</tag>
       </tags>
   </entry>
