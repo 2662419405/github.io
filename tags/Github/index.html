@@ -1704,3 +1704,95 @@
    </script>
 </body>
 </html>
+    $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/2662419405/CDN/text.js"></script> 
+  <!-- 标题 -->
+  <script type="text/javascript" src="\js\FunnyTitle.js"></script>
+  <!--动态线条背景
+  <script type="text/javascript"
+     color="27,195,251" opacity='0.9' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+  </script> -->
+  <!-- 代码雨效果 -->
+  <canvas id="canvv" width="1440" height="900" ></canvas>
+  <script type="text/javascript" src="/js/daimayu.js"></script>
+  <!--点击冒点-->
+  <canvas width="1777" height="841" style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas><script src="https://cdn.jsdelivr.net/gh/2662419405/CDN/maopao.js"></script>
+  <!-- 输入框特效 -->
+  <script type="text/javascript" src="/js/shblog.js"></script>
+  <script>
+	POWERMODE.colorful = 'true'; // make power mode colorful
+	POWERMODE.shake = 'true'; // turn off shake
+	document.body.addEventListener('input', POWERMODE);
+  </script>
+  <script>
+    console.log = function(){}
+    console.info("%c ", "background: url(https://cdn.jsdelivr.net/gh/2662419405/imgPlus/o_a.gif) no-repeat center;padding-left:400px;padding-bottom: 160px;background-size:400px")
+    console.info('\n' + ' %c 残梦 CNBlogs %c https://www.cnblogs.com/sunhang32/ ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+    console.info('\n' + ' %c 残梦 GitHub %c https://github.com/2662419405' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+    console.info('\n' + ' %c 残梦 QQ %c 2662419405 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+    console.info('\n' + ' %c 残梦 wx %c qq18445623027 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+  </script>
+  <script>
+    fetch('https://v1.hitokoto.cn/?c=a')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var h_content = document.getElementById('hitokoto-content');
+        var h_from = document.getElementById('hitokoto-from');
+        h_content.innerText = data.hitokoto; 
+        h_from.innerText = "——" + data.from; 
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
+  <script>
+	daovoice('init', {
+	  app_id: "bd4254a0"
+	});
+	daovoice('update');
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.js"></script>
+   <script>
+    var pjax = new Pjax({
+      elements: "a",
+      selectors: [
+        "title",
+        ".l_main",
+        ".l_side .toc-wrapper",
+        "#links",
+        ".comments",
+        "#pages",
+      ]
+    })
+    // 开始 PJAX 执行的函数
+    document.addEventListener('pjax:send', function (){
+      $(".loading").css("display", "block");
+    });
+
+    // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+    document.addEventListener('pjax:complete', function (){
+     $(".loading").css("display", "none");
+    })
+   </script>
+</body>
+</html>
