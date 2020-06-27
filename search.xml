@@ -459,10 +459,10 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>BLOG</tag>
         <tag>学习之旅</tag>
         <tag>Hexo</tag>
         <tag>Github</tag>
+        <tag>BLOG</tag>
         <tag>Travis CI</tag>
         <tag>持续集成自动部署</tag>
         <tag>Token</tag>
@@ -724,10 +724,10 @@
 </ul>
 ]]></content>
       <tags>
+        <tag>Hexo</tag>
         <tag>表情包</tag>
         <tag>DIY</tag>
         <tag>volantis</tag>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -758,11 +758,11 @@
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>BLOG</tag>
         <tag>学习之旅</tag>
         <tag>Hexo</tag>
         <tag>Github</tag>
         <tag>Coding</tag>
+        <tag>BLOG</tag>
       </tags>
   </entry>
   <entry>
@@ -836,7 +836,7 @@
       </tags>
   </entry>
   <entry>
-    <title>ES6学习中</title>
+    <title>ES6重点知识</title>
     <url>/2019/11/26/es6study/</url>
     <content><![CDATA[<blockquote>
 <p>ES6的常见语法</p>
@@ -973,7 +973,7 @@
       </tags>
   </entry>
   <entry>
-    <title>jQuery简单学习</title>
+    <title>jQuery概念整理</title>
     <url>/2019/11/26/jqstudy/</url>
     <content><![CDATA[<h2 id="一-jQuery的基本使用"><a href="#一-jQuery的基本使用" class="headerlink" title="一.jQuery的基本使用"></a>一.jQuery的基本使用</h2><ul>
 <li>1.0  2.0  3.0   分别支持ie8  部分支持ie8  全部不支持ie8  开发的时候最常用的是1.几版本</li>
@@ -1195,9 +1195,9 @@ $.fn.extend({
         <category>前端</category>
       </categories>
       <tags>
-        <tag>jQuery</tag>
         <tag>学习之旅</tag>
         <tag>前端</tag>
+        <tag>jQuery</tag>
       </tags>
   </entry>
   <entry>
@@ -1350,14 +1350,14 @@ $.fn.extend({
         <category>jQuery</category>
       </categories>
       <tags>
-        <tag>博客园</tag>
-        <tag>样式自定义</tag>
         <tag>BLOG</tag>
         <tag>jQuery</tag>
+        <tag>博客园</tag>
+        <tag>样式自定义</tag>
       </tags>
   </entry>
   <entry>
-    <title>第一个接触的前端项目</title>
+    <title>LAMP+JQ+AJAX开发</title>
     <url>/2019/11/20/dycjcqd/</url>
     <content><![CDATA[<blockquote>
 <p>测试网址: <a href="https://studyit.club" target="_blank" rel="noopener">https://studyit.club</a></p>
@@ -1410,12 +1410,12 @@ $.fn.extend({
         <category>Mysql</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>我的项目</tag>
+        <tag>学习之旅</tag>
       </tags>
   </entry>
   <entry>
-    <title>我的第一个React项目</title>
+    <title>React招聘聊天功能</title>
     <url>/2019/11/18/dygReactxm/</url>
     <content><![CDATA[<blockquote>
 <p>测试网址: <a href="https://github.com/2662419405/sh" target="_blank" rel="noopener">https://github.com/2662419405/sh</a></p>
@@ -1599,8 +1599,8 @@ npm run server <span class="comment">//启动  打开浏览器输入localhost:90
         <category>React</category>
       </categories>
       <tags>
-        <tag>学习之旅</tag>
         <tag>我的项目</tag>
+        <tag>学习之旅</tag>
         <tag>React</tag>
         <tag>MongoDB</tag>
         <tag>Node</tag>
